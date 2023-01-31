@@ -10,6 +10,11 @@ INSERT INTO forum (name, description, rules)
             ('NFL', 'Who is your favorite team? Who are you betting on this year?', 'No hateful language and NO EAGLES FANS. jk....'),
             ('Cat Club', 'Share your kitty pics! We need them.', 'No inappropriate media or hate speech');
 
+
+INSERT INTO post (forum_id, user_id, title, body)
+	VALUES (1, 1, 'Test title', 'Test body'), (2, 1, 'Test title2', 'Test body2'), (3, 1, 'Test title3', 'Test body3'), (4, 1, 'Test title4', 'Test body4'),(5, 1, 'Test title5', 'Test body5');
+	
+
 INSERT INTO moderator VALUES 
     (1, 1),
     (1, 2),

@@ -3,10 +3,12 @@ package com.techelevator.dao;
 import com.techelevator.model.Forum;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class JdbcForumDao implements ForumDao {
 
     private final JdbcTemplate jdbcTemplate;
@@ -18,10 +20,10 @@ public class JdbcForumDao implements ForumDao {
     @Override
     public List<Forum> findTopFive() {
 
-        String sql = "SELECT forum_id, forum.name, forum.description, forum.rules FROM forum\n" +
-                "JOIN post ON post.post_id = forum.post_id\n" +
+        String sql = "SELECT forum.forum_id, forum.name, forum.description, forum.rules FROM forum\n" +
+                "JOIN post ON forum.forum_id = post.forum_id\n" +
+                "GROUP BY forum.forum_id, post.posted_at\n" +
                 "ORDER BY post.posted_at\n" +
-                "GROUP BY forum_id\n" +
                 "LIMIT 5;";
         List<Forum> forumList = new ArrayList<>();
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
