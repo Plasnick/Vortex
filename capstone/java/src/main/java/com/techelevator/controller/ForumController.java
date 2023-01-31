@@ -20,5 +20,9 @@ public class ForumController {
     @GetMapping("/forum/top5")
     public List<Forum> findTopFive(){ return forumDao.findTopFive();}
 
+    @GetMapping("/forum")
+    public List<Forum> findAllForums() {return forumDao.findAllForums();}
+
+
 
 }
