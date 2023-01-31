@@ -4,8 +4,8 @@ INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULi
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
 
 INSERT INTO forum (name, description, rules)
-    VALUES ('Techno', 'Join our discussion on today"s hottest techno DJ"s and their best tracks', 'No hateful language or illegal sharing of music'),
-            ('HBO Hits', 'What"s your current favorite HBO show? Share with us, we need recs!', 'No hateful language or sharing of illegal videos'),
+    VALUES ('Techno', 'Join our discussion on today''s hottest techno DJ''s and their best tracks', 'No hateful language or illegal sharing of music'),
+            ('HBO Hits', 'What''s your current favorite HBO show? Share with us, we need recs!', 'No hateful language or sharing of illegal videos'),
             ('Survivor', 'Are you a survivor superfan? We want to hear about your favorite seasons, players, and cutthroat tribal councils', 'No hateful language or sharing of illegal video'),
             ('NFL', 'Who is your favorite team? Who are you betting on this year?', 'No hateful language and NO EAGLES FANS. jk....'),
             ('Cat Club', 'Share your kitty pics! We need them.', 'No inappropriate media or hate speech');
