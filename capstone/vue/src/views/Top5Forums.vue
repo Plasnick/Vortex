@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import ShowRecent5 from '../services/ShowRecent5ForumsService';
+import ShowRecent5 from '../services/ForumsService';
 
 export default {
     data() {
@@ -33,8 +33,8 @@ created() {
 </script>
 
 <style>
-html {
+/* html {
     color: white;
     background-color: black;
-}
-</style>
+} */
+</style> 
