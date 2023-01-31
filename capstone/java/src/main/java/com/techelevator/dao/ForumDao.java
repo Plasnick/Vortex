@@ -11,11 +11,12 @@ public interface ForumDao {
 
     List<Forum> findTopFive();
 
-    List<Forum> findForumByKeyword(String keyword);
+
 
     List<Forum> findAllForums();
-//
-//    boolean create(String forumName, String description, String rules);
+
+    Forum findForumById(int id);
 
 
+    //List<Forum> findForumByKeyword(String keyword);
 }

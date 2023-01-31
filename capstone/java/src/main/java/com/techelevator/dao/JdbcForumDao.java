@@ -40,6 +40,28 @@ public class JdbcForumDao implements ForumDao {
         return allForums;
     }
 
+    @Override
+    public Forum findForumById(int id) {
+
+        String sql = "SELECT forum_id, name, description, rules FROM forum WHERE forum_id = ?";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, id);
+
+        Forum forum = new Forum();
+        if (result.next()){
+            forum = mapRowToForum(result);
+
+            String sqlModeratorId = "SELECT moderator_id FROM moderator WHERE forum_id=?";
+            SqlRowSet resultMod = jdbcTemplate.queryForRowSet(sqlModeratorId, id);
+            List<Integer> moderatorList = new ArrayList<>();
+            while (resultMod.next()){
+                moderatorList.add(mapRowToModeratorList(resultMod));
+            }
+            forum.setModeratorList(moderatorList);
+        }
+
+        return forum;
+    }
+
 
     @Override
     public List<Forum> findTopFive() {
@@ -67,16 +89,19 @@ public class JdbcForumDao implements ForumDao {
         return forumList;
     }
 
-    @Override
-    public List<Forum> findForumByKeyword(String keyword) {
-        List<Forum> forumKeywordList = new ArrayList<>();
-        String sql = "SELECT forum_id, name, description, rules FROM forum WHERE name ILIKE = %?%;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
-        while (results.next()){
-            forumKeywordList.add(mapRowToForum(results));
-        }
-        return forumKeywordList;
-    }
+
+
+
+//    @Override
+//    public List<Forum> findForumByKeyword(String keyword) {
+//        List<Forum> forumKeywordList = new ArrayList<>();
+//        String sql = "SELECT forum_id, name, description, rules FROM forum WHERE name ILIKE = %?%;";
+//        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+//        while (results.next()){
+//            forumKeywordList.add(mapRowToForum(results));
+//        }
+//        return forumKeywordList;
+//    }
 
 
 
