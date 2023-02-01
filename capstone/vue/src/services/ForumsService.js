@@ -13,7 +13,5 @@ export default {
     getForum(id) {
         return axios.get(`/forum/${id}`)
     },
-    getForumPosts(id) {
-        return axios.get(`/forum/${id}/posts`)
-    }
+
 }

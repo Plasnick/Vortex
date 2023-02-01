@@ -1,23 +1,25 @@
 <template>
   <div id="main-forum-feed">
-    <h3>{{ forum.forumName }}</h3>
-    <ul id="post-list">
-      <li></li>
-    </ul>
+    <div class="post" v-for="post in postsByForum" v-bind:key="post.postId">
+      <h3>{{ post.title }}</h3>
+      <p>{{ post.postedAt }}</p>
+      <p>{{ post.body }}</p>
+    </div>
   </div>
 </template>
 
 <script>
-import ForumsService from "../services/ForumsService";
+import PostsService from "../services/PostsService";
 export default {
+  name: "forum-main-feed",
   data() {
     return {
-      mostRecentForumPosts: [],
+      postsByForum: [],
     };
   },
   created() {
-    ForumsService.getForumPosts().then((response) => {
-      this.mostRecentForumPosts = response.data;
+    PostsService.getForumPosts(this.$route.params.id).then((response) => {
+      this.postsByForum = response.data;
     });
   },
 };
