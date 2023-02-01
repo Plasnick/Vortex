@@ -11,14 +11,14 @@ import forumsService from '../services/ForumsService'
 export default {
     data(){
         return {
-            searchWord: '',
+            searchWord: "",
             allForums: []
         }
     },
     computed : {
         filteredList(){
             return this.allForums.filter((forum)=>{
-                if(forum.forumName.toLowerCase().includes(this.searchWord.toLowerCase()) || this.searchWord == ''){
+                if(forum.forumName.toLowerCase().includes(this.searchWord.toLowerCase())){
                     return forum;
                 }
             })
