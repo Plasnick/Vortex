@@ -7,8 +7,8 @@ export default {
         return axios.get(`/forum/${id}/posts`)
     },
 
-    createPost(id){
-        return axios.post(`/posts/${id}`)
+    createPost(post){
+        return axios.post(`/posts`, post)
     }
 
 
