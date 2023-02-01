@@ -89,10 +89,17 @@ public class JdbcForumDao implements ForumDao {
         return forumList;
     }
 
+    @Override
+    public Forum createForum(Forum forum) {
+        String sql = "INSERT INTO forum (name, description, rules) VALUES (?, ?, ?) RETURNING forum_id;";
+        int id = jdbcTemplate.queryForObject(sql, int.class, forum.getForumName(), forum.getDescription(), forum.getRules());
+        forum.setId(id);
+        String sqlModerator = "INSERT INTO moderator (moderator_id, forum_id) VALUES (?, ?);";
+        jdbcTemplate.update(sql, forum.getModeratorList().get(0), forum.getId());
+        return forum;
+    }
 
-
-
-//    @Override
+    //    @Override
 //    public List<Forum> findForumByKeyword(String keyword) {
 //        List<Forum> forumKeywordList = new ArrayList<>();
 //        String sql = "SELECT forum_id, name, description, rules FROM forum WHERE name ILIKE = %?%;";
