@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import Forum from "../views/Forum.vue"
 import ForumSearchResults from '../views/ForumSearchResults.vue'
+import PostAndReplies from '../views/PostAndReplies.vue'
 
 
 Vue.use(Router)
@@ -68,6 +69,14 @@ const router = new Router({
       path: "/forumSearch",
       name: "forumSearch",
       component: ForumSearchResults,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/posts/:id",
+      name: "postAndReplies",
+      component: PostAndReplies,
       meta: {
         requiresAuth: false
       }
