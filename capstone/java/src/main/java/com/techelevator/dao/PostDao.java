@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface PostDao {
     List<Post> getPostsByForum(int forumId);
+    List<Post> getTop10Posts();
 }
