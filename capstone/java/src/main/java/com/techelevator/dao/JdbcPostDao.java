@@ -26,7 +26,7 @@ public class JdbcPostDao implements PostDao{
         while (results.next()){
             postsByForum.add(mapRowToPost(results));
         }
-        return null;
+        return postsByForum;
     }
 
     private Post mapRowToPost(SqlRowSet rowSet){
