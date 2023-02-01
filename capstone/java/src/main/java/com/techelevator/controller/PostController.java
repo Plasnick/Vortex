@@ -19,13 +19,18 @@ public class PostController {
     PostDao postDao;
 
     @GetMapping("/forum/{forumId}/posts")
-    public List<Post> getForumById(@PathVariable int forumId){
+    public List<Post> getPostsByForumId(@PathVariable int forumId){
         return postDao.getPostsByForum(forumId);
     }
 
     @GetMapping("/posts/top10")
     public List<Post> getTop10Posts(){
         return postDao.getTop10Posts();
+    }
+
+    @GetMapping("/posts/{id}")
+    public Post getPost(@PathVariable int id){
+        return postDao.getPostById(id);
     }
 
 

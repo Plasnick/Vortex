@@ -44,7 +44,23 @@ public class JdbcPostDao implements PostDao{
         return top10;
     }
 
+    @Override
+    public Post getPostById(int id) {
+        Post post = null;
+        String sql = "SELECT post_id, user_id, forum_id, title, body, img_url, posted_at, score FROM post " +
+                    "WHERE post_id = ?";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, id);
+        if(result.next()){
+            post = mapRowToPost(result);
+        }
+        return post;
+    }
 
+    @Override
+    public void createPost(Post post) {
+        String sql = "INSERT INTO post (user_id, forum_id, title, body, img_url) VALUES (?, ?, ?, ?, ?)";
+        jdbcTemplate.update(sql, post.getUserId(), post.getForumId(), post.getTitle(), post.getBody(), post.getImg_url());
+    }
 
     private Post mapRowToPost(SqlRowSet rowSet){
         Post post = new Post();
