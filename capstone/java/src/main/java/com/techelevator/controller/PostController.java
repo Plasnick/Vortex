@@ -25,4 +25,6 @@ public class PostController {
         return postDao.getPostsByForum(forumId);
     }
 
+
+
 }
