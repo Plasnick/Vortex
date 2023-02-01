@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import javax.validation.Valid;
 
 import com.techelevator.model.*;
+import com.techelevator.security.jwt.JWTFilter;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.techelevator.dao.UserDao;
-import com.techelevator.security.jwt.JWTFilter;
 import com.techelevator.security.jwt.TokenProvider;
 
 @RestController
