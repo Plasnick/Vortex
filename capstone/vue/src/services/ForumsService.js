@@ -6,11 +6,12 @@ export default {
         return axios.get('/forum/top5')
     },
 
-    getAllForums(){
+    getAllForums() {
         return axios.get('/forum')
     },
 
-    getForum(id){
+    getForum(id) {
         return axios.get(`/forum/${id}`)
-    }
+    },
+
 }
