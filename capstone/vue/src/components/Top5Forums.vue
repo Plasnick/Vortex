@@ -1,11 +1,12 @@
 <template>
   <div class = "top5">
       <h3>Top 5 Forums Today</h3>
-        <ul>
-            <li v-for="forum in mostRecentForums" v-bind:key="forum.id">
-                {{forum.forumName}}
-            </li>
-        </ul>
+        <nav>
+        <router-link v-bind:to="{name: 'forum', params: {id: forum.id}}" v-for="forum in mostRecentForums" v-bind:key="forum.id">
+            {{forum.forumName}}
+        </router-link>
+        </nav>
+        
       
   </div>
 </template>
@@ -36,7 +37,8 @@ created() {
     background-color: black;
 } */
 
-li{
-    list-style: none;
+nav{
+    display: flex;
+    flex-direction: column;
 }
 </style> 
