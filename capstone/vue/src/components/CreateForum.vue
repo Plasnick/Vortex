@@ -9,14 +9,11 @@ export default {
     name: "create-forum",
     data() {
         return {
-            forumName: {
-
-            },
-            forumDesc: {
-
-            },
-            forumRules: {
-
+            forum: {
+                name: '',
+                description: '',
+                rules: '',
+                moderators: ''
             }
         }
     },
