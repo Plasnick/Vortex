@@ -29,6 +29,23 @@ public class JdbcPostDao implements PostDao{
         return postsByForum;
     }
 
+    @Override
+    public List<Post> getTop10Posts() {
+        List<Post> top10 = new ArrayList<>();
+        String sql = "SELECT post_id, user_id, forum_id, title, body, img_url, posted_at, score FROM post " +
+                "WHERE posted_at >= NOW() - INTERVAL '24 HOURS' " +
+                "ORDER BY score DESC " +
+                "LIMIT 10;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()){
+            top10.add(mapRowToPost(results));
+        }
+
+        return top10;
+    }
+
+
+
     private Post mapRowToPost(SqlRowSet rowSet){
         Post post = new Post();
         post.setPostId(rowSet.getInt("post_id"));

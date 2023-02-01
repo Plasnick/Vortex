@@ -4,10 +4,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.ForumDao;
 import com.techelevator.model.Forum;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,5 +23,11 @@ public class ForumController {
 
     @GetMapping("/forum/{id}")
     public Forum getForumById(@PathVariable int id){return forumDao.findForumById(id);}
+
+    @RequestMapping(path = "/forum", method = RequestMethod.POST)
+    public Forum createForum(@RequestBody Forum forum){
+        forumDao.createForum(forum);
+        return null;
+    }
 
 }

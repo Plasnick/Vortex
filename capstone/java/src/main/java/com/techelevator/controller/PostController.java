@@ -18,11 +18,14 @@ public class PostController {
     @Autowired
     PostDao postDao;
 
-
-
     @GetMapping("/forum/{forumId}/posts")
     public List<Post> getForumById(@PathVariable int forumId){
         return postDao.getPostsByForum(forumId);
+    }
+
+    @GetMapping("/posts/top10")
+    public List<Post> getTop10Posts(){
+        return postDao.getTop10Posts();
     }
 
 
