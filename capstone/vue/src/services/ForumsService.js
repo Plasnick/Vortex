@@ -8,5 +8,9 @@ export default {
 
     getAllForums(){
         return axios.get('/forum')
+    },
+
+    getForum(id){
+        return axios.get(`/forum/${id}`)
     }
 }
