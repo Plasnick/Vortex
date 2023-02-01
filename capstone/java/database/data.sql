@@ -12,9 +12,11 @@ INSERT INTO forum (name, description, rules)
 
 
 INSERT INTO post (forum_id, user_id, title, body)
-	VALUES (1, 1, 'Test title', 'Test body'), (2, 1, 'Test title2', 'Test body2'), (3, 1, 'Test title3', 'Test body3'), (4, 1, 'Test title4', 'Test body4'),(5, 1, 'Test title5', 'Test body5');
-	
+	VALUES (1, 1, '"Dad, can I borrow $10 worth of bitcoin??"', '"Borrow $11.62?...What the hell do you need $7.45 of bitcoin for?"'), (2, 1, 'I hate it when...', 'I hate it when job interviewers ask "what is your greatest strength," so I printed up these business cards to just hand out when asked.'), (3, 1, 'Place has ended.', 'Thank you to everyone who participated.
 
+Maybe the real art was the friends we made along the way.'), (4, 1, 'Vladimir Putin`s black belt revoked by international taekwondo organization', 'I can’t imagine a more humiliating punishment than being demoted to being outranked by Steven Seagal.'),(5, 1, 'NEXT LEVEL', 'Woman takes the brunt of the impact of this car to save her child. Then another vehicle prevents the driver from escaping.');
+	
+	
 INSERT INTO moderator VALUES 
     (1, 1),
     (1, 2),
