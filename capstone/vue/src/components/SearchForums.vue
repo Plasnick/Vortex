@@ -1,7 +1,10 @@
 <template>
   <div class="search-forums">
       <input type="text" placeholder="Search Forums" v-model="searchWord">
-      <router-link v-bind:to="{name: 'forum', params: {id: forum.id}}" v-for="forum in filteredList" v-bind:key="forum.id">{{ forum.forumName }}</router-link>
+      <router-link v-bind:to="{name: 'forum', params: {id: forum.id}}" v-for="forum in filteredList" v-bind:key="forum.id">
+         <div> {{ forum.forumName }} </div>
+          <div>{{forum.description}} </div>
+        </router-link>
   </div>
 </template>
 

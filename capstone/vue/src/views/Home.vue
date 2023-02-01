@@ -5,7 +5,7 @@
       <p>You must be authenticated to see this</p>
       <search-forums />
     </div>
-    
+
     <aside>
       <top-5-forums />
     </aside>

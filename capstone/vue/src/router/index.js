@@ -6,6 +6,7 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import Forum from "../views/Forum.vue"
+import ForumSearchResults from '../views/ForumSearchResults.vue'
 
 
 Vue.use(Router)
@@ -59,6 +60,14 @@ const router = new Router({
       path: "/forum/:id",
       name: "forum",
       component: Forum,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/forumSearch",
+      name: "forumSearch",
+      component: ForumSearchResults,
       meta: {
         requiresAuth: false
       }
