@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import Forum from "../views/Forum.vue"
 import ForumSearchResults from '../views/ForumSearchResults.vue'
+import ForumCreationPage from '../views/ForumCreationPage'
 
 
 Vue.use(Router)
@@ -72,6 +73,14 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+      path: "/createForum",
+      name: "createForum",
+      component: ForumCreationPage,
+      meta: {
+        requiresAuth: true
+      }
+    }
 
 
   ]

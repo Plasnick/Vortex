@@ -1,12 +1,46 @@
 <template>
-  <p>Create Forum</p>
+  
+
+
+   <form v-on:submit.prevent="submitForm" class="cardForm"> 
+    <p>Create Forum</p>
+
+    <label for="name">Forum Name</label>
+    <input
+    id="name"
+    type="text"
+    class="form-control"
+    v-model="forum.title"
+    autocomplete="off"
+    />
+
+    <label for="description"> Forum Description</label>
+    <textarea
+        id="description"
+        class="form-control"
+        v-model="forum.description"
+    />
+
+    <label for="rules"> Desscribe Your Rules Here</label>
+    <textarea
+        id="rules"
+        class="form-control"
+        v-model="forum.rules"
+    />    
+
+    <button>Submit</button>
+    <button v-on:click.prevent="cancelForm"
+      type="cancel"> Cancel 
+    </button>  
+
+   </form>
 </template>
 
 <script>
 import forumsService from '../services/ForumsService'
 
 export default {
-    name: "create-forum",
+    // name: "create-forum",
     data() {
         return {
             forum: {
@@ -25,7 +59,7 @@ export default {
               name: this.forum.name,
               description: this.forum.description,
               rules: this.forum.rules,
-              moderators: this.$.state.user.id
+              moderators: this.$state.user.id
             
           };
 
