@@ -21,7 +21,7 @@ public class JdbcForumDao implements ForumDao {
     public List<Forum> findAllForums() {
         String sql = "SELECT forum.forum_id, forum.name, forum.description, forum.rules FROM forum\n" +
                 "JOIN post ON forum.forum_id = post.forum_id\n" +
-                "ORDER BY post.posted_at;";
+                " GROUP BY forum.forum_id, post.posted_at ORDER BY post.posted_at;";
 
         List<Forum> allForums = new ArrayList<>();
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
