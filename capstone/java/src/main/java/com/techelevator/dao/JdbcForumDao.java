@@ -95,7 +95,7 @@ public class JdbcForumDao implements ForumDao {
         int id = jdbcTemplate.queryForObject(sql, int.class, forum.getForumName(), forum.getDescription(), forum.getRules());
         forum.setId(id);
         String sqlModerator = "INSERT INTO moderator (moderator_id, forum_id) VALUES (?, ?);";
-        jdbcTemplate.update(sql, forum.getModeratorList().get(0), forum.getId());
+        jdbcTemplate.update(sqlModerator, forum.getModeratorList().get(0), forum.getId());
         return forum;
     }
 
