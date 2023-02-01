@@ -14,4 +14,7 @@ export default {
         return axios.get(`/forum/${id}`)
     },
 
+    createForum(newForum) {
+        return axios.post('/forum', newForum);
+    }
 }
