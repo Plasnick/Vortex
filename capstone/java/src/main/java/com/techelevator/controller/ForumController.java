@@ -27,8 +27,9 @@ public class ForumController {
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/forum", method = RequestMethod.POST)
     public Forum createForum(@RequestBody Forum forum){
-        forumDao.createForum(forum);
-        return null;
+
+        Forum newForum = forumDao.createForum(forum);
+        return newForum;
     }
 
 }
