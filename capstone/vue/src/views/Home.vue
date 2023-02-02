@@ -4,7 +4,7 @@
       <h1>Home</h1>
       <p>You must be authenticated to see this</p>
       <search-forums />
-      <top-posts/>
+      <top-posts class="top-posts"/>
     </div>
 
     <aside>
@@ -57,4 +57,6 @@ export default {
     height: 60vh; 
 
   }
+
+
 </style>
