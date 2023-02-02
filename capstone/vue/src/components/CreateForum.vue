@@ -47,7 +47,7 @@ export default {
                 name: '',
                 description: '',
                 rules: '',
-                moderators: ''
+                moderators: '',
             }
         }
     },
@@ -72,7 +72,6 @@ export default {
             )
         }
     }
-
 }
 </script>
 

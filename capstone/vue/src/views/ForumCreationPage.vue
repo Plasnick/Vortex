@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import ForumCreationForm from '../components/CreateForums.vue'
+import ForumCreationForm from '../components/CreateForum.vue'
 
 export default {
     components: {
