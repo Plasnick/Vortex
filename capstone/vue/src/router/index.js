@@ -81,7 +81,7 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
-    }
+    },
 
     {
       path: "/forum/new-post/:id",
