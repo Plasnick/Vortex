@@ -44,4 +44,28 @@ INSERT INTO moderator VALUES
     (1, 4),
     (1, 5);
 
+INSERT INTO comment (comment_id, user_id, post_id, body)
+	VALUES 
+	(1, 1, 1, 'Techno is a genre of electronic dance music characterized by a repetitive beat and minimalistic structure.'),
+	(2, 1, 2, 'Detroit techno pioneers like Juan Atkins, Derrick May, and Kevin Saunderson helped shape the genre in the 80s and 90s.'),
+	(3, 1, 3, 'Techno music often serves as the soundtrack for underground dance parties and raves, creating a shared experience for fans and dancers alike.'),
+	(4, 1, 4, 'Today, techno continues to evolve and incorporate elements from other genres, making it a constantly evolving and innovative musical genre.'),
+	(5, 1, 5, 'Techno cat!'),
+	(6, 1, 6, 'Game of Thrones is a must-watch for fans of epic fantasy and political intrigue.'),
+	(7, 1, 7, 'The Sopranos redefined the crime drama genre with its deep character development and captivating storyline.'),
+	(8, 1, 8, 'Big Little Lies is a phenomenal exploration of relationships, motherhood, and the darker sides of human nature.'),
+	(9, 1, 9, 'Westworld is a mind-bending sci-fi series that questions the nature of reality and consciousness.'),
+	(10, 1, 10, 'Some of the greatest players in NFL history include Jerry Rice, JaMarr Chase, Joe Burrow, Peyton Manning, and Lawrence Taylor, among many others.'),
+	(11, 1, 11, 'The NFL is the highest level of professional American football, with 32 teams competing annually for the Vince Lombardi Trophy.'),
+	(12, 1, 12, 'The NFL season runs from September to February, with each team playing 16 regular season games and the top teams advancing to the playoffs.'),
+	(13, 1, 13, 'The Super Bowl, held annually on the first Sunday in February, is the biggest event in American sports and attracts millions of viewers worldwide.'),
+	(14, 1, 14, 'The refs blew it the AFC champioship.'),
+	(15, 1, 15, 'Cats are popular pets known for their independent personalities, affectionate behavior, and playful antics.'),
+	(16, 1, 16, 'Domesticated cats are descendants of African wildcats and have been kept as pets for thousands of years.'),
+	(17, 1, 17, 'Cats are known for their grooming habits and use their rough tongues to clean their fur and remove loose hair.'),
+	(18, 1, 18, 'There are many different breeds of cats, each with their own unique physical and personality traits, such as Siamese, Persian, and Bengal cats.'),
+	(19, 1, 19, 'Survivor is a reality TV show where contestants are stranded on a deserted island and must outwit, outplay, and outlast each other to win a cash prize.'),
+	(20, 1, 20, 'The show, which first aired in 2000, has had over 40 seasons and is considered one of the pioneers of the reality TV genre.'),
+	(21, 1, 21, 'Contestants face challenges, vote each other off, and form alliances in a cutthroat competition to become the sole survivor and win the grand prize.');
+
 COMMIT TRANSACTION;
