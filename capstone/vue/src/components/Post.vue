@@ -8,24 +8,32 @@
       <img v-if="post.img_url" :src="post.img_url" alt="Post Image" />
       <p>{{ post.body }}</p>
     </div>
-    <!-- reply button -->
   </div>
 </template>
 
 <script>
-import PostsService from "../services/PostsService";
+// import postsService from "../services/PostsService";
 export default {
   name: "post-component",
-  data() {
-    return {
-      post: {},
-    };
-  },
-  created() {
-    PostsService.getPost(this.$route.params.id).then((response) => {
-      this.post = response.data;
-    });
-  },
+  //   props: ["post"],
+  //   methods: {
+  //     upVote() {
+  //       this.post.upVotes++;
+  //       postsService.updatePost(this.post).then((response) => {
+  //         if (response.status === 200) {
+  //           console.log("it worked");
+  //         }
+  //       });
+  //     },
+  //     downVote() {
+  //       this.post.downVotes++;
+  //       postsService.updatePost(this.post).then((response) => {
+  //         if (response.status === 200) {
+  //           console.log("it worked");
+  //         }
+  //       });
+  //     },
+  //   },
 };
 </script>
 
