@@ -8,6 +8,7 @@ import store from '../store/index'
 import Forum from "../views/Forum.vue"
 import ForumSearchResults from '../views/ForumSearchResults.vue'
 import ForumCreationPage from '../views/ForumCreationPage'
+import NewPost from '../views/NewPost.vue'
 
 
 Vue.use(Router)
@@ -80,6 +81,16 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
+    }
+
+    {
+      path: "/forum/new-post/:id",
+      name: "newPost",
+      component: NewPost,
+      meta: {
+        requiresAuth: true
+      }
+
     }
 
 

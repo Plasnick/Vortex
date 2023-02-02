@@ -1,10 +1,11 @@
 <template>
-  <div class="search-forums">
+  <div class="search-forum">
       <input type="text" placeholder="Search Forums" v-model="searchWord">
-      <div v-for="forum in filteredList" v-bind:key="forum.id">
-         <router-link v-bind:to="{name: 'forum', params: {id: forum.id}}"> {{ forum.forumName }}  </router-link>
-          <div>{{forum.description}} </div>
+      <div v-if="searchWord" class="suggestions">
+        <div v-for="forum in filteredList" v-bind:key="forum.id">
+          <router-link v-bind:to="{name: 'forum', params: {id: forum.id}}"> {{ forum.forumName }}  </router-link>
         </div>
+      </div>
   </div>
 </template>
 
@@ -38,9 +39,13 @@ export default {
 </script>
 
 <style>
-.search-forums{
+.search-forum{
     display: flex;
     flex-direction: column;
 }
-
+.suggestions {
+  background-color: rgb(224, 219, 219);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.616);
+  padding: 8px;
+}
 </style>
