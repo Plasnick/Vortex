@@ -14,6 +14,9 @@ export default {
     },
     createPost(post){
         return axios.post(`/posts`, post)
+    },
+    updatePost(id, post){
+        return axios.put(`/posts/${id}`, post)
     }
 
 
