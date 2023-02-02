@@ -2,36 +2,45 @@
   
 
 
-   <form v-on:submit.prevent="submitForm" class="cardForm"> 
+   <form v-on:submit.prevent="submitForum" class="cardForm"> 
     <p>Create Forum</p>
 
+
+<div>
     <label for="name">Forum Name</label>
     <input
     id="name"
     type="text"
     class="form-control"
-    v-model="forum.title"
+    v-model="forum.forumName"
     autocomplete="off"
     />
+</div>    
 
+<div>
     <label for="description"> Forum Description</label>
     <textarea
         id="description"
         class="form-control"
         v-model="forum.description"
     />
+</div>    
 
+<div>
     <label for="rules"> Desscribe Your Rules Here</label>
     <textarea
         id="rules"
         class="form-control"
         v-model="forum.rules"
-    />    
+    /> 
+</div>       
 
-    <button>Submit</button>
+<div>
+    <input type="submit"/>
     <button v-on:click.prevent="cancelForm"
       type="cancel"> Cancel 
     </button>  
+</div>    
 
    </form>
 </template>
@@ -44,10 +53,10 @@ export default {
     data() {
         return {
             forum: {
-                name: '',
+                forumName: '',
                 description: '',
                 rules: '',
-                moderators: '',
+                moderatorList: []
             }
         }
     },
@@ -56,10 +65,10 @@ export default {
         submitForum() {
 
           const newForum = {
-              name: this.forum.name,
+              forumName: this.forum.forumName,
               description: this.forum.description,
               rules: this.forum.rules,
-              moderators: this.$state.user.id
+              moderatorList: [this.$store.state.user.id]
             
           };
 
