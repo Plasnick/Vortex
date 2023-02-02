@@ -7,11 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import Forum from "../views/Forum.vue"
 import ForumSearchResults from '../views/ForumSearchResults.vue'
-<<<<<<< HEAD
-import PostAndReplies from '../views/PostAndReplies.vue'
-=======
 import ForumCreationPage from '../views/ForumCreationPage'
->>>>>>> main
 import NewPost from '../views/NewPost.vue'
 
 
@@ -79,23 +75,13 @@ const router = new Router({
       }
     },
     {
-<<<<<<< HEAD
-      path: "/posts/:id",
-      name: "postAndReplies",
-      component: PostAndReplies,
-      meta: {
-        requiresAuth: false
-      }
-    },
-=======
       path: "/createForum",
       name: "createForum",
       component: ForumCreationPage,
       meta: {
         requiresAuth: true
       }
-    }
->>>>>>> main
+    },
 
     {
       path: "/forum/new-post/:id",
