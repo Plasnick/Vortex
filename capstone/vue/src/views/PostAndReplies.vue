@@ -8,9 +8,8 @@
       <!-- need to add the upvoted and downvotes instead of score -->
 
       <p>{{ post.body }}</p>
-      <post-replies-feed />
     </div>
-    <!-- component for the replies feed -->
+    <post-replies-feed />
   </div>
 </template>
 
