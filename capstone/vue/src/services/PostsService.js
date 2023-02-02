@@ -12,7 +12,7 @@ export default {
     getPost(id) {
         return axios.get(`/posts/${id}`)
     },
-    createPost(post){
+    createPost(post) {
         return axios.post(`/posts`, post)
     },
     updatePost(id, post){
