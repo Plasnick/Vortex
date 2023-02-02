@@ -6,11 +6,15 @@ export default {
     getForumPosts(id) {
         return axios.get(`/forum/${id}/posts`)
     },
-
-    getPost(postId) {
-        return axios.get(`/posts/${postId}`)
+    getTop10() {
+        return axios.get(`/posts/top10`)
     },
-
+    getPost(id) {
+        return axios.get(`/posts/${id}`)
+    },
+    createPost(post) {
+        return axios.post(`/posts`, post)
+    }
 
 
 }

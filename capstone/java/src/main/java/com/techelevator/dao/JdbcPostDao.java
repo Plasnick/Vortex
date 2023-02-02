@@ -20,8 +20,12 @@ public class JdbcPostDao implements PostDao{
     @Override
     public List<Post> getPostsByForum(int forumId) {
         List<Post> postsByForum = new ArrayList<>();
-        String sql = "SELECT post_id, user_id, forum_id, title, body, img_url, posted_at, score " +
-                     "FROM post WHERE forum_id = ?;";
+        String sql = "SELECT post.post_id, post.user_id, post.forum_id, post.title, post.body, post.img_url, " +
+                "post.posted_at, post.score, forum.name " +
+                "FROM post " +
+                "JOIN forum ON post.forum_id = forum.forum_id " +
+                "WHERE post.forum_id = ?";
+
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, forumId);
         while (results.next()){
             postsByForum.add(mapRowToPost(results));
@@ -32,9 +36,12 @@ public class JdbcPostDao implements PostDao{
     @Override
     public List<Post> getTop10Posts() {
         List<Post> top10 = new ArrayList<>();
-        String sql = "SELECT post_id, user_id, forum_id, title, body, img_url, posted_at, score FROM post " +
+        String sql = "SELECT post.post_id, post.user_id, post.forum_id, post.title, post.body, " +
+                "post.img_url, post.posted_at, post.score, forum.name" +
+                "FROM post" +
+                "JOIN forum ON post.forum_id = forum.forum_id " +
                 "WHERE posted_at >= NOW() - INTERVAL '24 HOURS' " +
-                "ORDER BY score DESC " +
+                "ORDER BY score DESC" +
                 "LIMIT 10;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()){
@@ -47,8 +54,10 @@ public class JdbcPostDao implements PostDao{
     @Override
     public Post getPostById(int id) {
         Post post = null;
-        String sql = "SELECT post_id, user_id, forum_id, title, body, img_url, posted_at, score FROM post " +
-                    "WHERE post_id = ?";
+        String sql = "SELECT post.post_id, post.title, post.body, post.img_url, post.posted_at, post.score, forum.name" +
+                "FROM post" +
+                "JOIN forum ON post.forum_id = forum.forum_id" +
+                "WHERE post.post_id = ?;";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, id);
         if(result.next()){
             post = mapRowToPost(result);

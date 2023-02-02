@@ -4,10 +4,9 @@ import com.techelevator.dao.PostDao;
 import com.techelevator.model.Forum;
 import com.techelevator.model.Post;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,6 +30,13 @@ public class PostController {
     @GetMapping("/posts/{postId}")
     public Post getPost(@PathVariable int postId){
         return postDao.getPostById(postId);
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path = "/posts", method = RequestMethod.POST)
+    public void createPost(@RequestBody Post post){
+        postDao.createPost(post);
     }
 
 

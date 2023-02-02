@@ -4,9 +4,11 @@
       <h1>Home</h1>
       <p>You must be authenticated to see this</p>
       <search-forums />
+      <top-posts/>
     </div>
 
     <aside>
+      
       <top-5-forums />
     </aside>
 
@@ -16,12 +18,15 @@
 <script>
 import Top5Forums from '../components/Top5Forums.vue'
 import SearchForums from '../components/SearchForums.vue'
+import TopPosts from '../components/TopPosts.vue';
+
 
 export default {
   name: "home",
   components: {
     Top5Forums,
-    SearchForums
+    SearchForums,
+    TopPosts,
   }
 };
 </script>
@@ -47,7 +52,9 @@ export default {
     height: 100%;
     width: 200px; 
     margin-right: 20px;
-    padding-left: 10px; 
+    padding-left: 10px;
+    position: fixed;
+    height: 60vh; 
 
   }
 </style>
