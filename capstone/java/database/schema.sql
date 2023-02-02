@@ -32,16 +32,18 @@ CREATE TABLE post (
     user_id int NOT NULL,
     forum_id int NOT NULL,
     title varchar(200) NOT NULL,
-    body text NOT NULL,
-    img_url varchar(100),
+    body text,
+    img_url text,
     posted_at timestamp DEFAULT CURRENT_TIMESTAMP,
     up_votes int DEFAULT 0,
     down_votes int DEFAULT 0,
     CONSTRAINT PK_post PRIMARY KEY (post_id),
     CONSTRAINT FK_post_user FOREIGN KEY (user_id) REFERENCES users (user_id),
     CONSTRAINT FK_post_forum FOREIGN KEY (forum_id) REFERENCES forum (forum_id),
-    CONSTRAINT UQ_title UNIQUE (title)
+    CONSTRAINT UQ_title UNIQUE (title),
+    CONSTRAINT CHK_body_or_img CHECK ((body IS NOT NULL AND body != '') OR (img_url IS NOT NULL AND img_url != ''))
 );
+
 
 CREATE TABLE comment (
     comment_id SERIAL,

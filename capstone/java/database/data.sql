@@ -32,10 +32,10 @@ I lost a lot of respect for Hai tonight because of that, tbh.',729, 300),
 	(4,1, '[Weprin] Oh wow','Brian Flores suing the NFL and NY Giants, alleging racism in hiring. Includes private texts from Bill Belichick',3297, 4000),
 	(4,1, '[TMZ]','Teddy Bridgewater is calling on his fellow NFL players to quit pretending to be "gangsta" and start acting like role models.',12, 99),
 	(4,1, '[McAfee]','After the NFL banned his use of team logos: "I don`t think we`ve really touched on many subjects that we could have...I think we`ll do that this offseason...like insurance and CTE and concussions"',23, 0),
-	(5,1, 'INCREDIBLE', 'After the NFL banned his use of team logos: "I don`t think we`ve really touched on many subjects that we could have...I think we`ll do that this offseason...like insurance and CTE and concussions"',97, 97),
-	(5,1, 'Matt Ryan and Russell Wilson began and spent most of their careers on NFC bird teams. This offseason, both got traded to AFC horse teams','That`s all. Just thought it was neat',203820, 900),
-	(5,1, '[Rapoport]','A new QB in Carolina: The #Panthers are acquiring former No. 1 overall pick Baker Mayfield from the #Browns for a 2024 conditional 5th-round draft pick, sources tell me and @TomPelissero. Deal is pending a physical. All parties split the financials to make it happen.',675, 322),
-	(5,1, '[Raanan] Man, the Baker Mayfield slander needs to stop!','He went to organization that was all-time bad, set TD record for rookie, helped turn them around, made playoffs, won playoff game (was lights out to beat rival Steelers) and was hurt last year. Has limitations but deserves respect.',30, 378);
+	(5,1, 'Aww', NULL, 'https://images.unsplash.com/photo-1573865526739-10659fec78a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Y2F0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60', 97, 50),
+	(5,1, 'This picture is the perfect way to describe a cat', NULL, 'https://images.unsplash.com/photo-1543852786-1cf6624b9987?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNhdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=400&q=60',203820, 15000),
+	(5,1, 'I found a cat. I don`t like cats, Now i have a cat i guess.', NULL, 'https://images.unsplash.com/photo-1592194996308-7b43878e84a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8Y2F0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60',675,80),
+	(5,1, 'astronaut!',NULL, 'https://images.unsplash.com/photo-1618500299034-abce7ed0e8df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YXN0cm9uYXV0JTIwY2F0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60',30, 200);
 	
 INSERT INTO moderator VALUES 
     (1, 1),

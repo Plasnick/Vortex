@@ -1,6 +1,5 @@
 package com.techelevator.controller;
 
-
 import com.techelevator.dao.ForumDao;
 import com.techelevator.model.Forum;
 import org.springframework.beans.factory.annotation.Autowired;
