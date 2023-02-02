@@ -44,4 +44,28 @@ INSERT INTO moderator VALUES
     (1, 4),
     (1, 5);
 
+INSERT INTO comment (comment_id, user_id, post_id, body)
+	VALUES 
+	(1, 1, 1, 'Techno is a genre of electronic dance music characterized by a repetitive beat and minimalistic structure.')
+	(2, 1, 2, 'Detroit techno pioneers like Juan Atkins, Derrick May, and Kevin Saunderson helped shape the genre in the 80s and 90s.')
+	(3, 1, 3, 'Techno music often serves as the soundtrack for underground dance parties and raves, creating a shared experience for fans and dancers alike.')
+	(4, 1, 4, 'Today, techno continues to evolve and incorporate elements from other genres, making it a constantly evolving and innovative musical genre.')
+	(5, 1, 5, 'Techno cat!')
+	(6, 1, 6, 'Game of Thrones is a must-watch for fans of epic fantasy and political intrigue.')
+	(7, 1, 7, 'The Sopranos redefined the crime drama genre with its deep character development and captivating storyline.')
+	(8, 1, 8, 'Big Little Lies is a phenomenal exploration of relationships, motherhood, and the darker sides of human nature.')
+	(9, 1, 9, 'Westworld is a mind-bending sci-fi series that questions the nature of reality and consciousness.')
+	(10, 1, 10, '')
+	(11, 1, 11, '')
+	(12, 1, 12, '')
+	(13, 1, 13, '')
+	(14, 1, 14, '')
+	(15, 1, 15, '')
+	(16, 1, 16, '')
+	(17, 1, 17, '')
+	(18, 1, 18, '')
+	(19, 1, 19, '')
+	(20, 1, 20, '')
+	(21, 1, 21, '')
+
 COMMIT TRANSACTION;
