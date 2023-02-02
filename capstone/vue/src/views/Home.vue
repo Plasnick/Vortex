@@ -4,7 +4,8 @@
       <h1>Home</h1>
       <p>You must be authenticated to see this</p>
       <search-forums />
-      <top-posts/>
+      <h2>Top 10 Posts Today</h2>
+      <post v-for="post in $store.state.posts" v-bind:key="post.postId" v-bind:post="post" />
     </div>
 
     <aside>
@@ -18,7 +19,8 @@
 <script>
 import Top5Forums from '../components/Top5Forums.vue'
 import SearchForums from '../components/SearchForums.vue'
-import TopPosts from '../components/TopPosts.vue';
+import Post from '../components/Post.vue'
+import postsService from '../services/PostsService'
 
 
 export default {
@@ -26,7 +28,12 @@ export default {
   components: {
     Top5Forums,
     SearchForums,
-    TopPosts,
+    Post,
+  },
+  created() {
+    postsService.getTop10().then((response) => {
+      this.$store.commit("SET_POSTS", response.data)
+    })
   }
 };
 </script>
@@ -57,4 +64,6 @@ export default {
     height: 60vh; 
 
   }
+
+
 </style>
