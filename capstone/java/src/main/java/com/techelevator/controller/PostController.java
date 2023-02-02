@@ -39,6 +39,11 @@ public class PostController {
         postDao.createPost(post);
     }
 
+    @RequestMapping( path = "/posts/{id}", method = RequestMethod.PUT)
+    public void updatePost(@PathVariable int id,
+                           @RequestBody Post post){
+        postDao.updatePost(id, post);
+    }
 
 
 }

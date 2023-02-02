@@ -9,4 +9,5 @@ public interface PostDao {
     List<Post> getTop10Posts();
     Post getPostById(int id);
     void createPost(Post post);
+    void updatePost(int id, Post post);
 }

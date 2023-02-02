@@ -93,6 +93,7 @@ const router = new Router({
         requiresAuth: true
       }
 
+<<<<<<< HEAD
     },
     {
       path: "/post/:id",
@@ -103,6 +104,10 @@ const router = new Router({
       }
 
     },
+=======
+    }
+    
+>>>>>>> main
 
 
   ]
