@@ -10,7 +10,8 @@ public class Post {
     private String body;
     private String img_url;
     private LocalDateTime postedAt;
-    private int score;
+    private int upVotes;
+    private int downVotes;
 
     public int getPostId() {
         return postId;
@@ -68,11 +69,19 @@ public class Post {
         this.postedAt = postedAt;
     }
 
-    public int getScore() {
-        return score;
+    public int getUpVotes() {
+        return upVotes;
     }
 
-    public void setScore(int score) {
-        this.score = score;
+    public void setUpVotes(int upVotes) {
+        this.upVotes = upVotes;
+    }
+
+    public int getDownVotes() {
+        return downVotes;
+    }
+
+    public void setDownVotes(int downVotes) {
+        this.downVotes = downVotes;
     }
 }

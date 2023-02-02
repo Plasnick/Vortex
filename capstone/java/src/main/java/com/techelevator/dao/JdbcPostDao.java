@@ -20,7 +20,7 @@ public class JdbcPostDao implements PostDao{
     @Override
     public List<Post> getPostsByForum(int forumId) {
         List<Post> postsByForum = new ArrayList<>();
-        String sql = "SELECT post_id, user_id, forum_id, title, body, img_url, posted_at, score " +
+        String sql = "SELECT post_id, user_id, forum_id, title, body, img_url, posted_at, up_votes, down_votes " +
                      "FROM post WHERE forum_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, forumId);
         while (results.next()){
@@ -32,8 +32,8 @@ public class JdbcPostDao implements PostDao{
     @Override
     public List<Post> getTop10Posts() {
         List<Post> top10 = new ArrayList<>();
-        String sql = "SELECT post_id, user_id, forum_id, title, body, img_url, posted_at, score FROM post " +
-                "WHERE posted_at >= NOW() - INTERVAL '24 HOURS' " +
+        String sql = "SELECT post_id, user_id, forum_id, title, body, img_url, posted_at, up_votes, down_votes, up_votes - down_votes AS score  " +
+                "FROM post WHERE posted_at >= NOW() - INTERVAL '24 HOURS' " +
                 "ORDER BY score DESC " +
                 "LIMIT 10;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
@@ -47,7 +47,7 @@ public class JdbcPostDao implements PostDao{
     @Override
     public Post getPostById(int id) {
         Post post = null;
-        String sql = "SELECT post_id, user_id, forum_id, title, body, img_url, posted_at, score FROM post " +
+        String sql = "SELECT post_id, user_id, forum_id, title, body, img_url, posted_at, up_votes, down_votes FROM post " +
                     "WHERE post_id = ?";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, id);
         if(result.next()){
@@ -70,7 +70,8 @@ public class JdbcPostDao implements PostDao{
         post.setTitle(rowSet.getString("title"));
         post.setBody(rowSet.getString("body"));
         post.setImg_url(rowSet.getString("img_url"));
-        post.setScore(rowSet.getInt("score"));
+        post.setUpVotes(rowSet.getInt("up_votes"));
+        post.setDownVotes(rowSet.getInt("down_votes"));
         post.setPostedAt(rowSet.getTimestamp("posted_at").toLocalDateTime());
         return post;
     }
