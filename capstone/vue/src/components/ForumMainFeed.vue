@@ -1,8 +1,13 @@
 <template>
   <div id="main-forum-feed">
     <div class="post" v-for="post in postsByForum" v-bind:key="post.postId">
-      <h3>{{ post.title }}</h3>
-      <img v-if="post.img_url" :src="post.img_url" alt="Post Image">
+      <router-link
+        v-bind:to="{ name: 'postAndReplies', params: { id: post.postId } }"
+      >
+        <h3>{{ post.title }}</h3></router-link
+      >
+
+      <img v-if="post.img_url" :src="post.img_url" alt="Post Image" />
       <p>{{ post.postedAt }}</p>
       <p>{{ post.body }}</p>
     </div>
@@ -26,4 +31,5 @@ export default {
 };
 </script>
 
-<style> </style>
+<style>
+</style>

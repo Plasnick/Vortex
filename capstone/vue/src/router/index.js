@@ -9,6 +9,8 @@ import Forum from "../views/Forum.vue"
 import ForumSearchResults from '../views/ForumSearchResults.vue'
 import ForumCreationPage from '../views/ForumCreationPage'
 import NewPost from '../views/NewPost.vue'
+import PostAndReplies from '../views/PostAndReplies.vue'
+
 
 
 Vue.use(Router)
@@ -91,7 +93,16 @@ const router = new Router({
         requiresAuth: true
       }
 
-    }
+    },
+    {
+      path: "/post/:id",
+      name: "postAndReplies",
+      component: PostAndReplies,
+      meta: {
+        requiresAuth: false
+      }
+
+    },
 
 
   ]
