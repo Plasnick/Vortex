@@ -26,7 +26,7 @@ export default {
     };
   },
   created() {
-    PostsService.getPost(this.$route.params.postId).then((response) => {
+    PostsService.getPost(this.$route.params.id).then((response) => {
       this.post = response.data;
     });
   },

@@ -23,7 +23,7 @@ export default {
     };
   },
   created() {
-    ReplyService.getPostReplies(this.$route.params.postId).then((response) => {
+    ReplyService.getPostReplies(this.$route.params.id).then((response) => {
       this.repliesByPost = response.data;
     });
   },

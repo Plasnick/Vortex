@@ -27,9 +27,9 @@ public class PostController {
         return postDao.getTop10Posts();
     }
 
-    @GetMapping("/posts/{postId}")
-    public Post getPost(@PathVariable int postId){
-        return postDao.getPostById(postId);
+    @GetMapping("/posts/{id}")
+    public Post getPost(@PathVariable int id){
+        return postDao.getPostById(id);
     }
 
     @PreAuthorize("isAuthenticated()")
