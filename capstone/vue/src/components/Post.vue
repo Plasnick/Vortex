@@ -9,7 +9,7 @@
         <button v-on:click="downVote">Down Vote ({{ post.downVotes }})</button>
       </span>
       <span v-else>
-        <p>Up Votes: {{post.upVotes}} | Down Votes: {{post.downVotes }}</p>
+        <p>Up Votes: {{ post.upVotes }} | Down Votes: {{ post.downVotes }}</p>
       </span>
       <h3>User: {{ post.userId }} Posted On: {{ post.postedAt }}</h3>
       <!-- need to get the Username from the userId. Maybe change the sql statement 
@@ -21,8 +21,8 @@
 </template>
 
 <script>
- import postsService from "../services/PostsService";
- import interactionsService from "../services/InteractionsService"
+import postsService from "../services/PostsService";
+import interactionsService from "../services/InteractionsService";
 export default {
   name: "post-component",
      props: ["post"],
@@ -39,20 +39,17 @@ export default {
        hasInteracted(){
      
         let interactionFlag = false;
-
-        for(let i=0; i < this.$store.state.interactions.length; i++) {
-
+        for (let i = 0; i < this.$store.state.interactions.length; i++) {
           let currentObj = this.$store.state.interactions[i];
-          if(currentObj.userId == this.post.userId && currentObj.postId == this.post.postId) {
+          if ( currentObj.userId == this.post.userId && currentObj.postId == this.post.postId) {
             return true;
           }
-        }
+        
+      }
+      return interactionFlag;
+      }
+       },
 
-        return interactionFlag;
-       }
-
-
-     },
      methods: {
         upVote() {
           if(this.$store.state.token == ''){
