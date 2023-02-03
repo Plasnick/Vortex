@@ -45,5 +45,10 @@ public class PostController {
         postDao.updatePost(id, post);
     }
 
-
+    @PreAuthorize("isAuthenticated()")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping( path = "/posts/{id}", method = RequestMethod.DELETE)
+    public void deletePost(@PathVariable int id){
+        postDao.deletePost(id);
+    }
 }

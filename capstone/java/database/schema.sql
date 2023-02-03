@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users, forum, moderator, post, comment, favorite;
+DROP TABLE IF EXISTS users, forum, moderator, post, comment, favorite, interaction;
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -61,6 +61,13 @@ CREATE TABLE favorite (
     favorite_id int NOT NULL,
     CONSTRAINT FK_favorite_user FOREIGN KEY (user_id) REFERENCES users (user_id),
     CONSTRAINT FK_favorite_forum FOREIGN KEY (favorite_id) REFERENCES forum (forum_id)
+);
+
+CREATE TABLE interaction (
+    user_id int NOT NULL,
+    post_id int NOT NULL,
+    CONSTRAINT FK_interaction_user FOREIGN KEY (user_id) REFERENCES users (user_id),
+    CONSTRAINT FK_interaction_post FOREIGN KEY (post_id) REFERENCES post (post_id)
 );
 
 COMMIT TRANSACTION;
