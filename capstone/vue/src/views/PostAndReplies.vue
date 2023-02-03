@@ -1,6 +1,7 @@
 <template>
   <div class="post-and-replies">
-    <post v-bind:post="post" />
+    <button v-on:click="deletePost">Delete Post</button>
+    <post v-for="post in posts" v-bind:key="post.postId" v-bind:post="post" />
     <replies-feed />
   </div>
 </template>
@@ -9,19 +10,37 @@
 import RepliesFeed from "../components/RepliesFeed.vue";
 import Post from "../components/Post.vue";
 import postsService from "../services/PostsService";
+import interactionsService from '../services/InteractionsService'
 
 export default {
   components: { RepliesFeed, Post },
   name: "post-and-replies",
   data() {
     return {
-      post: {},
+      posts: []
     };
+  },
+  methods: {
+    deletePost(){
+      
+      if(confirm("Are you sure you wan to delete this post?")){
+        postsService.deletePost(this.$route.params.id).then((response) =>{
+          if(response.status === 204){
+            this.$router.push({name: 'home'})
+          }
+        })
+      }
+      
+    }
   },
   created() {
     postsService.getPost(this.$route.params.id).then((response) => {
-      this.post = response.data;
+      this.posts = response.data;
+      this.$store.commit("SET_POSTS", response.data)
     });
+    interactionsService.getInteractions(this.$store.state.user.id).then(response =>{
+      this.$store.commit("SET_INTERACTIONS", response.data)
+    })
   },
 };
 </script>

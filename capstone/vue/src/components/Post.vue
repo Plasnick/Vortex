@@ -1,8 +1,9 @@
 <template>
   <div class="post-component">
     <div class="post-details">
+      <router-link v-bind:to="{name:'postAndReplies', params:{id: post.postId}}">
       <h2>{{ post.title }}</h2>
-    
+      </router-link>
       <span v-if="!hasInteracted">
         <button v-on:click="upVote">Up Vote ({{ post.upVotes }})</button>
         <button v-on:click="downVote">Down Vote ({{ post.downVotes }})</button>
@@ -11,7 +12,6 @@
         <p>Up Votes: {{post.upVotes}} | Down Votes: {{post.downVotes }}</p>
       </span>
       <h3>User: {{ post.userId }} Posted On: {{ post.postedAt }}</h3>
-      <button @click="deletePost">Delete Post</button>
       <!-- need to get the Username from the userId. Maybe change the sql statement 
       to join the user table and select the name-->
       <img v-if="post.img_url" :src="post.img_url" alt="Post Image" />
@@ -37,11 +37,7 @@ export default {
      computed: {
 
        hasInteracted(){
-        //  if(this.$store.state.interactions.includes(this.interaction)){
-        //    return true; 
-        //  }
-        //  return false;
-
+     
         let interactionFlag = false;
 
         for(let i=0; i < this.$store.state.interactions.length; i++) {
@@ -58,12 +54,10 @@ export default {
 
      },
      methods: {
-        data () {
-        return {
-          showModal: false
-        };
-      },
         upVote() {
+          if(this.$store.state.token == ''){
+            this.$router.push('/login')
+          }else{
          const index = this.$store.state.posts.findIndex((element) => (element.postId === this.post.postId));
          this.$store.state.posts[index].upVotes++
          postsService.updatePost(this.post.postId, this.$store.state.posts[index]).then((response) => {
@@ -73,9 +67,13 @@ export default {
          });
          this.$store.commit("ADD_INTERACTION", this.interaction);
          interactionsService.addInteraction(this.interaction);
+          }
 
        },
        downVote() {
+         if(this.$store.state.token == ''){
+           this.$router.push('/login')
+         }else{
          const index = this.$store.state.posts.findIndex((element) => (element.postId === this.post.postId));
          this.$store.state.posts[index].downVotes++
          postsService.updatePost(this.post.postId, this.$store.state.posts[index]).then((response) => {
@@ -85,19 +83,8 @@ export default {
          });
          this.$store.commit("ADD_INTERACTION", this.interaction);
          interactionsService.addInteraction(this.interaction);
+         }
        },
-       deletePost() {
-      postsService.deletePost(this.post.postId).then(response => {
-        if (response.status === 204) {
-          this.$emit("post-deleted", this.post.postId);
-        } else {
-          console.error("Unable to delete post.");
-        }
-      });
-    },
-    confirmDelete() {
-        this.showModal = true;
-    }
   }
      
     
