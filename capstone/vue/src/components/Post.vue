@@ -14,7 +14,8 @@
 </template>
 
 <script>
- import postsService from "../services/PostsService";
+ import postsService from "../services/PostsService"; 
+
 export default {
   name: "post-component",
      props: ["post"],
