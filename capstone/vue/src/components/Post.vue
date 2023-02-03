@@ -11,6 +11,7 @@
         <p>Up Votes: {{post.upVotes}} | Down Votes: {{post.downVotes }}</p>
       </span>
       <h3>User: {{ post.userId }} Posted On: {{ post.postedAt }}</h3>
+      <button @click="deletePost">Delete Post</button>
       <!-- need to get the Username from the userId. Maybe change the sql statement 
       to join the user table and select the name-->
       <img v-if="post.img_url" :src="post.img_url" alt="Post Image" />
@@ -57,7 +58,12 @@ export default {
 
      },
      methods: {
-       upVote() {
+        data () {
+        return {
+          showModal: false
+        };
+      },
+        upVote() {
          const index = this.$store.state.posts.findIndex((element) => (element.postId === this.post.postId));
          this.$store.state.posts[index].upVotes++
          postsService.updatePost(this.post.postId, this.$store.state.posts[index]).then((response) => {
@@ -80,17 +86,21 @@ export default {
          this.$store.commit("ADD_INTERACTION", this.interaction);
          interactionsService.addInteraction(this.interaction);
        },
-     },
-    //  created(){
-    //    const index = this.$store.state.posts.findIndex((element) => (element.postId === this.post.postId));
-         
-    //    this.interaction = {
-    //      userId: this.$store.state.user.id,
-    //      postId: this.$store.state.posts[index].postId
-    //    }
-
-    //    console.log(this.interaction)
-    //  }
+       deletePost() {
+      postsService.deletePost(this.post.postId).then(response => {
+        if (response.status === 204) {
+          this.$emit("post-deleted", this.post.postId);
+        } else {
+          console.error("Unable to delete post.");
+        }
+      });
+    },
+    confirmDelete() {
+        this.showModal = true;
+    }
+  }
+     
+    
 };
 </script>
 

@@ -6,6 +6,7 @@
       <search-forums />
       <h2>Top 10 Posts Today</h2>
       <post v-for="post in $store.state.posts" v-bind:key="post.postId" v-bind:post="post" />
+      
     </div>
 
     <aside>

@@ -23,6 +23,7 @@ export default new Vuex.Store({
     posts: [],
     interactions: []
   },
+  
   mutations: {
     SET_AUTH_TOKEN(state, token) {
       state.token = token;
@@ -50,6 +51,9 @@ export default new Vuex.Store({
     },
     ADD_INTERACTION(state, interaction){
       state.interactions.push(interaction);
+    },
+    REMOVE_POST(state, postId) {
+      state.posts = state.posts.filter((post) => post.postId !== postId)
     }
   }
 })

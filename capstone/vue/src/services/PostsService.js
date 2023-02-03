@@ -17,6 +17,9 @@ export default {
     },
     updatePost(id, post){
         return axios.put(`/posts/${id}`, post)
+    },
+    deletePost(id){
+        return axios.delete(`/posts/${id}`)
     }
 
 
