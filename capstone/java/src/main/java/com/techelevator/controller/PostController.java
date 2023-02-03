@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -28,8 +29,10 @@ public class PostController {
     }
 
     @GetMapping("/posts/{id}")
-    public Post getPost(@PathVariable int id){
-        return postDao.getPostById(id);
+    public List<Post> getPost(@PathVariable int id){
+        List<Post> result = new ArrayList<>();
+        result.add(postDao.getPostById(id));
+        return result;
     }
 
     @PreAuthorize("isAuthenticated()")
@@ -45,5 +48,10 @@ public class PostController {
         postDao.updatePost(id, post);
     }
 
-
+    @PreAuthorize("isAuthenticated()")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping( path = "/posts/{id}", method = RequestMethod.DELETE)
+    public void deletePost(@PathVariable int id){
+        postDao.deletePost(id);
+    }
 }

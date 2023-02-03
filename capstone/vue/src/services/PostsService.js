@@ -28,6 +28,8 @@ export default {
     },
     fetchImageUrl(cloudinaryPublicId, response){
         return cloudinary.get(`https://res.cloudinary.com/your-cloud-name/image/upload/${cloudinaryPublicId}.${response.data.format}`)
+    deletePost(id){
+        return axios.delete(`/posts/${id}`)
     }
 
 
