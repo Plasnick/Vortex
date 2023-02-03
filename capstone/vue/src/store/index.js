@@ -22,6 +22,7 @@ export default new Vuex.Store({
     user: currentUser || {},
     posts: []
   },
+  
   mutations: {
     SET_AUTH_TOKEN(state, token) {
       state.token = token;
@@ -41,6 +42,9 @@ export default new Vuex.Store({
     },
     SET_POSTS(state, newPosts){
       state.posts = newPosts
+    },
+    REMOVE_POST(state, postId) {
+      state.posts = state.posts.filter((post) => post.postId !== postId)
     }
   }
 })
