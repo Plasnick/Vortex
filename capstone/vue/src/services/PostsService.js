@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+const cloudinary = axios.create();
+
 export default {
 
 
@@ -22,10 +24,10 @@ export default {
         axios.post(`/post`, data)
     },
     uploadImage(file){
-        axios.create('https://api.cloudinary.com/v1_1/dmdwwopva/image/upload', 'file', file, 'upload_preset', 'oyd4jof5')
+        cloudinary.post('https://api.cloudinary.com/v1_1/dmdwwopva/image/upload', 'file', file, 'upload_preset', 'wmfapvvo')
     },
     fetchImageUrl(cloudinaryPublicId, response){
-        return axios.get(`https://res.cloudinary.com/your-cloud-name/image/upload/${cloudinaryPublicId}.${response.data.format}`)
+        return cloudinary.get(`https://res.cloudinary.com/your-cloud-name/image/upload/${cloudinaryPublicId}.${response.data.format}`)
     }
 
 
