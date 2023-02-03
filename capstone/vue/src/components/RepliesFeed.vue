@@ -1,7 +1,7 @@
 <template>
   <div id="replies-component">
     <h3>Write Reply Here</h3>
-    <form class="create-reply" v-on:submit.prevent>
+    <form class="create-reply">
       <div class="body">
         <textarea
           id="reply-body"
@@ -11,7 +11,6 @@
         ></textarea>
       </div>
       <div class="actions">
-        <button v-on:click="cancelForm" type="cancel">Cancel</button>
         <button v-on:click="submitReply()">Submit</button>
       </div>
     </form>
@@ -49,14 +48,11 @@ export default {
       replyService.createReply(this.newReply).then((response) => {
         if (response.status === 201) {
           this.$router.push({
-            name: "posts",
-            params: { id: this.$route.params.id },
+            name: "postAndReplies",
+            params: { id: this.newReply.params.postId },
           });
         }
       });
-    },
-    cancelForm() {
-      this.$router.push(`/post/${this.$route.params.id}`);
     },
   },
   created() {
