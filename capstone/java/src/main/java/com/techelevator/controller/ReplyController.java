@@ -9,19 +9,21 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RestController
 @CrossOrigin
 public class ReplyController {
 
     @Autowired
     ReplyDao replyDao;
 
+
     @GetMapping("/posts/{postId}/replies")
     public List<Reply> getRepliesByPost(@PathVariable int postId){
         return replyDao.getRepliesByPost(postId);
     }
 
-    @GetMapping("/replies/{id}")
-    public Reply getReplyById(@PathVariable int id){return replyDao.getReplyById(id);}
+//    @GetMapping("/replies/{id}")
+//    public Reply getReplyById(@PathVariable int id){return replyDao.getReplyById(id);}
 
     @PreAuthorize("isAuthenticated()")
     @ResponseStatus(HttpStatus.CREATED)

@@ -6,12 +6,12 @@
 </template>
 
 <script>
-import RepliesFeed from "../components/RepliesFeed.vue";
 import Post from "../components/Post.vue";
 import postsService from "../services/PostsService";
+import RepliesFeed from "../components/RepliesFeed.vue";
 
 export default {
-  components: { RepliesFeed, Post },
+  components: { Post, RepliesFeed },
   name: "post-and-replies",
   data() {
     return {

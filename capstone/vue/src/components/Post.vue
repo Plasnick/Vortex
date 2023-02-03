@@ -14,30 +14,38 @@
 </template>
 
 <script>
- import postsService from "../services/PostsService";
+import postsService from "../services/PostsService";
 export default {
   name: "post-component",
-     props: ["post"],
-     methods: {
-       upVote() {
-         const index = this.$store.state.posts.findIndex((element) => (element.postId === this.post.postId));
-         this.$store.state.posts[index].upVotes++
-         postsService.updatePost(this.post.postId, this.$store.state.posts[index]).then((response) => {
-           if (response.status === 200) {
-             console.log("it worked");
-           }
-         });
-       },
-       downVote() {
-         const index = this.$store.state.posts.findIndex((element) => (element.postId === this.post.postId));
-         this.$store.state.posts[index].downVotes++
-         postsService.updatePost(this.post.postId, this.$store.state.posts[index]).then((response) => {
-           if (response.status === 200) {
-             console.log("it worked");
-           }
-         });
-       },
-     },
+  props: ["post"],
+  methods: {
+    upVote() {
+      const index = this.$store.state.posts.findIndex(
+        (element) => element.postId === this.post.postId
+      );
+      this.$store.state.posts[index].upVotes++;
+      postsService
+        .updatePost(this.post.postId, this.$store.state.posts[index])
+        .then((response) => {
+          if (response.status === 200) {
+            console.log("it worked");
+          }
+        });
+    },
+    downVote() {
+      const index = this.$store.state.posts.findIndex(
+        (element) => element.postId === this.post.postId
+      );
+      this.$store.state.posts[index].downVotes++;
+      postsService
+        .updatePost(this.post.postId, this.$store.state.posts[index])
+        .then((response) => {
+          if (response.status === 200) {
+            console.log("it worked");
+          }
+        });
+    },
+  },
 };
 </script>
 
