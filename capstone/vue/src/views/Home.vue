@@ -21,6 +21,7 @@ import Top5Forums from '../components/Top5Forums.vue'
 import SearchForums from '../components/SearchForums.vue'
 import Post from '../components/Post.vue'
 import postsService from '../services/PostsService'
+import interactionsService from '../services/InteractionsService'
 
 
 export default {
@@ -34,6 +35,12 @@ export default {
     postsService.getTop10().then((response) => {
       this.$store.commit("SET_POSTS", response.data)
     })
+    if(this.$store.state.token != ''){
+      interactionsService.getInteractions(this.$store.state.user.id).then((response) => {
+        this.$store.commit("SET_INTERACTIONS", response.data)
+        console.log("interactions added")
+      })
+    }
   }
 };
 </script>

@@ -20,7 +20,8 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    posts: []
+    posts: [],
+    interactions: []
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -37,10 +38,18 @@ export default new Vuex.Store({
       localStorage.removeItem('user');
       state.token = '';
       state.user = {};
+      state.interactions = [];
+      state.posts = [];
       axios.defaults.headers.common = {};
     },
     SET_POSTS(state, newPosts){
       state.posts = newPosts
+    },
+    SET_INTERACTIONS(state, newInteractions){
+      state.interactions = newInteractions
+    },
+    ADD_INTERACTION(state, interaction){
+      state.interactions.push(interaction);
     }
   }
 })
