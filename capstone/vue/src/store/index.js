@@ -21,7 +21,9 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     posts: [],
-    interactions: []
+    interactions: [],
+    moderatorsForForum: [],
+    forumsModerated: []
   },
   
   mutations: {
@@ -54,6 +56,15 @@ export default new Vuex.Store({
     },
     REMOVE_POST(state, postId) {
       state.posts = state.posts.filter((post) => post.postId !== postId)
+    },
+    SET_MODERATORS_FOR_FORUM(state, moderators){
+      state.moderatorsForForum = moderators;
+    },
+    SET_FORUMS_MODERATED(state, moderators){
+      state.forumsModerated = moderators;
+    },
+    ADD_MODERATOR(state, moderator){
+      state.moderatorsForForum.push(moderator);
     }
   }
 })

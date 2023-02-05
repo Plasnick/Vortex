@@ -38,7 +38,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .search-forum{
     display: flex;
     flex-direction: column;
