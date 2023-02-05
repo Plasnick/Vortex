@@ -3,6 +3,10 @@ import axios from "axios";
 export default{
     getModeratorsForForum(forumId){
         return axios.get(`/moderators/forum/${forumId}`)
+    },
+
+    addModerator(moderator){
+        return axios.post(`/moderators`, moderator)
     }
-    
+
 }
