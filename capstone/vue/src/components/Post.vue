@@ -23,6 +23,7 @@
 <script>
 import postsService from "../services/PostsService";
 import interactionsService from "../services/InteractionsService";
+
 export default {
   name: "post-component",
      props: ["post"],

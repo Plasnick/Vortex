@@ -4,7 +4,7 @@
     <input
       type="checkbox"
       v-model="favoriteForum"
-      v-on:change="onFavoritedChange()"
+      v-on:change="onFavoritedChange($event)"
       v-bind:checked="favoriteForum"
     />
   </div>
@@ -24,41 +24,35 @@ export default {
       },
     };
   },
-  computed: {
+  computed: {},
+  methods: {
+    //need try catches
+    // need response status for the deleted post
+
+    onFavoritedChange(event) {
+      if (this.$store.state.token == "") {
+        this.$router.push("/login");
+      } else {
+        if (event.target.checked) {
+          this.$store.commit("ADD_FAVORITE", this.favorite);
+          favoriteService.addFavorite(this.favorite);
+          this.favoriteForum = true;
+        } else {
+          this.$store.commit("DELETE_FAVORITE", this.favorite);
+          favoriteService.deleteFavorite(this.favorite);
+          this.favoriteForum = false;
+        }
+      }
+    },
     checkFavoriteForum() {
-      let favoriteCheck = false;
-
-      //do I need to
-
+      //do I need to account for if there isn't a favorite object?
       for (let i = 0; i < this.$store.state.favorites.length; i++) {
         let currentObj = this.$store.state.favorites[i];
         if (
           currentObj.userId == this.$store.state.user.id &&
           currentObj.favoriteId == this.$route.params.id
         ) {
-          favoriteCheck = true;
-          console.log("made it in");
-        }
-      }
-      return favoriteCheck;
-    },
-  },
-  methods: {
-    //   need to do add data like in the post vue for interaction
-
-    //need try catches
-    // need response status for the deleted post
-
-    onFavoritedChange() {
-      if (this.$store.state.token == "") {
-        this.$router.push("/login");
-      } else {
-        if (this.favoriteForum) {
-          this.$store.commit("ADD_FAVORITE", this.favorite);
-          favoriteService.addFavorite(this.favorite);
-        } else {
-          this.$store.commit("DELETE_FAVORITE", this.favorite.favoriteId);
-          favoriteService.deleteFavorite(this.favorite.favoriteId);
+          this.favoriteForum = true;
         }
       }
     },
@@ -67,6 +61,7 @@ export default {
     favoriteService.getFavorites(this.$route.params.id).then((response) => {
       this.favorites = response.data;
       this.$store.commit("SET_FAVORITES", response.data);
+      this.checkFavoriteForum();
     });
   },
 };

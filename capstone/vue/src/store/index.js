@@ -63,8 +63,8 @@ export default new Vuex.Store({
     ADD_FAVORITE(state, favorite) {
       state.favorites.push(favorite);
     },
-    DELETE_FAVORITE(state, favoriteId) {
-      state.favorites = state.favorites.filter((favorite) => favorite.favoriteId !== favoriteId)
+    DELETE_FAVORITE(state, favorite) {
+      state.favorites = state.favorites.filter((element) => element.favoriteId !== favorite.favoriteId && element.userId !== favorite.userId)
     },
   }
 })

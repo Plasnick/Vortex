@@ -7,7 +7,7 @@ export default {
     addFavorite(favorite) {
         return axios.post(`/favorites`, favorite)
     },
-    deleteFavorite(id) {
-        return axios.delete(`/favorites/${id}`)
+    deleteFavorite(favorite) {
+        return axios.delete(`/favorites`, favorite)
     }
 }
