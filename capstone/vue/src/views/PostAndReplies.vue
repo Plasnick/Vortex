@@ -1,7 +1,8 @@
 <template>
   <div class="post-and-replies">
-    <button v-on:click="deletePost">Delete Post</button>
+    <button v-show="isModerator" v-on:click="deletePost">Delete Post</button>
     <post v-for="post in posts" v-bind:key="post.postId" v-bind:post="post" />
+    <p>From forum: {{forum.name}}</p>
     <replies-feed />
   </div>
 </template>
@@ -17,13 +18,28 @@ export default {
   name: "post-and-replies",
   data() {
     return {
-      posts: []
+      posts: [],
+      forum: {}
     };
+  },
+  computed: {
+    isModerator(){
+      if(this.$store.state.user.authorities[0].name == "ROLE_ADMIN"){
+        return true;
+      }
+      for(let i=0; i <this.$store.state.forumsModerated.length; i++){
+        let currentObj = this.$store.state.forumsModerated[i];
+        if(currentObj.forumId == this.$store.state.posts[0].forumId){
+          return true;
+        }
+      }
+      return false;
+    }
   },
   methods: {
     deletePost(){
       
-      if(confirm("Are you sure you wan to delete this post?")){
+      if(confirm("Are you sure you want to delete this post?")){
         postsService.deletePost(this.$route.params.id).then((response) =>{
           if(response.status === 204){
             this.$router.push({name: 'home'})
@@ -41,10 +57,10 @@ export default {
     interactionsService.getInteractions(this.$store.state.user.id).then(response =>{
       this.$store.commit("SET_INTERACTIONS", response.data)
     })
+    
   },
 };
 </script>
-
 
 <style>
 </style>
