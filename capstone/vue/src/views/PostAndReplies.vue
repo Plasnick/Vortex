@@ -1,6 +1,6 @@
 <template>
   <div class="post-and-replies">
-    <button v-on:click="deletePost">Delete Post</button>
+    <button v-show="isModerator" v-on:click="deletePost">Delete Post</button>
     <post v-for="post in posts" v-bind:key="post.postId" v-bind:post="post" />
     <p>From forum: {{forum.name}}</p>
     <replies-feed />
@@ -21,6 +21,20 @@ export default {
       posts: [],
       forum: {}
     };
+  },
+  computed: {
+    isModerator(){
+      if(this.$store.state.user.authorities[0].name == "ROLE_ADMIN"){
+        return true;
+      }
+      for(let i=0; i <this.$store.state.forumsModerated.length; i++){
+        let currentObj = this.$store.state.forumsModerated[i];
+        if(currentObj.forumId == this.$store.state.posts[0].forumId){
+          return true;
+        }
+      }
+      return false;
+    }
   },
   methods: {
     deletePost(){

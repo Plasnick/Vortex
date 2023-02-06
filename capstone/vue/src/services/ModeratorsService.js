@@ -7,6 +7,10 @@ export default{
 
     addModerator(moderator){
         return axios.post(`/moderators`, moderator)
+    },
+
+    getForumsModerated(userId){
+        return axios.get(`moderators/user/${userId}`)
     }
 
 }

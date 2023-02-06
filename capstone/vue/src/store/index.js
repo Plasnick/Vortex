@@ -43,6 +43,7 @@ export default new Vuex.Store({
       state.user = {};
       state.interactions = [];
       state.posts = [];
+      state.forumsModerated = [];
       axios.defaults.headers.common = {};
     },
     SET_POSTS(state, newPosts){

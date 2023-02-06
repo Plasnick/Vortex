@@ -44,14 +44,16 @@ export default {
         let interactionFlag = false;
         for (let i = 0; i < this.$store.state.interactions.length; i++) {
           let currentObj = this.$store.state.interactions[i];
-          if ( currentObj.userId == this.post.userId && currentObj.postId == this.post.postId) {
+          if ( currentObj.userId == this.$store.state.user.id && currentObj.postId == this.post.postId) {
             return true;
           }
         
       }
       return interactionFlag;
       }
+        
        },
+       
 
      methods: {
         upVote() {
