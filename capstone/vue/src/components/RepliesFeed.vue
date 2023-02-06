@@ -49,7 +49,7 @@ export default {
         if (response.status === 201) {
           this.$router.push({
             name: "postAndReplies",
-            params: { id: this.newReply.params.postId },
+            params: { id: this.newReply.postId },
           });
         }
       });
