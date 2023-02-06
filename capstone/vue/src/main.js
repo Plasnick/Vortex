@@ -4,6 +4,7 @@ import router from './router/index'
 import store from './store/index'
 import axios from 'axios'
 import Cloudinary from 'cloudinary-vue'
+// import { createApp } from 'vue'
 
 Vue.config.productionTip = false
 

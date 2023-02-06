@@ -1,18 +1,16 @@
 <template>
-  <div class="create-post" v-on:submit.prevent="submitPost">
+  <div class="create-post">
       
        <h3>Create Post here</h3>
-      <form id="new-post-form">
+      <!-- <form id="new-post-form"> -->
           <input type="text" placeholder="Post Title" v-model="newPost.title" required />
           <textarea placeholder="Write your post here!" v-model="newPost.body" required></textarea>
           
-
-          <input type="file" placeholder="select image" @change="uploadImage" />
-          <button @click="submitImage">Upload Image</button>
-          <img v-if="newPost.img_url" :src="newPost.img_url" alt="Post Image" />
+          <button v-on:click="uploadImage">Upload Image</button>
+          <!-- <img v-if="newPost.img_url" :src="newPost.img_url" alt="Post Image" /> -->
           
-          <input type="submit" />
-      </form>
+          <button v-on:click="submitPost">Submit</button>
+      <!-- </form> -->
   </div>
 </template>
 
@@ -29,24 +27,27 @@ export default {
                 body: '',
                 img_url: ''
             },
-            image: {
-                file: null,
-                publicId: '',
-                imgUrl: null
-            }
+            // image: {
+            //     file: null,
+            //     publicId: '',
+            //     imgUrl: null
+            // },
+            imageWidget : {}
         }
     },
 
     methods: {
-        async uploadImage(event){
-            this.file = event.target.files[0]
+        uploadImage(){
+            this.imageWidget.open()
+
+            
         },
 
-        async submitImage(){
-            const response = await PostsService.uploadImage(this.file);
-            this.image.publicId = PostsService.uploadImage(this.image.file).data.public_id
-            this.newPost.img_url = PostsService.fetchImageUrl(this.image.publicId, response)
-         },
+        // async submitImage(){
+        //     const response = await PostsService.uploadImage(this.file);
+        //     this.image.publicId = PostsService.uploadImage(this.image.file).data.public_id
+        //     this.newPost.img_url = PostsService.fetchImageUrl(this.image.publicId, response)
+        //  },
 
         submitPost(){
             PostsService.createPost(this.newPost).then((response) => {
@@ -55,7 +56,24 @@ export default {
                 }
             })
         }
-    }
+    },
+
+    mounted() {
+       this.imageWidget = window.cloudinary.createUploadWidget(
+      {
+        cloudName: 'dmdwwopva', 
+        uploadPreset: 'wmfapvvo'
+      }, 
+      (error, result) => { 
+        if (!error && result && result.event === "success") {   
+          console.log('Done! Here is the image info: ', result.info); 
+          console.log("Image URL: " + result.info.url);
+          this.newPost.img_url = result.info.url;
+        }
+      }
+    );
+
+  }
 
 }
 </script>
