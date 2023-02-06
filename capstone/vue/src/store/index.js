@@ -21,9 +21,7 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     posts: [],
-    interactions: [],
-    moderatorsForForum: [],
-    forumsModerated: []
+    interactions: []
   },
   
   mutations: {
@@ -43,7 +41,6 @@ export default new Vuex.Store({
       state.user = {};
       state.interactions = [];
       state.posts = [];
-      state.forumsModerated = [];
       axios.defaults.headers.common = {};
     },
     SET_POSTS(state, newPosts){
@@ -58,14 +55,9 @@ export default new Vuex.Store({
     REMOVE_POST(state, postId) {
       state.posts = state.posts.filter((post) => post.postId !== postId)
     },
-    SET_MODERATORS_FOR_FORUM(state, moderators){
-      state.moderatorsForForum = moderators;
-    },
-    SET_FORUMS_MODERATED(state, moderators){
-      state.forumsModerated = moderators;
-    },
-    ADD_MODERATOR(state, moderator){
-      state.moderatorsForForum.push(moderator);
-    }
-  }
+    DELETE_REPLY(state, { postId, commentId }) {
+      state.interactions = state.interactions.filter((interaction) => interaction.postId !== postId || interaction.commentId !== commentId);
+      },
+  },
+  
 })

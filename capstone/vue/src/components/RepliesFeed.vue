@@ -25,13 +25,18 @@
       to join the user table and select the name-->
 
       <p>{{ reply.body }}</p>
-    </div>
+      <delete-replies v-bind:postId="reply.postId" v-bind:commentId="reply.commentId" v-on:replyDeleted="removeReply(reply)"/>    </div>
   </div>
 </template>
 
 <script>
 import replyService from "../services/ReplyService";
+import DeleteReplies from './DeleteReply.vue';
+
 export default {
+  components: { 
+    DeleteReplies 
+    },
   name: "replies-component",
   data() {
     return {
@@ -54,6 +59,9 @@ export default {
         }
       });
     },
+    removeReply(reply) {
+      this.repliesByPost = this.repliesByPost.filter(r => r.commentId !== reply.commentId);
+    }
   },
   created() {
     replyService.getPostReplies(this.$route.params.id).then((response) => {
