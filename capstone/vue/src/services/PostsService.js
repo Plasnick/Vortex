@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+
 export default {
 
 
@@ -17,6 +18,9 @@ export default {
     },
     updatePost(id, post){
         return axios.put(`/posts/${id}`, post)
+    },
+    uploadPicture(data){
+        axios.post(`/post`, data)
     },
     deletePost(id){
         return axios.delete(`/posts/${id}`)

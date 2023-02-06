@@ -10,8 +10,9 @@
     </div>
 
     <aside>
-      
+      <router-link v-bind:to="{ name: 'createForum' }" v-if="$store.state.token != ''">Create Forum</router-link>
       <top-5-forums />
+      
     </aside>
 
   </div>
