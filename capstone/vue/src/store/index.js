@@ -22,7 +22,9 @@ export default new Vuex.Store({
     user: currentUser || {},
     posts: [],
     interactions: [],
-    favorites: []
+    favorites: [],
+    moderatorsForForum: [],
+    forumsModerated: []
   },
 
   mutations: {
@@ -43,6 +45,7 @@ export default new Vuex.Store({
       state.interactions = [];
       state.posts = [];
       state.favorites = [];
+      state.forumsModerated = [];
       axios.defaults.headers.common = {};
     },
     SET_POSTS(state, newPosts) {
@@ -66,5 +69,14 @@ export default new Vuex.Store({
     DELETE_FAVORITE(state, favorite) {
       state.favorites = state.favorites.filter((element) => element.favoriteId !== favorite.favoriteId && element.userId !== favorite.userId)
     },
+    SET_MODERATORS_FOR_FORUM(state, moderators) {
+      state.moderatorsForForum = moderators;
+    },
+    SET_FORUMS_MODERATED(state, moderators) {
+      state.forumsModerated = moderators;
+    },
+    ADD_MODERATOR(state, moderator) {
+      state.moderatorsForForum.push(moderator);
+    }
   }
 })

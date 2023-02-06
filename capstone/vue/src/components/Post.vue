@@ -4,10 +4,11 @@
       <router-link v-bind:to="{name:'postAndReplies', params:{id: post.postId}}">
       <h2>{{ post.title }}</h2>
       </router-link>
-      <span v-if="!hasInteracted">
+      <span>in <router-link v-bind:to="{name:'forum', params:{id:post.forumId}}">{{forum.forumName}}</router-link></span>
+      <div v-if="!hasInteracted">
         <button v-on:click="upVote">Up Vote ({{ post.upVotes }})</button>
         <button v-on:click="downVote">Down Vote ({{ post.downVotes }})</button>
-      </span>
+      </div>
       <span v-else>
         <p>Up Votes: {{ post.upVotes }} | Down Votes: {{ post.downVotes }}</p>
       </span>
@@ -23,7 +24,7 @@
 <script>
 import postsService from "../services/PostsService";
 import interactionsService from "../services/InteractionsService";
-
+import forumsService from "../services/ForumsService"
 export default {
   name: "post-component",
      props: ["post"],
@@ -32,7 +33,8 @@ export default {
          interaction: {
            userId: this.$store.state.user.id,
            postId: this.post.postId
-         }
+         },
+         forum: {}
        }
      },
      computed: {
@@ -42,14 +44,16 @@ export default {
         let interactionFlag = false;
         for (let i = 0; i < this.$store.state.interactions.length; i++) {
           let currentObj = this.$store.state.interactions[i];
-          if ( currentObj.userId == this.post.userId && currentObj.postId == this.post.postId) {
+          if ( currentObj.userId == this.$store.state.user.id && currentObj.postId == this.post.postId) {
             return true;
           }
         
       }
       return interactionFlag;
       }
+        
        },
+       
 
      methods: {
         upVote() {
@@ -83,6 +87,11 @@ export default {
          interactionsService.addInteraction(this.interaction);
          }
        },
+  },
+  created(){
+    forumsService.getForum(this.post.forumId).then((response)=>{
+      this.forum = response.data;
+    })
   }
      
     

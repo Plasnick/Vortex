@@ -29,6 +29,7 @@ import SearchForums from "../components/SearchForums.vue";
 import Post from "../components/Post.vue";
 import postsService from "../services/PostsService";
 import interactionsService from "../services/InteractionsService";
+import moderatorsService from "../services/ModeratorsService";
 import favoriteService from "../services/FavoriteService";
 
 export default {
@@ -54,6 +55,14 @@ export default {
         .then((response) => {
           this.$store.commit("SET_FAVORITES", response.data);
           console.log("favorites added");
+        });
+    }
+    if (this.$store.state.token != "") {
+      moderatorsService
+        .getForumsModerated(this.$store.state.user.id)
+        .then((response) => {
+          this.$store.commit("SET_FORUMS_MODERATED", response.data);
+          console.log("forums moderated added");
         });
     }
   },
