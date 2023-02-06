@@ -48,6 +48,12 @@ public class JdbcReplyDao implements ReplyDao {
 
     }
 
+    @Override
+    public void deleteReply(int id) {
+        String sql = "DELETE FROM comment WHERE comment_id = ?";
+        jdbcTemplate.update(sql, id);
+    }
+
     private Reply mapRowToReply(SqlRowSet rowSet){
         Reply reply = new Reply();
         reply.setCommentId(rowSet.getInt("comment_id"));
@@ -57,6 +63,8 @@ public class JdbcReplyDao implements ReplyDao {
         reply.setPostedAt(rowSet.getTimestamp("posted_at").toLocalDateTime());
         return reply;
     }
+
+
 
 
 }

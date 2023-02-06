@@ -30,4 +30,12 @@ public class ReplyController {
     @RequestMapping(path = "/replies", method = RequestMethod.POST)
     public void createReply(@RequestBody Reply reply){replyDao.createReply(reply);}
 
+    @PreAuthorize("isAuthenticated()")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(path = "/posts/{postId}/replies/{commentId}", method = RequestMethod.DELETE)
+    public void deleteReply(@PathVariable int commentId){
+        replyDao.deleteReply(commentId);
+    }
+
+
 }
