@@ -7,7 +7,7 @@
           <textarea placeholder="Write your post here!" v-model="newPost.body" required></textarea>
           
           <button v-on:click="uploadImage">Upload Image</button>
-          <!-- <img v-if="newPost.img_url" :src="newPost.img_url" alt="Post Image" /> -->
+          <img v-if="newPost.img_url" :src="newPost.img_url" alt="Post Image" />
           
           <button v-on:click="submitPost">Submit</button>
       <!-- </form> -->
@@ -27,11 +27,6 @@ export default {
                 body: '',
                 img_url: ''
             },
-            // image: {
-            //     file: null,
-            //     publicId: '',
-            //     imgUrl: null
-            // },
             imageWidget : {}
         }
     },
@@ -43,11 +38,6 @@ export default {
             
         },
 
-        // async submitImage(){
-        //     const response = await PostsService.uploadImage(this.file);
-        //     this.image.publicId = PostsService.uploadImage(this.image.file).data.public_id
-        //     this.newPost.img_url = PostsService.fetchImageUrl(this.image.publicId, response)
-        //  },
 
         submitPost(){
             PostsService.createPost(this.newPost).then((response) => {
