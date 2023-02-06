@@ -12,7 +12,7 @@ Vue.use(Vuex)
 const currentToken = localStorage.getItem('token')
 const currentUser = JSON.parse(localStorage.getItem('user'));
 
-if(currentToken != null) {
+if (currentToken != null) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${currentToken}`;
 }
 
@@ -21,9 +21,10 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     posts: [],
-    interactions: []
+    interactions: [],
+    favorites: []
   },
-  
+
   mutations: {
     SET_AUTH_TOKEN(state, token) {
       state.token = token;
@@ -32,7 +33,7 @@ export default new Vuex.Store({
     },
     SET_USER(state, user) {
       state.user = user;
-      localStorage.setItem('user',JSON.stringify(user));
+      localStorage.setItem('user', JSON.stringify(user));
     },
     LOGOUT(state) {
       localStorage.removeItem('token');
@@ -41,19 +42,29 @@ export default new Vuex.Store({
       state.user = {};
       state.interactions = [];
       state.posts = [];
+      state.favorites = [];
       axios.defaults.headers.common = {};
     },
-    SET_POSTS(state, newPosts){
+    SET_POSTS(state, newPosts) {
       state.posts = newPosts
     },
-    SET_INTERACTIONS(state, newInteractions){
+    SET_INTERACTIONS(state, newInteractions) {
       state.interactions = newInteractions
     },
-    ADD_INTERACTION(state, interaction){
+    ADD_INTERACTION(state, interaction) {
       state.interactions.push(interaction);
     },
     REMOVE_POST(state, postId) {
       state.posts = state.posts.filter((post) => post.postId !== postId)
-    }
+    },
+    SET_FAVORITES(state, newFavorites) {
+      state.favorites = newFavorites
+    },
+    ADD_FAVORITE(state, favorite) {
+      state.favorites.push(favorite);
+    },
+    DELETE_FAVORITE(state, favoriteId) {
+      state.favorites = state.favorites.filter((favorite) => favorite.favoriteId !== favoriteId)
+    },
   }
 })
