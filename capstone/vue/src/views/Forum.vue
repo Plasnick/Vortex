@@ -8,6 +8,10 @@
         {{moderator.username}}
       </li>
     </ul>
+    <span v-show="isModerator">
+      <p>Add a moderator?</p>
+      <add-moderator />
+    </span>
     <h3>Description:</h3>
     <p>{{ forum.description }}</p>
     <h3>Rules:</h3>
@@ -23,10 +27,12 @@ import forumsService from "../services/ForumsService";
 
 import ForumMainFeed from "../components/ForumMainFeed.vue";
 import moderatorsService from "../services/ModeratorsService";
+import AddModerator from "../components/AddModerator.vue"
 
 export default {
   components: {
     ForumMainFeed,
+    AddModerator
     
   },
   data() {
@@ -34,6 +40,20 @@ export default {
       forum: {},
       moderators: [],
     };
+  },
+  computed: {
+    isModerator(){
+      if(this.$store.state.user.authorities[0].name == "ROLE_ADMIN"){
+        return true;
+      }
+      for(let i=0; i < this.$store.state.moderatorsForForum.length; i++){
+        let currentObj = this.$store.state.moderatorsForForum[i];
+        if(currentObj.moderatorId === this.$store.state.user.id){
+          return true;
+        }
+      }
+      return false;
+    }
   },
   created() {
     forumsService.getForum(this.$route.params.id).then((response) => {
