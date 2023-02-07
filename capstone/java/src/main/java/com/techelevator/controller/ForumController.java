@@ -32,4 +32,7 @@ public class ForumController {
         return newForum;
     }
 
+    @GetMapping("/forum/user/{id}")
+    public List<Forum> favoriteForumsByUserId(@PathVariable int id){return forumDao.favoriteForumsByUserId(id);}
+
 }

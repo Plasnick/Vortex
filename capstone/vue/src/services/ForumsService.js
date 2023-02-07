@@ -16,5 +16,9 @@ export default {
 
     createForum(Forum) {
         return axios.post('/forum', Forum);
+    },
+    favoriteForumsByUserId(id) {
+        return axios.get(`/forum/user/${id}`)
     }
+
 }
