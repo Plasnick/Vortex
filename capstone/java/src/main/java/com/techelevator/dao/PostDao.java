@@ -11,4 +11,5 @@ public interface PostDao {
     void createPost(Post post);
     void updatePost(int id, Post post);
     void deletePost(int postId);
+    List<Post> getPostsByForumAndPopularity(int forumId);
 }

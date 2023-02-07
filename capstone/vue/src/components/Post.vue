@@ -108,7 +108,7 @@ export default {
     forumsService.getForum(this.post.forumId).then((response)=>{
       this.forum = response.data;
     })
-    this.date = this.post.postedAt.substring(0,10) + " " + this.post.postedAt.substring(11, 19)
+    this.date = this.post.postedAt.substring(0,10) + " " + this.post.postedAt.substring(11, 16)
     console.log(this.date)
   }
      
