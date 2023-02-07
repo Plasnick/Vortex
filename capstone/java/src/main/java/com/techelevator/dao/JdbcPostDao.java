@@ -31,14 +31,10 @@ public class JdbcPostDao implements PostDao{
         return postsByForum;
     }
 
-<<<<<<< HEAD
-
-=======
 //    @Override
 //    public List<Post> getPostsByTitleKeyword(String keyword){
 //
 //    }
->>>>>>> main
 
     @Override
     public List<Post> getTop10Posts() {
