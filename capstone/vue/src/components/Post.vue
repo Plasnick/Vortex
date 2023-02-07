@@ -11,7 +11,7 @@
       
       <p>{{ post.body }}</p>
        <img v-if="post.img_url" :src="post.img_url" alt="Post Image" />
-      <p>by {{ post.userId }} posted on {{ post.postedAt }}</p>
+      
       
     </div>
       <div v-if="!hasInteracted">
