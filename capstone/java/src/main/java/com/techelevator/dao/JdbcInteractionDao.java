@@ -34,6 +34,13 @@ public class JdbcInteractionDao implements InteractionDao{
         jdbcTemplate.update(sql, interaction.getUserId(), interaction.getPostId());
     }
 
+    @Override
+    public void deleteInteraction(Interaction interaction) {
+        String sql = "DELETE FROM interaction WHERE post_id =? and user_id =?;";
+        jdbcTemplate.update(sql, interaction.getPostId(), interaction.getUserId());
+    }
+
+
     private Interaction mapRowToInteraction(SqlRowSet rowSet){
         Interaction interaction = new Interaction();
         interaction.setUserId(rowSet.getInt("user_id"));

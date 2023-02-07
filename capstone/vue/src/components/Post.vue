@@ -25,6 +25,9 @@
         <span> {{ post.upVotes }} </span>
         <i class="fa-solid fa-arrow-down" ></i>
         <span> {{ post.downVotes }} We got your vote!</span>
+        <div v-show="interactionFlag">
+        <button @click="deleteInteraction">Undo Vote</button>
+      </div>
       </span>
       <h3>User: {{ post.username }} Posted On: {{ post.postedAt }}</h3>
       <!-- need to get the Username from the userId. Maybe change the sql statement 
@@ -45,6 +48,7 @@ export default {
      props: ["post"],
      data(){
         return{
+          interactionFlagData: false,
          interaction: {
            userId: this.$store.state.user.id,
            postId: this.post.postId
@@ -60,6 +64,7 @@ export default {
         for (let i = 0; i < this.$store.state.interactions.length; i++) {
           let currentObj = this.$store.state.interactions[i];
           if ( currentObj.userId == this.$store.state.user.id && currentObj.postId == this.post.postId) {
+            
             return true;
           }
         
@@ -102,6 +107,13 @@ export default {
          interactionsService.addInteraction(this.interaction);
          }
        },
+       deleteInteraction() {
+       
+      this.$store.commit("DELETE_INTERACTION", this.interaction);
+      interactionsService.deleteInteraction(this.interaction);
+      this.hasInteracted();
+      
+    },
   },
   created(){
     forumsService.getForum(this.post.forumId).then((response)=>{
