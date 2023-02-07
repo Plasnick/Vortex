@@ -31,19 +31,7 @@ public class JdbcPostDao implements PostDao{
         return postsByForum;
     }
 
-    @Override
-    public List<Post> getPostsByForumAndPopularity(int forumId) {
-        List<Post> postsByForum = new ArrayList<>();
-        String sql = "SELECT post.post_id, post.user_id, forum_id, title, body, img_url, posted_at, up_votes, down_votes, username, up_votes-down_votes AS score " +
-                "FROM post " +
-                "JOIN users ON post.user_id = users.user_id " +
-                "WHERE forum_id = ? ORDER BY score DESC;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, forumId);
-        while (results.next()){
-            postsByForum.add(mapRowToPost(results));
-        }
-        return postsByForum;
-    }
+
 
     @Override
     public List<Post> getTop10Posts() {
