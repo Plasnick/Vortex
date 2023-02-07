@@ -14,12 +14,12 @@ public class Forum {
     public Forum() {
     }
 
-    public Forum(int id, String forumName, String description, String rules, List<Integer> moderatorList) {
+    public Forum(int id, String forumName, String description, String rules) {
         this.id = id;
         this.forumName = forumName;
         this.description = description;
         this.rules = rules;
-        this.moderatorList = moderatorList;
+
     }
 
     public List<Integer> getModeratorList() {

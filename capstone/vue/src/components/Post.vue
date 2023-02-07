@@ -149,6 +149,9 @@ export default {
 .forum-link:hover{
   text-decoration: underline;
   }
+.title-link:hover{
+  text-decoration: underline;
+}
 
 .post-content {
   margin-top: 15px;
