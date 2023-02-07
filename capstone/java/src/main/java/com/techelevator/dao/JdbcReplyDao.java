@@ -20,8 +20,10 @@ public class JdbcReplyDao implements ReplyDao {
     @Override
     public List<Reply> getRepliesByPost(int postId) {
         List<Reply> repliesByPost = new ArrayList<>();
-        String sql = "SELECT comment_id, user_id, post_id, body, posted_at FROM comment " +
-                "WHERE post_id = ?;";
+        String sql = "SELECT comment_id, comment.user_id, post_id, body, posted_at, users.username FROM comment " +
+                "JOIN users ON comment.user_id = users.user_id " +
+                "WHERE post_id = ? " +
+                "ORDER BY posted_at DESC";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, postId);
         while (results.next()){
             repliesByPost.add(mapRowToReply(results));
@@ -61,6 +63,7 @@ public class JdbcReplyDao implements ReplyDao {
         reply.setPostId(rowSet.getInt("post_id"));
         reply.setBody(rowSet.getString("body"));
         reply.setPostedAt(rowSet.getTimestamp("posted_at").toLocalDateTime());
+        reply.setUsername(rowSet.getString("username"));
         return reply;
     }
 

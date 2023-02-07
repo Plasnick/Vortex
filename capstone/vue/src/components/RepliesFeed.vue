@@ -20,7 +20,7 @@
       v-for="reply in repliesByPost"
       v-bind:key="reply.commentId"
     >
-      <h4>User: {{ reply.userId }} Posted On: {{ reply.postedAt }}</h4>
+      <h4>User: {{ reply.username }} Posted On: {{ reply.postedAt }}</h4>
       <!-- need to get the Username from the userId. Maybe change the sql statement 
       to join the user table and select the name-->
 
@@ -100,6 +100,9 @@ export default {
   created() {
     replyService.getPostReplies(this.$route.params.id).then((response) => {
       this.repliesByPost = response.data;
+      this.repliesByPost.forEach((element)=>{
+        element.postedAt = element.postedAt.substring(0,10) + " " + element.postedAt.substring(11,16)
+      })
     });
     if(this.$store.state.token != ''){
       moderatorsService.getForumsModerated(this.$store.state.user.id).then((response)=>{

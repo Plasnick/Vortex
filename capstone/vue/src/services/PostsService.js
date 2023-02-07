@@ -24,6 +24,9 @@ export default {
     },
     deletePost(id){
         return axios.delete(`/posts/${id}`)
+    },
+    getForumPostsPopularity(id){
+        return axios.get(`forum/${id}/posts/popularity`)
     }
 
 

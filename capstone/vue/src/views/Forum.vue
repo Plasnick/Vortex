@@ -20,8 +20,13 @@
     <h3>Rules:</h3>
     <p>{{ forum.rules }}</p>
     <router-link v-bind:to="{ name: 'newPost', params: { id: forum.id } }"
-      >CREATE A POST</router-link
-    >
+      >CREATE A POST</router-link>
+      <label for="order-posts">Sort by:</label>
+        <select id="order-posts" v-on:change="handleChange">
+          <option value="date" selected>Date</option>
+          <option value="popularity">Popularity</option>
+        </select>
+      
     <forum-main-feed />
   </div>
 </template>
@@ -32,6 +37,7 @@ import ForumMainFeed from "../components/ForumMainFeed.vue";
 import FavoriteCheckbox from "../components/FavoriteCheckbox.vue";
 import moderatorsService from "../services/ModeratorsService";
 import AddModerator from "../components/AddModerator.vue";
+import PostsService from "../services/PostsService"
 
 export default {
   components: {
@@ -43,7 +49,24 @@ export default {
     return {
       forum: [],
       moderators: [],
+      isSortedByDate: true
     };
+  },
+  methods: {
+    handleChange(){
+      if(this.isSortedByDate){
+        this.$store.commit("SORT_POSTS")
+        this.isSortedByDate = false;
+      }
+      else{
+        PostsService.getForumPosts(this.$route.params.id).then((response)=>{
+          if(response.status==200){
+            this.$store.commit("SET_POSTS", response.data)
+            this.isSortedByDate = true;
+          }
+        })
+      }
+    }
   },
   computed: {
     isModerator(){

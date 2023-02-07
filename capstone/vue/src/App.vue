@@ -62,5 +62,10 @@ header {
   text-decoration: none;
   color: #23468A;
 }
+</style>
 
+<style>
+body{
+  font-family: 'Cabin';
+}
 </style>

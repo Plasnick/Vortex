@@ -80,6 +80,9 @@ export default new Vuex.Store({
     },
     ADD_MODERATOR(state, moderator) {
       state.moderatorsForForum.push(moderator);
+    },
+    SORT_POSTS(state){
+      state.posts.sort((a, b)=> (a.upVotes-a.downVotes) < (b.upVotes - b.downVotes) ? 1 : -1)
     }
   }
 })

@@ -85,7 +85,6 @@ export default {
     padding: 35px;
     margin: 0 auto;
     background-color: #F8F8F8;
-    border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
     color: #23468A;
   }
