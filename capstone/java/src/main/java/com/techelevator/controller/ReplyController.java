@@ -32,9 +32,9 @@ public class ReplyController {
 
     @PreAuthorize("isAuthenticated()")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(path = "/posts/{postId}/replies/{commentId}", method = RequestMethod.DELETE)
-    public void deleteReply(@PathVariable int commentId){
-        replyDao.deleteReply(commentId);
+    @RequestMapping(path = "/replies/{id}", method = RequestMethod.DELETE)
+    public void deleteReply(@PathVariable int id){
+        replyDao.deleteReply(id);
     }
 
 
