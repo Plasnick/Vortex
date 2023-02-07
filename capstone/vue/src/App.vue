@@ -64,3 +64,9 @@ header {
 }
 
 </style>
+
+<style>
+body{
+  font-family: 'Cabin';
+}
+</style>
