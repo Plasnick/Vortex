@@ -26,7 +26,7 @@
         <i class="fa-solid fa-arrow-down" ></i>
         <span> {{ post.downVotes }} We got your vote!</span>
       </span>
-      <h3>User: {{ post.username }} Posted On: {{ post.postedAt }}</h3>
+      <h3>by {{ post.username }} on {{ post.postedAt }}</h3>
       <!-- need to get the Username from the userId. Maybe change the sql statement 
       to join the user table and select the name-->
      
