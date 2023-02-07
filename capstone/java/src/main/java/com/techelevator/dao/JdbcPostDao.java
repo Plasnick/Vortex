@@ -23,7 +23,7 @@ public class JdbcPostDao implements PostDao{
         String sql = "SELECT post.post_id, post.user_id, forum_id, title, body, img_url, posted_at, up_votes, down_votes, username " +
                      "FROM post " +
                      "JOIN users ON post.user_id = users.user_id " +
-                "WHERE forum_id = ?;";
+                    "WHERE forum_id = ? ORDER BY posted_at DESC;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, forumId);
         while (results.next()){
             postsByForum.add(mapRowToPost(results));

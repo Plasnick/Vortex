@@ -90,4 +90,67 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+#register {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    background-color: transparent;
+  }
+ .form-register {
+    background-color: white;
+    padding: 40px;
+    width: 400px;
+    margin: 0 auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  .form-register h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+  .form-register label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .form-register button[type="submit"]:hover {
+  background-color: #09A0D8;
+  cursor: pointer;
+}
+ .form-register input[type="text"],
+  .form-register input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #DDD;
+  }
+ .form-register .btn-primary {
+    background-color: #23468A;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: none;
+    margin-top: 20px;
+  }
+  .form-register a {
+    display: block;
+    font-size: 15px;
+    margin-top: 5px;
+    text-align: right;
+    color: #23468A;
+   }
+
+  @media (max-width: 720px) {
+    .form-register {
+      width: 70%;
+    }
+  }
+
+</style>

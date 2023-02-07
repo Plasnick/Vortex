@@ -11,7 +11,7 @@
       
       <p>{{ post.body }}</p>
        <img v-if="post.img_url" :src="post.img_url" alt="Post Image" />
-      <p>by {{ post.userId }} posted on {{ post.postedAt }}</p>
+      
       
     </div>
       <div v-if="!hasInteracted">
@@ -26,7 +26,7 @@
         <i class="fa-solid fa-arrow-down" ></i>
         <span> {{ post.downVotes }} We got your vote!</span>
       </span>
-      <h3>User: {{ post.username }} Posted On: {{ post.postedAt }}</h3>
+      <h3>by {{ post.username }} on {{ date }}</h3>
       <!-- need to get the Username from the userId. Maybe change the sql statement 
       to join the user table and select the name-->
      
@@ -49,7 +49,8 @@ export default {
            userId: this.$store.state.user.id,
            postId: this.post.postId
          },
-         forum: {}
+         forum: {},
+         date: null
        }
      },
      computed: {
@@ -107,6 +108,8 @@ export default {
     forumsService.getForum(this.post.forumId).then((response)=>{
       this.forum = response.data;
     })
+    this.date = this.post.postedAt.substring(0,10) + " " + this.post.postedAt.substring(11, 16)
+    console.log(this.date)
   }
      
     

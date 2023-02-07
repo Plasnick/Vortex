@@ -22,6 +22,7 @@ public class PostController {
     public List<Post> getPostsByForumId(@PathVariable int forumId){
         return postDao.getPostsByForum(forumId);
     }
+    
 
     // consider ? param for narrowing search results
     @GetMapping("/posts/titleSearch/{keyword}")
