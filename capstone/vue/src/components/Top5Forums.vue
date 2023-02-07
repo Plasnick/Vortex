@@ -49,6 +49,7 @@ nav a {
   text-align: left;
   text-decoration: none;
   color: black;
+  
 }
 
 nav {
@@ -57,6 +58,7 @@ nav {
   background-color: #f8f7f7;
   width: 100%;
   padding: 10px;
+  
 }
 nav a:hover {
   background-color: #e0e0e0;

@@ -1,13 +1,11 @@
 <template>
   <div class="favorite-forums">
-    <ul id="favorite-forums-list">
-      <h3>Your favorite Forums:</h3>
-      <li v-for="forum in favoriteForums" v-bind:key="forum.id">
-        <router-link v-bind:to="{ name: 'forum', params: { id: forum.id } }">{{
+    <h3>Your favorite Forums:</h3>
+    <nav>
+        <router-link v-for="forum in favoriteForums" v-bind:key="forum.id" v-bind:to="{ name: 'forum', params: { id: forum.id } }">{{
           forum.forumName
         }}</router-link>
-      </li>
-    </ul>
+    </nav>
   </div>
 </template>
 
@@ -35,5 +33,40 @@ export default {
 };
 </script>
 
-<style>
+<style >
+.favorite-forums {
+  background-color: #f8f7f7;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);  
+  height: 60vh;
+}
+nav a {  
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+  text-decoration: none;
+  color: black;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  background-color: #f8f7f7;
+  width: 100%;
+  padding: 10px;
+}
+nav a:hover {
+  background-color: #e0e0e0;
+  width: 100%;
+}
+
+
+h3 {
+  margin: 0;
+  font-size: 20px;
+  color: #23468A;
+}
+
 </style>
