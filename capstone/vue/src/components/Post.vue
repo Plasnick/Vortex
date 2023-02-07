@@ -125,7 +125,6 @@ export default {
   margin: 20px auto;
   padding: 10px;
 }
-
  .header {
   display: flex;
   flex-direction: column;
