@@ -2,7 +2,6 @@
   <div class="post-and-replies">
     <button v-show="isModerator" v-on:click="deletePost">Delete Post</button>
     <post v-for="post in posts" v-bind:key="post.postId" v-bind:post="post" />
-    <p>From forum: {{forum.name}}</p>
     <replies-feed />
   </div>
 </template>
@@ -24,6 +23,9 @@ export default {
   },
   computed: {
     isModerator(){
+      if(this.$store.state.token == ''){
+        return false;
+      }
       if(this.$store.state.user.authorities[0].name == "ROLE_ADMIN"){
         return true;
       }

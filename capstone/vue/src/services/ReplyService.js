@@ -11,8 +11,8 @@ export default {
     createReply(reply) {
         return axios.post(`/replies`, reply)
     },
-    deleteReply(postId, commentId) {
-        return axios.delete(`/posts/${postId}/replies/${commentId}`)
+    deleteReply(id) {
+        return axios.delete(`/replies/${id}`)
       }
       
 
