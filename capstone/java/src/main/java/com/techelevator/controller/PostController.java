@@ -23,6 +23,12 @@ public class PostController {
         return postDao.getPostsByForum(forumId);
     }
 
+    // consider ? param for narrowing search results
+    @GetMapping("/posts/titleSearch/{keyword}")
+    public List<Post> searchByTitleResults(@RequestBody String keyword){
+        return postDao.getPostsByTitleKeyword(keyword);
+    }
+
     @GetMapping("/posts/top10")
     public List<Post> getTop10Posts(){
         return postDao.getTop10Posts();

@@ -31,10 +31,16 @@ public class JdbcPostDao implements PostDao{
         return postsByForum;
     }
 
-//    @Override
-//    public List<Post> getPostsByTitleKeyword(String keyword){
-//
-//    }
+    @Override
+    public List<Post> getPostsByTitleKeyword(String keyword){
+        List<Post> postsByTitleKeyword = new ArrayList<>();
+        String sql = "SELECT * FROM post WHERE title like '%?%';";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, keyword);
+        while (results.next()){
+            postsByTitleKeyword.add(mapRowToPost(results));
+        }
+        return postsByTitleKeyword;
+    }
 
     @Override
     public List<Post> getTop10Posts() {
