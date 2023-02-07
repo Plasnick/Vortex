@@ -76,4 +76,57 @@ export default {
   display: flex;
   flex-direction: column;
 }
+  #replies-component {
+    background-color: #f7f7f7;
+    padding: 1rem;
+    border-radius: 2px;
+  }
+  .create-reply {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+    margin-bottom: 1rem;
+  }
+ .create-reply h3 {
+    margin-bottom: 0.5rem;
+  }
+  .create-reply textarea {
+    width: 100%;
+    min-height: 4rem;
+    padding: 0.5rem;
+    border-radius: 2px;
+    border: 1px solid #dcdce1;
+    font-size: 1rem;
+  }
+ .create-reply .actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0.5rem;
+  }
+  .create-reply .actions button {
+    background-color: #23468A;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 2px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  .replies-feed {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+    margin-bottom: 1rem;
+  }
+  .replies-feed h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1.0rem;
+  }
+.replies-feed p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
 </style>

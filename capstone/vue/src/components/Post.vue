@@ -1,10 +1,11 @@
 <template>
   <div class="post-component">
     <header class="header">
+      <h3>v/<router-link class="forum-link" v-bind:to="{name:'forum', params:{id:post.forumId}}">{{forum.forumName}}</router-link></h3>
       <router-link class="title-link" v-bind:to="{name:'postAndReplies', params:{id: post.postId}}">
       <h2>{{ post.title }}</h2>
       </router-link>
-      <h3>from <router-link class="forum-link" v-bind:to="{name:'forum', params:{id:post.forumId}}">{{forum.forumName}}</router-link></h3>
+      
     </header>
     <div class="post-content">
       
@@ -113,46 +114,68 @@ export default {
 </script>
 
 <style scoped>
-.post-component{
+.post-component {
+  background-color: #F8F8F8;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.05);
   display: flex;
   flex-direction: column;
-  border: 1px solid;
-  padding-left: 10px;
-  margin-bottom: 10px;
-  border-radius: 2%;
-  padding-bottom: 10px;
-  
-}
-.header{
-  color: #23468a;
-  font-size: 12pt;
-  
+  width: 50%;
+  margin: 20px auto;
+  padding: 10px;
 }
 
-.title-link{
-  color: #23468a;
-  font-size: 12pt;
+ .header {
+  display: flex;
+  flex-direction: column;
+}
+ .title-link {
+  color: #333;
   text-decoration: none;
 }
-.title-link:hover{
-  text-decoration: underline;
+.title-link h2 {
+  color: #545454;
+  font-size: 20px;
+  margin: 0;
 }
-
-.forum-link{
-  color: #23468a;
+.forum-link {
+  color: #23468A;
+  font-size: 14px;
   text-decoration: none;
 }
 .forum-link:hover{
   text-decoration: underline;
+  }
+
+.post-content {
+  margin-top: 15px;
 }
-img{
-  height: 20em;
+.post-content p {
+  color: #333;
+  font-size: 14px;
+  margin: 0;
 }
-i{
-  color: #23468a;
+
+.post-content img {
+  max-width: 100%;
 }
-i:hover{
+
+.fa-solid {
   cursor: pointer;
+  margin-right: 10px;
 }
+.fa-arrow-up, .fa-arrow-down {
+  color: #23468A;
+}
+
+.fa-arrow-up:hover, .fa-arrow-down:hover {
+  color: #1096c8;
+}
+
+h3{
+color: #23468A;
+}
+
 
 </style>

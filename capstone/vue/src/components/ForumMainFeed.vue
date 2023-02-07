@@ -40,4 +40,11 @@ export default {
 </script>
 
 <style>
+  #main-forum-feed {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  
 </style>

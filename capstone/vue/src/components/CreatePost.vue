@@ -69,9 +69,60 @@ export default {
 </script>
 
 <style scoped>
-#new-post-form {
-    display: flex;
-    flex-direction: column;
+  .create-post {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  max-width: 500px;
+  padding: 30px;
+  text-align: center;
+  }
+
+.create-post h3 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #23468A;
 }
+
+  .create-post input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .create-post textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  resize: none;
+  }
+
+ .create-post button {
+  background-color: #23468A;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+  cursor: pointer;
+  }
+
+  .create-post img {
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 4px;
+  }
 
 </style>

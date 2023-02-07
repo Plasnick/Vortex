@@ -1,6 +1,6 @@
 <template>
   <div class="search-forum">
-      <input type="text" placeholder="Search Forums" v-model="searchWord">
+      <input type="text" placeholder="Search Vortex" v-model="searchWord">
       <div v-if="searchWord" class="suggestions">
         <div v-for="forum in filteredList" v-bind:key="forum.id">
           <router-link v-bind:to="{name: 'forum', params: {id: forum.id}}"> {{ forum.forumName }}  </router-link>
@@ -42,6 +42,20 @@ export default {
 .search-forum{
     display: flex;
     flex-direction: column;
+    border-radius: 20px;
+    border: 1px solid lightgrey;
+    padding: 10px 20px;
+    outline-style: none;
+    background-color: #EDEDED;
+    width:60%;    
+}
+input[type="text"]{
+    border: none;
+    outline: none;
+    background-color: #EDEDED;
+}
+input::placeholder {
+  color: #23468A;
 }
 .suggestions {
   background-color: rgb(224, 219, 219);

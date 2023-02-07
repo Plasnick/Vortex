@@ -1,7 +1,5 @@
 <template>
 <div>
-  <h2>Create Your Own Forum!</h2>
-
     <ForumCreationForm />
 
 </div>    
