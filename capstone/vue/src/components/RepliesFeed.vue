@@ -20,7 +20,7 @@
       v-for="reply in repliesByPost"
       v-bind:key="reply.commentId"
     >
-      <h4>User: {{ reply.userId }} Posted On: {{ reply.postedAt }}</h4>
+      <h4>User: {{ reply.username }} Posted On: {{ reply.postedAt }}</h4>
       <!-- need to get the Username from the userId. Maybe change the sql statement 
       to join the user table and select the name-->
 
