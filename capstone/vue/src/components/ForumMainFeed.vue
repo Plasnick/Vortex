@@ -1,10 +1,8 @@
 <template>
   <div id="main-forum-feed">
-    <div v-for="post in postsByForum" v-bind:key="post.postId">
-      <post  v-bind:post="post" />
-    </div>
     
-    <post v-for="post in postsByForum" v-bind:key="post.postId" v-bind:post="post" />
+    
+    <post v-for="post in this.$store.state.posts" v-bind:key="post.postId" v-bind:post="post" />
     
   </div> 
 
@@ -29,8 +27,9 @@ export default {
  
   created() {
     PostsService.getForumPosts(this.$route.params.id).then((response) => {
-      this.postsByForum = response.data;
+      this.postsByForum = response.data
       this.$store.commit("SET_POSTS", response.data)
+      console.log(this.$store.state.posts)
     });
     interactionsService.getInteractions(this.$store.state.user.id).then((response) =>{
       this.$store.commit("SET_INTERACTIONS", response.data)

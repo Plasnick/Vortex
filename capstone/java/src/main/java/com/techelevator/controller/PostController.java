@@ -22,6 +22,7 @@ public class PostController {
     public List<Post> getPostsByForumId(@PathVariable int forumId){
         return postDao.getPostsByForum(forumId);
     }
+    
 
     @GetMapping("/posts/top10")
     public List<Post> getTop10Posts(){

@@ -100,6 +100,9 @@ export default {
   created() {
     replyService.getPostReplies(this.$route.params.id).then((response) => {
       this.repliesByPost = response.data;
+      this.repliesByPost.forEach((element)=>{
+        element.postedAt = element.postedAt.substring(0,10) + " " + element.postedAt.substring(11,16)
+      })
     });
     if(this.$store.state.token != ''){
       moderatorsService.getForumsModerated(this.$store.state.user.id).then((response)=>{
