@@ -1,17 +1,8 @@
 <template>
   <div class="home">
     <div class="body">
-      <h1>Home</h1>
-      <p>You must be authenticated to see this</p>
-      <search-forums />
-      <h2>Top 10 Posts Today</h2>
-      <post
-        v-for="post in $store.state.posts"
-        v-bind:key="post.postId"
-        v-bind:post="post"
-      />
+      <post v-for="post in $store.state.posts" v-bind:key="post.postId" v-bind:post="post" />
     </div>
-
     <aside>
       <router-link
         v-bind:to="{ name: 'createForum' }"
@@ -28,7 +19,6 @@
 
 <script>
 import Top5Forums from "../components/Top5Forums.vue";
-import SearchForums from "../components/SearchForums.vue";
 import Post from "../components/Post.vue";
 import postsService from "../services/PostsService";
 import interactionsService from "../services/InteractionsService";
@@ -40,7 +30,6 @@ export default {
   name: "home",
   components: {
     Top5Forums,
-    SearchForums,
     Post,
     FavoriteForums,
   },
@@ -76,27 +65,16 @@ export default {
 </script>
 
 <style scoped>
-.home {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-areas: "sidebar body body body";
-  grid-gap: 20px;
-  margin-top: 20px;
-}
-.body {
-  grid-area: body;
-}
-aside {
-  grid-area: sidebar;
-  border-top: 1px solid #000;
-  border-right: 1px solid #000;
-  border-bottom: 1px solid #000;
-  border-radius: 10%;
-  height: 100%;
-  width: 200px;
-  margin-right: 20px;
-  padding-left: 10px;
-  position: fixed;
-  height: 60vh;
-}
+  .home{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: "sidebar body body body";
+    grid-gap: 20px;
+    margin-top: 20px;
+    
+  }
+  .body{
+    grid-area: body;
+  }
+
 </style>

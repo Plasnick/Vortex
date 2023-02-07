@@ -1,23 +1,38 @@
 <template>
   <div class="post-component">
-    <div class="post-details">
-      <router-link v-bind:to="{name:'postAndReplies', params:{id: post.postId}}">
+    <header class="header">
+      <h3>v/<router-link class="forum-link" v-bind:to="{name:'forum', params:{id:post.forumId}}">{{forum.forumName}}</router-link></h3>
+      <router-link class="title-link" v-bind:to="{name:'postAndReplies', params:{id: post.postId}}">
       <h2>{{ post.title }}</h2>
       </router-link>
-      <span>in <router-link v-bind:to="{name:'forum', params:{id:post.forumId}}">{{forum.forumName}}</router-link></span>
+      
+    </header>
+    <div class="post-content">
+      
+      <p>{{ post.body }}</p>
+       <img v-if="post.img_url" :src="post.img_url" alt="Post Image" />
+      <p>by {{ post.userId }} posted on {{ post.postedAt }}</p>
+      
+    </div>
       <div v-if="!hasInteracted">
-        <button v-on:click="upVote">Up Vote ({{ post.upVotes }})</button>
-        <button v-on:click="downVote">Down Vote ({{ post.downVotes }})</button>
+        <i class="fa-solid fa-arrow-up" v-on:click="upVote"></i>
+        <span> {{ post.upVotes }} </span>
+        <i class="fa-solid fa-arrow-down" v-on:click="downVote"></i>
+        <span> {{ post.downVotes }} </span>
       </div>
       <span v-else>
-        <p>Up Votes: {{ post.upVotes }} | Down Votes: {{ post.downVotes }}</p>
+        <i class="fa-solid fa-arrow-up" ></i>
+        <span> {{ post.upVotes }} </span>
+        <i class="fa-solid fa-arrow-down" ></i>
+        <span> {{ post.downVotes }} We got your vote!</span>
       </span>
-      <h3>User: {{ post.userId }} Posted On: {{ post.postedAt }}</h3>
+      <h3>User: {{ post.username }} Posted On: {{ post.postedAt }}</h3>
       <!-- need to get the Username from the userId. Maybe change the sql statement 
       to join the user table and select the name-->
-      <img v-if="post.img_url" :src="post.img_url" alt="Post Image" />
-      <p>{{ post.body }}</p>
-    </div>
+     
+      
+      
+    
   </div>
 </template>
 
@@ -98,5 +113,68 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.post-component {
+  background-color: #F8F8F8;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.05);
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 20px auto;
+  padding: 10px;
+}
+ .header {
+  display: flex;
+  flex-direction: column;
+}
+ .title-link {
+  color: #333;
+  text-decoration: none;
+}
+.title-link h2 {
+  color: #545454;
+  font-size: 20px;
+  margin: 0;
+}
+.forum-link {
+  color: #23468A;
+  font-size: 14px;
+  text-decoration: none;
+}
+.forum-link:hover{
+  text-decoration: underline;
+  }
+
+.post-content {
+  margin-top: 15px;
+}
+.post-content p {
+  color: #333;
+  font-size: 14px;
+  margin: 0;
+}
+
+.post-content img {
+  max-width: 100%;
+}
+
+.fa-solid {
+  cursor: pointer;
+  margin-right: 10px;
+}
+.fa-arrow-up, .fa-arrow-down {
+  color: #23468A;
+}
+
+.fa-arrow-up:hover, .fa-arrow-down:hover {
+  color: #1096c8;
+}
+
+h3{
+color: #23468A;
+}
+
+
 </style>

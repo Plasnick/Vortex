@@ -1,5 +1,8 @@
 <template>
   <div id="main-forum-feed">
+    <div v-for="post in postsByForum" v-bind:key="post.postId">
+      <post  v-bind:post="post" />
+    </div>
     
     <post v-for="post in postsByForum" v-bind:key="post.postId" v-bind:post="post" />
     
@@ -11,6 +14,7 @@
 import PostsService from "../services/PostsService";
 import Post from "../components/Post.vue"
 import interactionsService from "../services/InteractionsService"
+
 export default {
   name: "forum-main-feed",
   components: {
@@ -22,7 +26,7 @@ export default {
       errorMessage: false
     };
   },
-  
+ 
   created() {
     PostsService.getForumPosts(this.$route.params.id).then((response) => {
       this.postsByForum = response.data;
@@ -36,4 +40,11 @@ export default {
 </script>
 
 <style>
+  #main-forum-feed {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  
 </style>

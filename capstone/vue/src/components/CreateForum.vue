@@ -1,11 +1,6 @@
 <template>
-  
-
-
    <form v-on:submit.prevent="submitForum" class="cardForm"> 
     <p>Create Forum</p>
-
-
 <div>
     <label for="name">Forum Name</label>
     <input
@@ -85,5 +80,68 @@ export default {
 </script>
 
 <style>
+ .cardForm {
+    width: 500px;
+    padding: 35px;
+    margin: 0 auto;
+    background-color: #F8F8F8;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+    color: #23468A;
+  }
+  .cardForm p {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #23468A;
+  }
+
+  .cardForm label {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .cardForm input,
+  .cardForm textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  .cardForm textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    resize: none;
+}
+
+.cardForm input[type="submit"] {
+    background-color: #23468A;
+    color: #EDEDED;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    margin-right: 20px;
+}
+
+.cardForm button[type="cancel"] {
+    background-color: #23468A;
+    color: #EDEDED;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    font-size: 18px;
+}
 
 </style>

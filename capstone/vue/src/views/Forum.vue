@@ -46,8 +46,11 @@ export default {
     };
   },
   computed: {
-    isModerator() {
-      if (this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
+    isModerator(){
+      if(this.$store.state.token == ''){
+        return false;
+      }
+      if(this.$store.state.user.authorities[0].name == "ROLE_ADMIN"){
         return true;
       }
       for (let i = 0; i < this.$store.state.moderatorsForForum.length; i++) {
