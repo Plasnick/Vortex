@@ -16,6 +16,8 @@ public interface ForumDao {
 
     Forum createForum(Forum forum);
 
+    List<Forum> favoriteForumsByUserId(int id);
+
 
     //List<Forum> findForumByKeyword(String keyword);
 }

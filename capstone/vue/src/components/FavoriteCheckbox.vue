@@ -58,7 +58,7 @@ export default {
     },
   },
   created() {
-    favoriteService.getFavorites(this.$route.params.id).then((response) => {
+    favoriteService.getFavorites(this.$store.state.user.id).then((response) => {
       this.favorites = response.data;
       this.$store.commit("SET_FAVORITES", response.data);
       this.checkFavoriteForum();

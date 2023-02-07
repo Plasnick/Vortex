@@ -8,6 +8,6 @@ export default {
         return axios.post(`/favorites`, favorite)
     },
     deleteFavorite(favorite) {
-        return axios.delete(`/favorites`, favorite)
+        return axios.delete('/deleteFavorites', {data: favorite} )
     }
 }

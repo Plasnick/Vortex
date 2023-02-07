@@ -29,8 +29,9 @@ public class FavoriteController {
     }
 
     @PreAuthorize("isAuthenticated()")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(path = "/favorites",method = RequestMethod.DELETE)
-    public void deleteFavorite(@RequestBody Favorite favorite){favoriteDao.deleteFavorite(favorite);}
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(path = "/deleteFavorites",method = RequestMethod.DELETE)
+    public void deleteFavorite(@RequestBody Favorite favorite){
+        favoriteDao.deleteFavorite(favorite);}
 
 }

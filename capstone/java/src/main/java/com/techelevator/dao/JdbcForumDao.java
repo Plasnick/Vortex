@@ -41,6 +41,20 @@ public class JdbcForumDao implements ForumDao {
     }
 
     @Override
+    public List<Forum> favoriteForumsByUserId(int id) {
+        String sql = "SELECT forum_id, name, description, rules FROM forum " +
+                "JOIN favorite on favorite.favorite_id = forum.forum_id WHERE user_id = ?;";
+
+        List<Forum> favoriteForums = new ArrayList<>();
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+        while (results.next()){
+            favoriteForums.add(mapRowToForum(results));
+        }
+
+        return favoriteForums;
+    }
+
+    @Override
     public Forum findForumById(int id) {
 
         String sql = "SELECT forum_id, name, description, rules FROM forum WHERE forum_id = ?";
@@ -98,6 +112,8 @@ public class JdbcForumDao implements ForumDao {
         jdbcTemplate.update(sqlModerator, forum.getModeratorList().get(0), forum.getId());
         return forum;
     }
+
+
 
     //    @Override
 //    public List<Forum> findForumByKeyword(String keyword) {

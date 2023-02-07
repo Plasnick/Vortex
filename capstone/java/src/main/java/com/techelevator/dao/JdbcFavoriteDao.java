@@ -22,7 +22,7 @@ public class JdbcFavoriteDao implements FavoriteDao{
     @Override
     public List<Favorite> getFavoritesByUserId(int id) {
         List<Favorite> favoriteForums = new ArrayList<>();
-        String sql = "SELECT user_id, favorite_id FROM favorite WHERE user_id =?;";
+        String sql = "SELECT user_id, favorite_id  FROM favorite WHERE user_id =?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
         while (results.next()){
             favoriteForums.add(mapRowToFavorite(results));

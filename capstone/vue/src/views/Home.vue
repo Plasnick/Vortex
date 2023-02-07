@@ -19,6 +19,9 @@
         >Create Forum</router-link
       >
       <top-5-forums />
+      <div v-show="$store.state.token != ''">
+        <favorite-forums />
+      </div>
     </aside>
   </div>
 </template>
@@ -31,6 +34,7 @@ import postsService from "../services/PostsService";
 import interactionsService from "../services/InteractionsService";
 import moderatorsService from "../services/ModeratorsService";
 import favoriteService from "../services/FavoriteService";
+import FavoriteForums from "../components/FavoriteForums.vue";
 
 export default {
   name: "home",
@@ -38,7 +42,9 @@ export default {
     Top5Forums,
     SearchForums,
     Post,
+    FavoriteForums,
   },
+  
   created() {
     postsService.getTop10().then((response) => {
       this.$store.commit("SET_POSTS", response.data);
