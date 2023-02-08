@@ -11,6 +11,7 @@ import ForumCreationPage from '../views/ForumCreationPage'
 import NewPost from '../views/NewPost.vue'
 import PostAndReplies from '../views/PostAndReplies.vue'
 import NotFound from '../views/NotFound.vue'
+import Account from '../views/Account.vue'
 
 
 
@@ -111,8 +112,17 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
-
     },
+    {
+      path: "/account",
+      name: "account",
+      component: Account,
+      meta:{
+        requiresAuth: true
+      }
+    }
+
+    
 
   ]
 })

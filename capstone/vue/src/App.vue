@@ -12,7 +12,9 @@
         <router-link v-bind:to="{ name: 'home' }"></router-link>&nbsp;|&nbsp;
         <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
         <router-link v-bind:to="{ name: 'login'}" v-else>Login</router-link>&nbsp;|&nbsp;
-        <router-link v-bind:to="{ name: 'forumSearch'}"></router-link>
+        <router-link v-bind:to="{ name: 'account'}" v-show="$store.state.token !=''">
+          <i class="fa-solid fa-user"></i>
+        </router-link>
       </div>
       </header>
     </div>
@@ -36,6 +38,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
 }
  
 .search-forum-container{
