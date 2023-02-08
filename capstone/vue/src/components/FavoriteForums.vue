@@ -20,15 +20,19 @@ export default {
       favoriteForums: [],
     };
   },
-  methods: {},
-  created() {
-    if (this.$store.state.token != "") {
+  methods: {
+    getFavoriteForumsByUserId(){
+      if (this.$store.state.token != "") {
       forumsService
         .favoriteForumsByUserId(this.$store.state.user.id)
         .then((response) => {
           this.favoriteForums = response.data;
         });
     }
+    }
+  },
+  created() {
+    this.getFavoriteForumsByUserId()
   },
 };
 </script>

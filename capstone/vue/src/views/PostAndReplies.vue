@@ -1,6 +1,8 @@
 <template>
   <div class="post-and-replies">
     <button v-show="isModerator" v-on:click="deletePost">Delete Post</button>
+    <div class="status-message error" v-show="errorMsg !== ''">{{ errorMsg }}
+      </div>
     <post v-for="post in posts" v-bind:key="post.postId" v-bind:post="post" />
     <replies-feed />
   </div>
@@ -20,7 +22,8 @@ export default {
       posts: [{
         forumId: null
       }],
-      forum: {}
+      forum: {},
+      errorMsg: "",
     };
   },
   computed: {
@@ -48,7 +51,20 @@ export default {
           if(response.status === 204){
             this.$router.push({name: 'forum', params:{id:this.posts[0].forumId}})
           }
-        })
+        }).catch(error => {
+            if (error.response) {
+              this.errorMsg =
+                "Error deleting post. Response received was '" +
+                error.response.statusText +
+                "'.";
+            } else if (error.request) {
+              this.errorMsg =
+                "Error deleting post. Server could not be reached.";
+            } else {
+              this.errorMsg =
+                "Error deleting post. Request could not be created.";
+            }
+          });
       }
       
     }

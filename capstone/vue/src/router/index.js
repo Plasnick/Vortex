@@ -10,6 +10,7 @@ import ForumSearchResults from '../views/ForumSearchResults.vue'
 import ForumCreationPage from '../views/ForumCreationPage'
 import NewPost from '../views/NewPost.vue'
 import PostAndReplies from '../views/PostAndReplies.vue'
+import NotFound from '../views/NotFound.vue'
 
 
 
@@ -103,7 +104,15 @@ const router = new Router({
       }
 
     },
+    {
+      path: "*",
+      name: "notFound",
+      component: NotFound,
+      meta: {
+        requiresAuth: false
+      }
 
+    },
 
   ]
 })

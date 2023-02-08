@@ -19,6 +19,9 @@
       <p>{{ post.body }}</p>
       <img v-if="post.img_url" :src="post.img_url" alt="Post Image" />
     </div>
+    <div class="status-message error" v-show="errorMsg !== ''">
+        {{ errorMsg }}
+      </div>
     <div v-if="!hasInteracted">
       <i class="fa-solid fa-arrow-up" v-on:click="upVote"></i>
       <span> {{ post.upVotes }} </span>
@@ -54,6 +57,7 @@ export default {
       },
       forum: {},
       date: null,
+      errorMsg: "",
     };
   },
   computed: {
@@ -87,10 +91,24 @@ export default {
           .then((response) => {
             if (response.status === 200) {
               console.log("it worked");
+              this.$store.commit("ADD_INTERACTION", this.interaction);
+              interactionsService.addInteraction(this.interaction);
             }
-          });
-        this.$store.commit("ADD_INTERACTION", this.interaction);
-        interactionsService.addInteraction(this.interaction);
+          }).catch((error) => {
+              if (error.response) {
+            this.errorMsg =
+              "Error submitting vote. Response received was '" +
+              error.response.statusText +
+              "'.";
+          } else if (error.request) {
+            this.errorMsg =
+              "Error submitting vote. Server could not be reached.";
+          } else {
+            this.errorMsg =
+              "Error submitting vote. Request could not be created.";
+          }
+            });
+        
       }
     },
     downVote() {
@@ -107,10 +125,24 @@ export default {
           .then((response) => {
             if (response.status === 200) {
               console.log("it worked");
+              this.$store.commit("ADD_INTERACTION", this.interaction);
+              interactionsService.addInteraction(this.interaction);
             }
-          });
-        this.$store.commit("ADD_INTERACTION", this.interaction);
-        interactionsService.addInteraction(this.interaction);
+          }).catch((error) => {
+              if (error.response) {
+            this.errorMsg =
+              "Error submitting vote. Response received was '" +
+              error.response.statusText +
+              "'.";
+          } else if (error.request) {
+            this.errorMsg =
+              "Error submitting vote. Server could not be reached.";
+          } else {
+            this.errorMsg =
+              "Error submitting vote. Request could not be created.";
+          }
+            });
+        
       }
     },
     deleteInteraction() {
@@ -128,10 +160,25 @@ export default {
         .then((response) => {
           if (response.status === 200) {
             console.log("it worked");
+            this.$store.commit("DELETE_INTERACTION", this.interaction);
+            interactionsService.deleteInteraction(this.interaction);
           }
-        });
-      this.$store.commit("DELETE_INTERACTION", this.interaction);
-      interactionsService.deleteInteraction(this.interaction);
+        }).catch(error => {
+            if (error.response) {
+              this.errorMsg =
+                "Error undoing vote. Response received was '" +
+                error.response.statusText +
+                "'.";
+            } else if (error.request) {
+              this.errorMsg =
+                "Error undoing vote. Server could not be reached.";
+            } else {
+              this.errorMsg =
+                "Error undoing vote. Request could not be created.";
+            }
+          });
+            
+      
     },
   },
   created() {

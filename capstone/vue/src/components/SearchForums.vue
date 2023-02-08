@@ -53,6 +53,7 @@ input[type="text"]{
     border: none;
     outline: none;
     background-color: #EDEDED;
+    font-family: 'Cabin';
 }
 input::placeholder {
   color: #23468A;

@@ -5,7 +5,9 @@
       <!-- <form id="new-post-form"> -->
           <input type="text" placeholder="Post Title" v-model="newPost.title" required />
           <textarea placeholder="Write your post here!" v-model="newPost.body" required></textarea>
-          
+          <div class="status-message error" v-show="errorMsg !== ''">
+        {{ errorMsg }}
+      </div>
           <button v-on:click="uploadImage">Upload Image</button>
           <img v-if="newPost.img_url" :src="newPost.img_url" alt="Post Image" />
           
@@ -27,7 +29,8 @@ export default {
                 body: '',
                 img_url: ''
             },
-            imageWidget : {}
+            imageWidget : {},
+            errorMsg: "",
         }
     },
 
@@ -44,6 +47,20 @@ export default {
                 if (response.status === 201){
                     this.$router.push({name: 'forum', params:{id: this.$route.params.id}})
                 }
+            })
+            .catch((error) => {
+              if (error.response) {
+            this.errorMsg =
+              "Error submitting new post. Response received was '" +
+              error.response.statusText +
+              "'.";
+          } else if (error.request) {
+            this.errorMsg =
+              "Error submitting new post. Server could not be reached.";
+          } else {
+            this.errorMsg =
+              "Error submitting new post. Request could not be created.";
+          }
             })
         }
     },
@@ -104,6 +121,7 @@ export default {
   border: 1px solid #ddd;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   resize: none;
+  font-family: 'Cabin';
   }
 
  .create-post button {

@@ -30,7 +30,13 @@ export default {
       this.postsByForum = response.data
       this.$store.commit("SET_POSTS", response.data)
       console.log(this.$store.state.posts)
-    });
+    }).catch((error) => {
+        if (error.response.status === 404) {
+          this.$router.push("/404");
+        } else {
+          console.error(error);
+        }
+      });
     interactionsService.getInteractions(this.$store.state.user.id).then((response) =>{
       this.$store.commit("SET_INTERACTIONS", response.data)
     })
