@@ -16,10 +16,10 @@ INSERT INTO post (user_id, forum_id, title, body, up_votes, down_votes) VALUES (
 INSERT INTO favorite (user_id, favorite_id) VALUES (1,1);
 INSERT INTO favorite (user_id, favorite_id) VALUES (1,2);
 
-INSERT INTO interaction (user_id, post_id) VALUES (1, 1);
-INSERT INTO interaction (user_id, post_id) VALUES (1, 2);
-INSERT INTO interaction (user_id, post_id) VALUES (2, 1);
-INSERT INTO interaction (user_id, post_id) VALUES (2, 2);
+INSERT INTO interaction (user_id, post_id, up_down) VALUES (1, 1, true);
+INSERT INTO interaction (user_id, post_id, up_down) VALUES (1, 2, false);
+INSERT INTO interaction (user_id, post_id, up_down) VALUES (2, 1, true);
+INSERT INTO interaction (user_id, post_id, up_down) VALUES (2, 2, false);
 
 INSERT INTO moderator (moderator_id, forum_id) VALUES (1,1);
 INSERT INTO moderator (moderator_id, forum_id) VALUES (1,2);
