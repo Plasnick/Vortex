@@ -4,6 +4,7 @@ public class Moderator {
     private int moderatorId;
     private int forumId;
     private String username;
+    private String forumName;
 
     public Moderator() {
     }
@@ -35,5 +36,13 @@ public class Moderator {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getForumName() {
+        return forumName;
+    }
+
+    public void setForumName(String forumName) {
+        this.forumName = forumName;
     }
 }

@@ -10,6 +10,7 @@ import ForumSearchResults from '../views/ForumSearchResults.vue'
 import ForumCreationPage from '../views/ForumCreationPage'
 import NewPost from '../views/NewPost.vue'
 import PostAndReplies from '../views/PostAndReplies.vue'
+import Account from '../views/Account.vue'
 
 
 
@@ -103,6 +104,14 @@ const router = new Router({
       }
 
     },
+    {
+      path: "/account",
+      name: "account",
+      component: Account,
+      meta:{
+        requiresAuth: true
+      }
+    }
 
 
   ]

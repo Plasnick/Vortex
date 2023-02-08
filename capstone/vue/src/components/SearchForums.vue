@@ -29,6 +29,11 @@ export default {
                 
         }
     },
+    methods:{
+        clearSearch(){
+            this.searchWord = ""
+        }
+    },
     created(){
         forumsService.getAllForums().then((response) => {
             this.allForums = response.data;
