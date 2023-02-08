@@ -11,7 +11,10 @@
         <i class="fa-solid fa-arrow-up"></i>
         <span> {{ post.upVotes }} </span>
         <i class="fa-solid fa-arrow-down"></i>
-        <span> {{ post.downVotes }} We got your vote!</span>
+        <span> {{ post.downVotes }} </span> 
+        <button @click="deleteInteraction">
+        <i class="fa-solid fa-rotate-left"></i>
+      </button>
       </span>
     </div>
     <header class="header">
@@ -26,102 +29,125 @@
       <img v-if="post.img_url" :src="post.img_url" alt="Post Image" />
     </div>
   </div>
-</template>
+</template>    
 
-      <!-- need to get the Username from the userId. Maybe change the sql statement 
-      to join the user table and select the name-->
-     
-      
-      
-    
  
 
 <script>
 import postsService from "../services/PostsService";
 import interactionsService from "../services/InteractionsService";
-import forumsService from "../services/ForumsService"
+import forumsService from "../services/ForumsService";
 export default {
   name: "post-component",
-     props: ["post"],
-     data(){
-        return{
-         interaction: {
-           userId: this.$store.state.user.id,
-           postId: this.post.postId
-         },
-         forum: {},
-         date: null
-       }
-     },
-     computed: {
-
-       hasInteracted(){
-     
-        let interactionFlag = false;
-        for (let i = 0; i < this.$store.state.interactions.length; i++) {
-          let currentObj = this.$store.state.interactions[i];
-          if ( currentObj.userId == this.$store.state.user.id && currentObj.postId == this.post.postId) {
-            return true;
-          }
-        
+  props: ["post"],
+  data() {
+    return {
+      interaction: {
+        userId: this.$store.state.user.id,
+        postId: this.post.postId,
+        upOrDown: false,
+      },
+      forum: {},
+      date: null,
+    };
+  },
+  computed: {
+    hasInteracted() {
+      let interactionFlag = false;
+      for (let i = 0; i < this.$store.state.interactions.length; i++) {
+        let currentObj = this.$store.state.interactions[i];
+        if (
+          currentObj.userId == this.$store.state.user.id &&
+          currentObj.postId == this.post.postId
+        ) {
+          return true;
+        }
       }
       return interactionFlag;
-      }
-        
-       },
-       
-
-     methods: {
-        upVote() {
-          if(this.$store.state.token == ''){
-            this.$router.push('/login')
-          }else{
-         const index = this.$store.state.posts.findIndex((element) => (element.postId === this.post.postId));
-         this.$store.state.posts[index].upVotes++
-         postsService.updatePost(this.post.postId, this.$store.state.posts[index]).then((response) => {
-           if (response.status === 200) {
-             console.log("it worked");
-           }
-         });
-         this.$store.commit("ADD_INTERACTION", this.interaction);
-         interactionsService.addInteraction(this.interaction);
-          }
-
-       },
-       downVote() {
-         if(this.$store.state.token == ''){
-           this.$router.push('/login')
-         }else{
-         const index = this.$store.state.posts.findIndex((element) => (element.postId === this.post.postId));
-         this.$store.state.posts[index].downVotes++
-         postsService.updatePost(this.post.postId, this.$store.state.posts[index]).then((response) => {
-           if (response.status === 200) {
-             console.log("it worked");
-           }
-         });
-         this.$store.commit("ADD_INTERACTION", this.interaction);
-         interactionsService.addInteraction(this.interaction);
-         }
-       },
+    },
   },
-  created(){
-    forumsService.getForum(this.post.forumId).then((response)=>{
+
+  methods: {
+    upVote() {
+      if (this.$store.state.token == "") {
+        this.$router.push("/login");
+      } else {
+        this.interaction.upOrDown = true;
+        const index = this.$store.state.posts.findIndex(
+          (element) => element.postId === this.post.postId
+        );
+        this.$store.state.posts[index].upVotes++;
+        postsService
+          .updatePost(this.post.postId, this.$store.state.posts[index])
+          .then((response) => {
+            if (response.status === 200) {
+              console.log("it worked");
+            }
+          });
+        this.$store.commit("ADD_INTERACTION", this.interaction);
+        interactionsService.addInteraction(this.interaction);
+      }
+    },
+    downVote() {
+      if (this.$store.state.token == "") {
+        this.$router.push("/login");
+      } else {
+        this.interaction.upOrDown = false;
+        const index = this.$store.state.posts.findIndex(
+          (element) => element.postId === this.post.postId
+        );
+        this.$store.state.posts[index].downVotes++;
+        postsService
+          .updatePost(this.post.postId, this.$store.state.posts[index])
+          .then((response) => {
+            if (response.status === 200) {
+              console.log("it worked");
+            }
+          });
+        this.$store.commit("ADD_INTERACTION", this.interaction);
+        interactionsService.addInteraction(this.interaction);
+      }
+    },
+    deleteInteraction() {
+      const index = this.$store.state.posts.findIndex(
+        (element) => element.postId === this.post.postId
+      );
+      if (this.interaction.upOrDown == true) {
+        this.$store.state.posts[index].upVotes--;
+      }
+      if (this.interaction.upOrDown == false) {
+        this.$store.state.posts[index].downVotes--;
+      }
+      postsService
+        .updatePost(this.post.postId, this.$store.state.posts[index])
+        .then((response) => {
+          if (response.status === 200) {
+            console.log("it worked");
+          }
+        });
+      this.$store.commit("DELETE_INTERACTION", this.interaction);
+      interactionsService.deleteInteraction(this.interaction);
+    },
+  },
+  created() {
+    forumsService.getForum(this.post.forumId).then((response) => {
       this.forum = response.data;
-    })
-    this.date = this.post.postedAt.substring(0,10) + " " + this.post.postedAt.substring(11, 16)
-    console.log(this.date)
-  }
-     
-    
+    });
+    this.date =
+      this.post.postedAt.substring(0, 10) +
+      " " +
+      this.post.postedAt.substring(11, 16);
+    console.log(this.date);
+  },
 };
 </script>
 
 <style scoped>
 .post-component {
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
   border: 1px solid #e5e5e5;
   border-radius: 4px;
-  box-shadow: 0 1px 2px rgba(0,0,0,.05);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
   width: 50%;
@@ -130,11 +156,11 @@ export default {
   position: relative;
   padding-left: 20px;
 }
- .header {
+.header {
   display: flex;
   flex-direction: column;
 }
- .title-link {
+.title-link {
   color: #333;
   text-decoration: none;
 }
@@ -144,13 +170,16 @@ export default {
   margin: 0;
 }
 .forum-link {
-  color: #23468A;
+  color: #23468a;
   font-size: 14px;
   text-decoration: none;
 }
-.forum-link:hover{
+.forum-link:hover {
   text-decoration: underline;
   }
+.title-link:hover{
+  text-decoration: underline;
+}
 
 .post-content {
   margin-top: 15px;
@@ -188,12 +217,23 @@ export default {
   padding: 40px;
 }
 
-.fa-arrow-up:hover, .fa-arrow-down:hover {
+.fa-arrow-up:hover,
+.fa-arrow-down:hover, 
+.fa-rotate-left:hover {
   color: #1096c8;
 }
 
-h3{
-color: #23468A;
+h3 {
+  color: #23468a;
+}
+button {
+  
+  color: #23468a;
+  border: none;
+  cursor: pointer;
+  margin-left: 0.2rem;
+  font-size: 1rem;
+  width: 25px;
 }
 .post .arrow {
   position: absolute;

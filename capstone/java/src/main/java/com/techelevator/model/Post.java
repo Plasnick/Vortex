@@ -14,6 +14,17 @@ public class Post {
     private int upVotes;
     private int downVotes;
 
+    public Post() {
+    }
+
+    public Post(int postId, int userId, int forumId, int upVotes, int downVotes) {
+        this.postId = postId;
+        this.userId = userId;
+        this.forumId = forumId;
+        this.upVotes = upVotes;
+        this.downVotes = downVotes;
+    }
+
     public int getPostId() {
         return postId;
     }

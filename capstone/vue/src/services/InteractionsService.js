@@ -7,5 +7,9 @@ export default{
 
     addInteraction(interaction){
         return axios.post(`/interactions`, interaction)
+    },
+
+    deleteInteraction(interaction){
+        return axios.delete(`/deleteInteractions`, {data: interaction})
     }
 }

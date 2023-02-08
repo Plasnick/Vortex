@@ -57,6 +57,9 @@ export default new Vuex.Store({
     ADD_INTERACTION(state, interaction) {
       state.interactions.push(interaction);
     },
+    DELETE_INTERACTION(state, interaction){
+      state.interactions = state.interactions.filter((element) => element.postId !== interaction.postId && element.userId !== interaction.userId)
+    },
     REMOVE_POST(state, postId) {
       state.posts = state.posts.filter((post) => post.postId !== postId)
     },

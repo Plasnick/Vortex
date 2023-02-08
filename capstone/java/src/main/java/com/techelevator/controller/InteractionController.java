@@ -28,4 +28,10 @@ public class InteractionController {
         interactionDao.createInteraction(interaction);
     }
 
+    @PreAuthorize("isAuthenticated()")
+    @RequestMapping(path = "/deleteInteractions",method = RequestMethod.DELETE)
+    public void deleteInteraction(@RequestBody Interaction interaction){
+        interactionDao.deleteInteraction(interaction);
+    }
+
 }

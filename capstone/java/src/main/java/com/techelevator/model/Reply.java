@@ -10,6 +10,16 @@ public class Reply {
     private LocalDateTime postedAt;
     private String username;
 
+    public Reply() {
+    }
+
+    public Reply(int commentId, int userId, int postId, String body) {
+        this.commentId = commentId;
+        this.userId = userId;
+        this.postId = postId;
+        this.body = body;
+    }
+
     public String getUsername() {
         return username;
     }
