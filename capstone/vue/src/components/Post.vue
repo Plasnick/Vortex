@@ -179,12 +179,9 @@ export default {
 }
 .forum-link:hover {
   text-decoration: underline;
-<<<<<<< HEAD
   }
 .title-link:hover{
   text-decoration: underline;
-=======
->>>>>>> main
 }
 
 .post-content {
