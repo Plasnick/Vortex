@@ -12,6 +12,9 @@ import java.util.List;
 public class JdbcForumDaoTests extends BaseDaoTests{
     protected final Forum FORUM_1 = new Forum(1,"name1","description1","rules1");
     protected final Forum FORUM_2 = new Forum(2, "name2", "description2", "rules2");
+    protected final Forum FORUM_3 = new Forum(3,"name3","description3","rules3");
+    protected final Forum FORUM_4 = new Forum(4, "name4", "description4", "rules4");
+
 
     private JdbcForumDao sut;
 
@@ -26,8 +29,10 @@ public class JdbcForumDaoTests extends BaseDaoTests{
         List<Forum> expected = new ArrayList<>();
         expected.add(FORUM_1);
         expected.add(FORUM_2);
+        expected.add(FORUM_3);
+        expected.add(FORUM_4);
         List<Forum> actual = sut.findAllForums();
-        Assert.assertEquals(2, actual.size());
+        Assert.assertEquals(4, actual.size());
         for (int i = 0; i < expected.size(); i++) {
             assertForumsMatch(expected.get(i), actual.get(i));
         }

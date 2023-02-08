@@ -4,6 +4,14 @@ public class Interaction {
     private int userId;
     private int postId;
 
+    public Interaction() {
+    }
+
+    public Interaction(int userId, int postId) {
+        this.userId = userId;
+        this.postId = postId;
+    }
+
     public int getUserId() {
         return userId;
     }
