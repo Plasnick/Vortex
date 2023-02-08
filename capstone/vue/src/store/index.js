@@ -83,6 +83,9 @@ export default new Vuex.Store({
     },
     SORT_POSTS(state){
       state.posts.sort((a, b)=> (a.upVotes-a.downVotes) < (b.upVotes - b.downVotes) ? 1 : -1)
+    },
+    REMOVE_MODERATOR(state, id){
+      state.moderatorsForForum = state.moderatorsForForum.filter(moderator => moderator.moderatorId != id)
     }
   }
 })

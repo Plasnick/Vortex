@@ -10,7 +10,11 @@ export default{
     },
 
     getForumsModerated(userId){
-        return axios.get(`moderators/user/${userId}`)
+        return axios.get(`/moderators/user/${userId}`)
+    },
+
+    removeModerator(moderator){
+        return axios.delete(`/moderators`, {data: moderator})
     }
 
 }

@@ -1,12 +1,16 @@
 <template>
   <div class="favorite-checkbox">
-    Favorite forum:
+    <label class="icon-checkbox">
     <input
+
       type="checkbox"
       v-model="favoriteForum"
       v-on:change="onFavoritedChange($event)"
       v-bind:checked="favoriteForum"
-    />
+    >
+    <i v-show="!favoriteForum" class="fa-regular fa-heart"></i>
+    <i v-show="favoriteForum" class = "fa-solid fa-heart"></i>
+    </label>
   </div>
 </template>
 
@@ -67,5 +71,23 @@ export default {
 };
 </script> 
 
-<style>
+<style scoped>
+.favorite-checkbox{
+  display: inline-block;
+}
+input[type="checkbox"] {
+  display: none;
+}
+
+.icon-checkbox {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.icon-checkbox i {
+  
+  font-size: 12pt;
+}
+
 </style>

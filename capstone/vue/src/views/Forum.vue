@@ -1,7 +1,7 @@
 <template>
   <div class="forum-details">
-    <h2>{{ forum.forumName }}</h2>
-    <favorite-checkbox v-bind:forum="forum" />
+    <h2>{{ forum.forumName }} <favorite-checkbox v-bind:forum="forum" /></h2>
+    
     <h3>Moderated by:</h3>
     <ul>
       <li
@@ -15,13 +15,23 @@
       <p>Add a moderator?</p>
       <add-moderator />
     </span>
+    <span v-if="isAdmin">
+      <p>Remove a moderator?</p>
+      <select id="moderator-select" v-model="selectedUserId">
+        <option v-for="moderator in $store.state.moderatorsForForum" v-bind:key="moderator.moderatorId" v-bind:value="moderator.moderatorId">
+          {{moderator.username}}
+        </option>
+      </select>
+      <button v-on:click="removeModerator" >Remove Moderator</button>
+      <span id = "message" v-show="displayMessage"> {{message}}</span>
+    </span>
     <h3>Description:</h3>
     <p>{{ forum.description }}</p>
     <h3>Rules:</h3>
     <p>{{ forum.rules }}</p>
     <router-link v-bind:to="{ name: 'newPost', params: { id: forum.id } }"
       >CREATE A POST</router-link>
-      <label for="order-posts">Sort by:</label>
+      <label for="order-posts">Sort by: </label>
         <select id="order-posts" v-on:change="handleChange">
           <option value="date" selected>Date</option>
           <option value="popularity">Popularity</option>
@@ -49,7 +59,11 @@ export default {
     return {
       forum: [],
       moderators: [],
-      isSortedByDate: true
+      isSortedByDate: true,
+      isAdmin: this.$store.state.user.authorities[0].name ==='ROLE_ADMIN',
+      selectedUserId: null,
+      displayMessage: false,
+      message: ''
     };
   },
   methods: {
@@ -66,6 +80,31 @@ export default {
           }
         })
       }
+    },
+    removeModerator(){
+      if(this.selectedUserId==null){
+        this.message = "Please select a user"
+        this.displayMessage = true;
+      }
+      if(this.$store.state.moderatorsForForum.length==1){
+        this.message = "Forums must have at least one moderator"
+        this.displayMessage = true;
+      }
+      else{
+        let moderatorToDelete = {
+          moderatorId : this.selectedUserId,
+          forumId: this.$route.params.id
+        }
+        moderatorsService.removeModerator(moderatorToDelete).then((response)=>{
+          if(response.status==204){
+            this.$store.commit("REMOVE_MODERATOR", this.selectedUserId);
+            this.selectedUserId=null;
+            this.message='Moderator removed.'
+            this.displayMessage = true;
+          }
+        })
+
+      }
     }
   },
   computed: {
@@ -73,7 +112,7 @@ export default {
       if(this.$store.state.token == ''){
         return false;
       }
-      if(this.$store.state.user.authorities[0].name == "ROLE_ADMIN"){
+      if(this.isAdmin){
         return true;
       }
       for (let i = 0; i < this.$store.state.moderatorsForForum.length; i++) {

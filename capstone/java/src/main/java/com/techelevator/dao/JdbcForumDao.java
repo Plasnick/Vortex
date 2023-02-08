@@ -80,10 +80,10 @@ public class JdbcForumDao implements ForumDao {
     @Override
     public List<Forum> findTopFive() {
 
-        String sql = "SELECT forum.forum_id, forum.name, forum.description, forum.rules FROM forum\n" +
-                "JOIN post ON forum.forum_id = post.forum_id\n" +
-                "GROUP BY forum.forum_id, post.posted_at\n" +
-                "ORDER BY post.posted_at\n" +
+        String sql = "SELECT MAX(post.posted_at), forum.forum_id, name, description, rules FROM forum " +
+                "JOIN post ON post.forum_id = forum.forum_id " +
+                "GROUP BY forum.forum_id " +
+                "ORDER BY MAX(post.posted_at) DESC " +
                 "LIMIT 5;";
         List<Forum> forumList = new ArrayList<>();
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
