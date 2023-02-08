@@ -20,7 +20,7 @@ public class JdbcInteractionDao implements InteractionDao{
     @Override
     public List<Interaction> getInteractionsByUserId(int id) {
         List<Interaction> interactions = new ArrayList<>();
-        String sql = "SELECT user_id, post_id FROM interaction WHERE user_id = ?;";
+        String sql = "SELECT user_id, post_id, up_down FROM interaction WHERE user_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
         while (results.next()){
             interactions.add(mapRowToInteraction(results));
@@ -30,8 +30,8 @@ public class JdbcInteractionDao implements InteractionDao{
 
     @Override
     public void createInteraction(Interaction interaction) {
-        String sql = "INSERT INTO interaction (user_id, post_id) VALUES (?, ?);";
-        jdbcTemplate.update(sql, interaction.getUserId(), interaction.getPostId());
+        String sql = "INSERT INTO interaction (user_id, post_id, up_down) VALUES (?, ?, ?);";
+        jdbcTemplate.update(sql, interaction.getUserId(), interaction.getPostId(), interaction.isUpOrDown());
     }
 
     @Override
@@ -45,6 +45,7 @@ public class JdbcInteractionDao implements InteractionDao{
         Interaction interaction = new Interaction();
         interaction.setUserId(rowSet.getInt("user_id"));
         interaction.setPostId(rowSet.getInt("post_id"));
+        interaction.setUpOrDown(rowSet.getBoolean("up_down"));
         return interaction;
     }
 }
