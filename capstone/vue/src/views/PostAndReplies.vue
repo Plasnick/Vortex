@@ -17,7 +17,9 @@ export default {
   name: "post-and-replies",
   data() {
     return {
-      posts: [],
+      posts: [{
+        forumId: null
+      }],
       forum: {}
     };
   },
@@ -44,7 +46,7 @@ export default {
       if(confirm("Are you sure you want to delete this post?")){
         postsService.deletePost(this.$route.params.id).then((response) =>{
           if(response.status === 204){
-            this.$router.push({name: 'home'})
+            this.$router.push({name: 'forum', params:{id:this.posts[0].forumId}})
           }
         })
       }

@@ -66,6 +66,7 @@ CREATE TABLE favorite (
 CREATE TABLE interaction (
     user_id int NOT NULL,
     post_id int NOT NULL,
+    up_down boolean NOT NULL,
     CONSTRAINT FK_interaction_user FOREIGN KEY (user_id) REFERENCES users (user_id),
     CONSTRAINT FK_interaction_post FOREIGN KEY (post_id) REFERENCES post (post_id)
 );
