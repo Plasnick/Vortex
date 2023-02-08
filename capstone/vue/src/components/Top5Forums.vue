@@ -37,7 +37,6 @@ created() {
 nav a {  
   display: flex;
   align-items: center;
-  padding: 10px;
   width: 100%;
   text-align: left;
   text-decoration: none;
@@ -47,6 +46,7 @@ nav a {
  nav a:hover {
   background-color: #1489b417;
   width: 100%;
+  padding:2px
 } 
 h3 {
   margin: 0;

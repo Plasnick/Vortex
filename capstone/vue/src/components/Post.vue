@@ -1,6 +1,9 @@
 <template>
   <div class="post-component">
+
+    <div class="sidebar">
     <div class="votes">
+
       <div v-if="!hasInteracted">
         <i class="fa-solid fa-arrow-up" v-on:click="upVote"></i>
         <span> {{ post.upVotes }} </span>
@@ -16,18 +19,22 @@
         <i class="fa-solid fa-rotate-left"></i>
       </button>
       </span>
+
     </div>
+    </div>
+
     <header class="header">
       <h3>v/<router-link class="forum-link" v-bind:to="{name:'forum', params:{id:post.forumId}}">{{forum.forumName}}</router-link></h3>
       <h3>by {{ post.username }} on {{ date }}</h3>
       <router-link class="title-link" v-bind:to="{name:'postAndReplies', params:{id: post.postId}}">
         <h2>{{ post.title }}</h2>
       </router-link>
-    </header>
     <div class="post-content">
       <p>{{ post.body }}</p>
       <img v-if="post.img_url" :src="post.img_url" alt="Post Image" />
     </div>
+    </header>
+
   </div>
 </template>    
 
@@ -144,22 +151,71 @@ export default {
 
 <style scoped>
 .post-component {
-  background-color: #f8f8f8;
+  display: flex;
   border: 1px solid #e5e5e5;
+  background-color: #f8f8f8;
   border-radius: 4px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  display: flex;
-  flex-direction: column;
-  width: 50%;
+  width: 100%;
   margin: 20px auto;
-  padding: 10px;
-  position: relative;
-  padding-left: 20px;
+  padding: 10px;  
+  flex-direction: row;
+  margin-top: 130px;
+}
+.post-content img {
+  max-width: 100%;
+}
+.sidebar {
+  width: 5%;
+  text-align: center;
+}
+.votes {
+  padding: 20px;
 }
 .header {
-  display: flex;
-  flex-direction: column;
+  padding: 20px;
+  width: 100%;
 }
+.post-content {
+  padding: 20px;
+}
+.post-content p {
+  color: #333;
+  font-size: 14px;
+  margin: 0;
+}
+
+.fa-solid {
+  font-size: 25px;
+  cursor: pointer;
+  margin-right: 1px;
+}
+.fa-rotate-left {
+  font-size: 20px;
+  cursor: pointer;
+}
+.fa-arrow-up,
+.fa-arrow-down {
+  color: #23468a;
+  margin-right: 100%;
+}
+.fa-arrow-up:hover,
+.fa-arrow-down:hover, 
+.fa-rotate-left:hover {
+  color: #1096c8;
+}
+h3 {
+  color: #23468a;
+}
+button {
+  color: #23468a;
+  border: none;
+  cursor: pointer;
+  margin-left: 0.2rem;
+  font-size: 1rem;
+  width: 25px;
+}
+
 .title-link {
   color: #333;
   text-decoration: none;
@@ -173,74 +229,14 @@ export default {
   color: #23468a;
   font-size: 14px;
   text-decoration: none;
+
 }
+.title-link:hover {
+  text-decoration: underline;
+}
+
 .forum-link:hover {
   text-decoration: underline;
-  }
-.title-link:hover{
-  text-decoration: underline;
-}
-
-.post-content {
-  margin-top: 15px;
-}
-.post-content p {
-  color: #333;
-  font-size: 14px;
-  margin: 0;
-}
-
-.post-content img {
-  max-width: 100%;
-}
-
-.fa-solid {
-  cursor: pointer;
-  margin-right: 10px;
-}
-.fa-arrow-up{
-  color: #23468A;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  
-} 
-.fa-arrow-down {
-  color: #23468A;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  padding: 40px;
-}
-
-.fa-arrow-up:hover,
-.fa-arrow-down:hover, 
-.fa-rotate-left:hover {
-  color: #1096c8;
-}
-
-h3 {
-  color: #23468a;
-}
-button {
-  
-  color: #23468a;
-  border: none;
-  cursor: pointer;
-  margin-left: 0.2rem;
-  font-size: 1rem;
-  width: 25px;
-}
-.post .arrow {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
 }
 
 </style>
