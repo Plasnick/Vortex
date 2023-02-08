@@ -60,7 +60,7 @@ export default {
       forum: [],
       moderators: [],
       isSortedByDate: true,
-      isAdmin: this.$store.state.user.authorities[0].name ==='ROLE_ADMIN',
+      isAdmin: this.$store.state.token==''? false:this.$store.state.user.authorities[0].name=='ROLE_ADMIN',
       selectedUserId: null,
       displayMessage: false,
       message: ''
