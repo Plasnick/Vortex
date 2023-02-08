@@ -4,6 +4,7 @@ import com.techelevator.dao.ForumDao;
 import com.techelevator.model.Forum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,6 +25,7 @@ public class ForumController {
     @GetMapping("/forum/{id}")
     public Forum getForumById(@PathVariable int id){return forumDao.findForumById(id);}
 
+    @PreAuthorize("isAuthenticated()")
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/forum", method = RequestMethod.POST)
     public Forum createForum(@RequestBody Forum forum){

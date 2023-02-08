@@ -43,6 +43,7 @@ public class PostController {
         postDao.createPost(post);
     }
 
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping( path = "/posts/{id}", method = RequestMethod.PUT)
     public void updatePost(@PathVariable int id,
                            @RequestBody Post post){

@@ -47,6 +47,12 @@ public class JdbcModeratorDao implements ModeratorDao{
         jdbcTemplate.update(sql, moderator.getModeratorId(), moderator.getForumId());
     }
 
+    @Override
+    public void removeModerator(Moderator moderator) {
+        String sql = "DELETE FROM moderator WHERE moderator_id = ? AND forum_id = ?";
+        jdbcTemplate.update(sql, moderator.getModeratorId(), moderator.getForumId());
+    }
+
     private Moderator mapRowToModerator(SqlRowSet rowSet){
         Moderator moderator = new Moderator();
         moderator.setModeratorId(rowSet.getInt("moderator_id"));

@@ -52,6 +52,7 @@ header {
   top: 0;
   z-index: 1;
   background-color: white;
+  
 }
  .search-forum-container{
   width: 60%;
