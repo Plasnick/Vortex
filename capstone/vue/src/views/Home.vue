@@ -1,19 +1,25 @@
 <template>
   <div class="home">
     <div class="body">
-      <post v-for="post in $store.state.posts" v-bind:key="post.postId" v-bind:post="post" />
-    </div>
-    <aside>
-      <router-link
-        v-bind:to="{ name: 'createForum' }"
-        v-if="$store.state.token != ''"
-        >Create Forum</router-link
-      >
-      <top-5-forums />
-      <div v-show="$store.state.token != ''">
+      <section id="sidebar">
+        <top-5-forums /> 
         <favorite-forums />
-      </div>
-    </aside>
+      </section>
+      <section id="content">
+          <div class="header-nav">
+            <div class="nav">
+              <div class="aside-header">
+                <router-link v-bind:to="{ name: 'createForum' }" v-if="$store.state.token != ''">Create Forum</router-link>
+              </div>
+            </div>
+          </div>
+        <div class="content">
+          <div class="posts-container">
+            <post v-for="post in $store.state.posts" v-bind:key="post.postId" v-bind:post="post" />
+          </div>
+        </div>
+      </section>
+    </div>
   </div>
 </template>
 
@@ -65,16 +71,28 @@ export default {
 </script>
 
 <style scoped>
-  .home{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-areas: "sidebar body body body";
-    grid-gap: 20px;
-    margin-top: 20px;
-    
-  }
-  .body{
-    grid-area: body;
-  }
+#sidebar {
+  overflow: hidden;
+  width: 210px;
+  height: 100%;
+  float: left;
+  position: sticky;
+  top: 0;  
+  border-right: 1px solid #D4D4D4;
+  box-shadow: 4px 0px 4px -4px rgb(240, 240, 240);
+
+}
+
+#header-nav {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 2;
+  width: calc(100% - 210px);
+  padding: 10px;
+  box-shadow: 0 4px 4px -4px rgb(240, 240, 240);
+}
+
+
 
 </style>

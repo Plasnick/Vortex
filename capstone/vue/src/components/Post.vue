@@ -1,19 +1,6 @@
 <template>
   <div class="post-component">
-    <header class="header">
-      <h3>v/<router-link class="forum-link" v-bind:to="{name:'forum', params:{id:post.forumId}}">{{forum.forumName}}</router-link></h3>
-      <router-link class="title-link" v-bind:to="{name:'postAndReplies', params:{id: post.postId}}">
-      <h2>{{ post.title }}</h2>
-      </router-link>
-      
-    </header>
-    <div class="post-content">
-      
-      <p>{{ post.body }}</p>
-       <img v-if="post.img_url" :src="post.img_url" alt="Post Image" />
-      
-      
-    </div>
+    <div class="votes">
       <div v-if="!hasInteracted">
         <i class="fa-solid fa-arrow-up" v-on:click="upVote"></i>
         <span> {{ post.upVotes }} </span>
@@ -21,20 +8,33 @@
         <span> {{ post.downVotes }} </span>
       </div>
       <span v-else>
-        <i class="fa-solid fa-arrow-up" ></i>
+        <i class="fa-solid fa-arrow-up"></i>
         <span> {{ post.upVotes }} </span>
-        <i class="fa-solid fa-arrow-down" ></i>
+        <i class="fa-solid fa-arrow-down"></i>
         <span> {{ post.downVotes }} We got your vote!</span>
       </span>
+    </div>
+    <header class="header">
+      <h3>v/<router-link class="forum-link" v-bind:to="{name:'forum', params:{id:post.forumId}}">{{forum.forumName}}</router-link></h3>
       <h3>by {{ post.username }} on {{ date }}</h3>
+      <router-link class="title-link" v-bind:to="{name:'postAndReplies', params:{id: post.postId}}">
+        <h2>{{ post.title }}</h2>
+      </router-link>
+    </header>
+    <div class="post-content">
+      <p>{{ post.body }}</p>
+      <img v-if="post.img_url" :src="post.img_url" alt="Post Image" />
+    </div>
+  </div>
+</template>
+
       <!-- need to get the Username from the userId. Maybe change the sql statement 
       to join the user table and select the name-->
      
       
       
     
-  </div>
-</template>
+ 
 
 <script>
 import postsService from "../services/PostsService";
@@ -127,6 +127,8 @@ export default {
   width: 50%;
   margin: 20px auto;
   padding: 10px;
+  position: relative;
+  padding-left: 20px;
 }
  .header {
   display: flex;
@@ -167,8 +169,23 @@ export default {
   cursor: pointer;
   margin-right: 10px;
 }
-.fa-arrow-up, .fa-arrow-down {
+.fa-arrow-up{
   color: #23468A;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  
+} 
+.fa-arrow-down {
+  color: #23468A;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  padding: 40px;
 }
 
 .fa-arrow-up:hover, .fa-arrow-down:hover {
@@ -178,6 +195,12 @@ export default {
 h3{
 color: #23468A;
 }
-
+.post .arrow {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
 
 </style>

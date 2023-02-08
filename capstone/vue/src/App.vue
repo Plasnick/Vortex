@@ -8,10 +8,14 @@
       <div class="search-forum-container">
         <search-forums />
       </div>
-      <div class="links-container">
+      <div class="header-btns">
         <router-link v-bind:to="{ name: 'home' }"></router-link>&nbsp;|&nbsp;
-        <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
-        <router-link v-bind:to="{ name: 'login'}" v-else>Login</router-link>&nbsp;|&nbsp;
+        <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">
+          <button class="btn header-button" id="logout-button">Logout</button>
+          </router-link>
+        <router-link v-bind:to="{ name: 'login'}" v-else>
+          <button class="btn header-button" id="login-button">Login</button>
+        </router-link>&nbsp;|&nbsp;
         <router-link v-bind:to="{ name: 'forumSearch'}"></router-link>
       </div>
       </header>
@@ -28,19 +32,23 @@ export default{
 }
 </script>
 <style scoped>
+
+
 header {
+  position: sticky;
+  top: 0;
   width: 100%;
-  border: none;
   border-bottom: 1px solid #D4D4D4;
-  /* padding: 20px; */
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0px 3px 7px -8px rgba(0,0,0,0.31);
+
 }
  
 .search-forum-container{
   width: 60%;
-   display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -61,6 +69,27 @@ header {
   margin: 0 10px;
   text-decoration: none;
   color: #23468A;
+}
+.header-button{
+  margin-right: 0.5rem;
+}
+
+.btn{
+  border-radius: 13px;
+  width: 105px;
+  border: none;
+  padding: 7px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#login-button{
+  background-color: #23468A;
+  color: #eee;
+}
+
+#login-button:hover {
+  background-color: #1483d6;
 }
 </style>
 
