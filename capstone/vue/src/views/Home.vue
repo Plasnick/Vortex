@@ -65,9 +65,9 @@ export default {
 
 <style >
    .home{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr ;
-    grid-template-areas: "aside posts div.post-component";
+      display: grid;
+    grid-template-columns: 2fr 8fr;
+    grid-template-areas: "aside posts ";
     grid-gap: 20px;
     margin-top: 20px;
     
@@ -78,6 +78,7 @@ export default {
 
 
   aside{
+    grid-area: aside;
     position: fixed;
     margin-top: 100px;
     top: 0;

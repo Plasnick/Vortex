@@ -173,8 +173,9 @@ export default {
   padding: 20px;
 }
 .header {
-  padding: 20px;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+
 }
 .post-content {
   padding: 20px;
