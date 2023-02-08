@@ -34,8 +34,13 @@ public class JdbcPostDao implements PostDao{
     @Override
     public List<Post> getPostsByTitleKeyword(String keyword){
         List<Post> postsByTitleKeyword = new ArrayList<>();
-        String sql = "SELECT * FROM post WHERE title like '%?%';";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, keyword);
+        String searchWord;
+        searchWord = "%" + keyword + "%";
+        String sql = "SELECT post.post_id, post.user_id, forum_id, title, body, img_url, posted_at, up_votes, down_votes, up_votes - down_votes AS score, username " +
+                "FROM post " +
+                "JOIN users ON post.user_id = users.user_id " +
+                "WHERE title like ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, searchWord);
         while (results.next()){
             postsByTitleKeyword.add(mapRowToPost(results));
         }

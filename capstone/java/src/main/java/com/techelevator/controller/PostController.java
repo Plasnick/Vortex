@@ -26,7 +26,7 @@ public class PostController {
 
     // consider ? param for narrowing search results
     @GetMapping("/posts/titleSearch/{keyword}")
-    public List<Post> searchByTitleResults(@RequestBody String keyword){
+    public List<Post> searchByTitleResults(@PathVariable String keyword){
         return postDao.getPostsByTitleKeyword(keyword);
     }
 
