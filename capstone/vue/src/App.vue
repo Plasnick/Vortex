@@ -34,12 +34,10 @@
 </template>
 
 <script>
-// import SearchForums from './components/SearchForums.vue';
 import SearchBar from "./components/SearchBar.vue";
 
 export default{
   components: {
-    // SearchForums,
     SearchBar,
   }
 }
@@ -126,3 +124,6 @@ body{
   font-family: 'Cabin';
 }
 </style>
+
+
+
