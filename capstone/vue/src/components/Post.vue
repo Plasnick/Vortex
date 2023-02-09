@@ -6,15 +6,17 @@
    <div class="post-content">
     <header class="header">
       <h3>v/<router-link class="forum-link" v-bind:to="{name:'forum', params:{id:post.forumId}}">{{forum.forumName}}</router-link></h3>
-      <h3>by {{ post.username }} on {{ date }}</h3>
+      
       <router-link class="title-link" v-bind:to="{name:'postAndReplies', params:{id: post.postId}}">
         <h2>{{ post.title }}</h2>
       </router-link>
    
-      <p>{{ post.body }}</p>
+      <p id="post-body">{{ post.body }}</p>
       <div class="image-container">
       <img v-if="post.img_url" :src="post.img_url" alt="Post Image" />
+      
       </div>
+      <p id="user">by {{ post.username }} on {{ date }}</p>
       </header>
       <div class="votes">
       <div v-if="!hasInteracted">
@@ -208,6 +210,7 @@ export default {
 .fa-rotate-left {
   font-size: 20px;
   margin-left:3px;
+  color: #23468a;
 }
 .fa-arrow-up,
 .fa-arrow-down {
@@ -250,6 +253,12 @@ button {
 
 .forum-link:hover {
   text-decoration: underline;
+}
+#post-body{
+  padding-top: 5px;
+}
+#user{
+  padding-bottom: 5px;
 }
 
 </style>

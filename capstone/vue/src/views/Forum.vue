@@ -18,13 +18,16 @@
     </span>
     <span v-if="isAdmin">
       <p>Remove a moderator?</p>
+      <label for="moderator-select">Select a user: </label>
       <select id="moderator-select" v-model="selectedUserId">
         <option v-for="moderator in $store.state.moderatorsForForum" v-bind:key="moderator.moderatorId" v-bind:value="moderator.moderatorId">
           {{moderator.username}}
         </option>
       </select>
+      <div class="remove-mod-button">
       <button v-on:click="removeModerator" >Remove Moderator</button>
-      <span id = "message" v-show="displayMessage"> {{message}}</span>
+      <p id = "message" v-show="displayMessage"> {{message}}</p>
+      </div>
     </span>
     <h3>Description:</h3>
     <p>{{ forum.description }}</p>
@@ -176,5 +179,10 @@ align-items: center;
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+.remove-mod-button{
+  margin-bottom: 8px;
+}
+
 
 </style>

@@ -47,8 +47,8 @@ nav a {
 
 nav a:hover {
   background-color: #1489b417;
-  width: 100%;
-  padding:2px
+  width: 90%;
+  
 
 }
 
