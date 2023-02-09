@@ -1,3 +1,6 @@
+
+
+
 <template>
   <div class="home">
     <div class="posts">
@@ -19,8 +22,6 @@
         <h3>Create an account to follow your favorite communities and start taking part in conversations. </h3>
         <router-link :to="{ name: 'register' }"><button class="join-vortex" id="buttons">Join Vortex</button></router-link>
       </div>
-      <!-- <h3>Create an account to follow your favorite communities and start taking part in conversations. </h3>
-        <router-link :to="{ name: 'register' }"><button class="join-vortex" id="buttons">Join Vortex</button></router-link> -->
     </aside>
     </div>
 
@@ -137,6 +138,7 @@ background-color: #fcfcfc;
 width: 18%;
 box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.05);
 }
+
 .join-vortex{
   border-radius: 13px;
   width: 105px;
@@ -170,3 +172,11 @@ box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.05);
   
 }
 </style>
+
+
+
+
+
+
+
+
