@@ -1,6 +1,5 @@
 <template>
   <div>
-    test text
     <form @submit.prevent="search">
       <input type="text" v-model="query" placeholder="Search Vortex For" />
       <select v-model="selectedSearchOption" class="dropdown-input">
