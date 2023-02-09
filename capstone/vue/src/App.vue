@@ -9,7 +9,7 @@
         </router-link>
 
       <div class="search-forum-container">
-        <search-forums />
+        <search-bar />
       </div>
 
        <div class="header-btns">
@@ -34,10 +34,13 @@
 </template>
 
 <script>
-import SearchForums from './components/SearchForums.vue'
+// import SearchForums from './components/SearchForums.vue';
+import SearchBar from "./components/SearchBar.vue";
+
 export default{
   components: {
-    SearchForums,
+    // SearchForums,
+    SearchBar,
   }
 }
 </script>

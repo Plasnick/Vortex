@@ -27,6 +27,9 @@ export default {
     },
     getForumPostsPopularity(id){
         return axios.get(`forum/${id}/posts/popularity`)
+    },
+    searchTitleandBodyByKeyword(keyword){
+        return axios.get(`/posts/search/${keyword}`)
     }
 
 

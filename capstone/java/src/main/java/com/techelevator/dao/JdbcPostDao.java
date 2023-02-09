@@ -31,10 +31,25 @@ public class JdbcPostDao implements PostDao{
         return postsByForum;
     }
 
-//    @Override
-//    public List<Post> getPostsByTitleKeyword(String keyword){
-//
-//    }
+    @Override
+    public List<Post> getPostsByKeyword(String keyword){
+        List<Post> postsByTitleKeyword = new ArrayList<>();
+        String searchWord1;
+        String searchWord2;
+        String searchWord3;
+        searchWord1 = "% " + keyword + " %";
+        searchWord2 = "% " + keyword;
+        searchWord3 = "" + keyword + " %";
+        String sql = "SELECT post.post_id, post.user_id, forum_id, title, body, img_url, posted_at, up_votes, down_votes, up_votes - down_votes AS score, username " +
+                "FROM post " +
+                "JOIN users ON post.user_id = users.user_id " +
+                " WHERE title ILIKE ? OR title ILIKE ? OR title ILIKE ? OR body ILIKE ? OR body ILIKE ? OR body ILIKE ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, searchWord1, searchWord2, searchWord3, searchWord1, searchWord2, searchWord3);
+        while (results.next()){
+            postsByTitleKeyword.add(mapRowToPost(results));
+        }
+        return postsByTitleKeyword;
+    }
 
     @Override
     public List<Post> getTop10Posts() {
