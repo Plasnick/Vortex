@@ -18,7 +18,8 @@ export default {
   data() {
     return {
       posts: [{
-        forumId: null
+        forumId: null,
+        userId: null
       }],
       forum: {}
     };
@@ -28,7 +29,7 @@ export default {
       if(this.$store.state.token == ''){
         return false;
       }
-      if(this.$store.state.user.authorities[0].name == "ROLE_ADMIN"){
+      if(this.$store.state.user.authorities[0].name == "ROLE_ADMIN" || this.$store.state.user.id == this.posts[0].userId){
         return true;
       }
       for(let i=0; i <this.$store.state.forumsModerated.length; i++){

@@ -13,6 +13,7 @@ import PostAndReplies from '../views/PostAndReplies.vue'
 import SearchResultPage from '../views/SearchResultPage.vue'
 
 import SearchBarTest from '../views/searchbartest.vue'
+import Account from '../views/Account.vue'
 
 
 
@@ -121,7 +122,16 @@ const router = new Router({
       meta:{
         requiresAuth: false
       }
+    },
+    {
+      path: "/account",
+      name: "account",
+      component: Account,
+      meta:{
+        requiresAuth: true
+      }
     }
+
 
   ]
 })
