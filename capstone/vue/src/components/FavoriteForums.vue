@@ -1,6 +1,6 @@
 <template>
   <div class="favorite-forums">
-    <h3>Your favorite Forums:</h3>
+    <h3>Favorite Forums</h3>
     <nav>
         <router-link v-for="forum in favoriteForums" v-bind:key="forum.id" v-bind:to="{ name: 'forum', params: { id: forum.id } }">{{
           forum.forumName
@@ -34,12 +34,7 @@ export default {
 </script>
 
 <style >
-.favorite-forums {
-  background-color: #f8f7f7;
-  padding: 20px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);  
-  height: 60vh;
-}
+
 nav a {  
   display: flex;
   align-items: center;
@@ -50,18 +45,12 @@ nav a {
   color: black;
 }
 
-nav {
-  display: flex;
-  flex-direction: column;
-  background-color: #f8f7f7;
-  width: 100%;
-  padding: 10px;
-}
 nav a:hover {
-  background-color: #e0e0e0;
+  background-color: #1489b417;
   width: 100%;
-}
+  padding:2px
 
+}
 
 h3 {
   margin: 0;
