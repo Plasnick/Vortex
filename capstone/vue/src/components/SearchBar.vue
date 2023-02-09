@@ -24,7 +24,7 @@ export default {
   data() {
     return {
       query: "",
-      selectedSearchOption: "",
+      selectedSearchOption: {text: 'Posts', value: 'searchForPosts'},
       searchOptions: [
         {text: 'Forums', value: 'searchForForums'}, 
         {text: 'Posts', value: 'searchForPosts'}

@@ -6,7 +6,7 @@
           <img src="/vortex.png" alt="logo" class="logo"/>
         </router-link>
       <div class="search-forum-container">
-        <search-forums />
+        <search-bar />
       </div>
       <div class="links-container">
         <router-link v-bind:to="{ name: 'home' }"></router-link>&nbsp;|&nbsp;
@@ -20,10 +20,13 @@
   </div>
 </template>
 <script>
-import SearchForums from './components/SearchForums.vue'
+// import SearchForums from './components/SearchForums.vue';
+import SearchBar from "./components/SearchBar.vue";
+
 export default{
   components: {
-    SearchForums,
+    // SearchForums,
+    SearchBar,
   }
 }
 </script>
