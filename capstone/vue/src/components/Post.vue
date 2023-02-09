@@ -1,3 +1,4 @@
+
 <template>
   <div class="post-component">
 
@@ -206,12 +207,14 @@ export default {
   font-size: 25px;
 }
 .fa-rotate-left {
-  font-size: 20px;
+  font-size: 17px;
   margin-left:3px;
+  color: #23468a;
 }
 .fa-arrow-up,
 .fa-arrow-down {
   color: #23468a;
+  font-size: 17px;
 }
 .fa-arrow-up:hover,
 .fa-arrow-down:hover, 
@@ -253,3 +256,6 @@ button {
 }
 
 </style>
+
+
+
