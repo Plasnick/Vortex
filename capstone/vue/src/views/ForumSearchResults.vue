@@ -1,11 +1,7 @@
 <template>
   <div>Search Forums
-
       <search-forums />
   </div>
-
-    
-  
 </template>
 
 <script>

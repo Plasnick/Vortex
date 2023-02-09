@@ -64,9 +64,5 @@ input[type="text"]{
 input::placeholder {
   color: #23468A;
 }
-.suggestions {
-  background-color: rgb(224, 219, 219);
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.616);
-  padding: 8px;
-}
+
 </style>
