@@ -19,7 +19,7 @@
 
         <router-link v-bind:to="{ name: 'login'}" v-else>
           <button class="btn header-button" id="login-button">Log In</button>
-        </router-link>&nbsp;&nbsp;
+        </router-link>&nbsp;&nbsp;&nbsp;&nbsp;
         <router-link v-bind:to="{ name: 'account'}" v-show="$store.state.token !=''">
           <i class="fa-solid fa-user"></i>
         </router-link>
