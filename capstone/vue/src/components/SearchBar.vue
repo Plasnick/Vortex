@@ -1,19 +1,21 @@
 <template>
   <div>
-    test text
+    <div class="container">
     <form @submit.prevent="search">
       <input type="text" v-model="query" placeholder="Search Vortex For" />
+      <div class="select-bar">
       <select v-model="selectedSearchOption" class="dropdown-input">
         <option
           v-for="(options, key) in searchOptions"
           :key="key"
-          :value="options"
-        >
+          :value="options">
           {{ options.text }}
         </option>
       </select>
+      </div>
       <button type="submit">Search</button>
     </form>
+    </div>
   </div>
 </template>
 
@@ -45,27 +47,24 @@ export default {
 </script>
 
 <style scoped>
-.search-forum{
-    display: flex;
-    flex-direction: column;
-    border-radius: 20px;
-    border: 1px solid lightgrey;
-    padding: 10px 20px;
-    outline-style: none;
-    background-color: #EDEDED;
-    width:60%;    
-}
+
 input[type="text"]{
     border: none;
     outline: none;
-    background-color: #EDEDED;
+    background-color: #ececec;
+    margin-right: 130px;
+    margin-bottom: 20px;
+    flex-direction: row;
 }
 input::placeholder {
   color: #23468A;
-}
-.suggestions {
-  background-color: rgb(224, 219, 219);
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.616);
-  padding: 8px;
-}
+  display: flex;
+  flex-direction: row;
+  outline-style: none;
+  background-color: #EDEDED;
+  }
+    .select-bar {
+    background-color: #EDEDED;
+  }
+
 </style>
