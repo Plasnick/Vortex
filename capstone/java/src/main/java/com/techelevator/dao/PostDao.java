@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface PostDao {
     List<Post> getPostsByForum(int forumId);
-    //List<Post> getPostsByTitleKeyword(String keyword);
+    List<Post> getPostsByKeyword(String keyword);
     List<Post> getTop10Posts();
     Post getPostById(int id);
     void createPost(Post post);

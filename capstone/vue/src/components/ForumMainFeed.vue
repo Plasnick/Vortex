@@ -10,7 +10,7 @@
 
 <script>
 import PostsService from "../services/PostsService";
-import Post from "../components/Post.vue"
+import Post from "../components/Post.vue";
 import interactionsService from "../services/InteractionsService"
 
 export default {

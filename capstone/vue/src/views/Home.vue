@@ -18,6 +18,7 @@
 </template>
 
 <script>
+
 import Top5Forums from "../components/Top5Forums.vue";
 import Post from "../components/Post.vue";
 import postsService from "../services/PostsService";
