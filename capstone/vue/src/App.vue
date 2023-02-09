@@ -125,4 +125,18 @@ i{
 body{
   font-family: 'Cabin';
 }
+button{
+  background-color: #23468A;
+  color: #f3f3f3;
+  border-radius: 13px;
+  width: 115px;
+  border: none;
+  padding: 7px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover{
+  background-color: #1483d6;
+}
 </style>
