@@ -1,5 +1,6 @@
 <template>
   <div class="forum-details">
+    <aside class = "left-aside">
     <h2>{{ forum.forumName }} <favorite-checkbox v-bind:forum="forum" /></h2>
     
     <h3>Moderated by:</h3>
@@ -31,13 +32,20 @@
     <p>{{ forum.rules }}</p>
     <router-link v-bind:to="{ name: 'newPost', params: { id: forum.id } }"
       >CREATE A POST</router-link>
-      <label for="order-posts">Sort by: </label>
-        <select id="order-posts" v-on:change="handleChange">
-          <option value="date" selected>Date</option>
-          <option value="popularity">Popularity</option>
-        </select>
       
-    <forum-main-feed />
+  </aside>
+  <div class="feed">
+    <div class="sorting">
+      <label for="order-posts">Sort by: </label>
+      <select id="order-posts" v-on:change="handleChange">
+        <option value="date" selected>Date</option>
+        <option value="popularity">Popularity</option>
+      </select>
+    </div>
+    <forum-main-feed class="posts" id="feed-posts" />
+  </div>
+      
+    
   </div>
 </template>
 
@@ -141,5 +149,31 @@ export default {
 </script>
 
 <style>
+.forum-details{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "left-aside posts posts";
+  grid-gap: 20px; 
+  margin-top: 100px;  
+  background-color: #fcfcfc;  
+}
+
+
+.feed{
+grid-area: posts;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+#feed-posts{
+  margin-right: 25vh;
+}
+
+.sorting{
+  margin-right: 25vh;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 
 </style>

@@ -60,6 +60,7 @@ header {
   background-color: #fcfcfc;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   
+  
 }
  .search-container{
   border: 1px solid #d8d8d8;
@@ -114,6 +115,9 @@ header {
 
 #login-button:hover {
   background-color: #1483d6;
+}
+i{
+  color: #23468A;
 }
 </style>
 

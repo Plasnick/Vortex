@@ -1,6 +1,9 @@
 <template>
   <div>
+<<<<<<< HEAD
     <div class="container">
+=======
+>>>>>>> main
     <form @submit.prevent="search">
       <input type="text" v-model="query" placeholder="Search Vortex For" />
       <div class="select-bar">
@@ -20,29 +23,40 @@
 </template>
 
 <script>
-
 export default {
   name: "search-bar",
   data() {
     return {
       query: "",
-      selectedSearchOption: {text: 'Posts', value: 'searchForPosts'},
+      selectedSearchOption: { text: "Posts", value: "searchForPosts" },
       searchOptions: [
-        {text: 'Forums', value: 'searchForForums'}, 
-        {text: 'Posts', value: 'searchForPosts'}
+        { text: "Forums", value: "searchForForums" },
+        { text: "Posts", value: "searchForPosts" },
       ],
     };
   },
 
   methods: {
     search() {
-      this.$router.push({
-        name: 'search',
-        params: { query: this.query, option: this.selectedSearchOption.value}
-      })
-    }
-
-  }
+      if (this.$route.name === "search") {
+        this.$router.replace({
+          params: {
+            query: this.query,
+            option: this.selectedSearchOption.value,
+          }
+        });
+        location.reload();
+      } else {
+        this.$router.push({
+          name: "search",
+          params: {
+            query: this.query,
+            option: this.selectedSearchOption.value,
+          },
+        });
+      }
+    },
+  },
 };
 </script>
 
