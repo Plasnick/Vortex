@@ -1,39 +1,42 @@
 <template>
   <div class="post-component">
-    <div >
+
+    
+  
+   <div class="post-content">
     <header class="header">
       <h3>v/<router-link class="forum-link" v-bind:to="{name:'forum', params:{id:post.forumId}}">{{forum.forumName}}</router-link></h3>
       <h3>by {{ post.username }} on {{ date }}</h3>
       <router-link class="title-link" v-bind:to="{name:'postAndReplies', params:{id: post.postId}}">
         <h2>{{ post.title }}</h2>
       </router-link>
-    </header>
-    </div>
-    <div class="post-content">
+    
       <p>{{ post.body }}</p>
       <div class="image-container">
       <img v-if="post.img_url" :src="post.img_url" alt="Post Image" />
       </div>
-    </div>
-    <div class="status-message error" v-show="errorMsg !== ''">
-        {{ errorMsg }}
-      </div>
-    <div v-if="!hasInteracted">
-      <i class="fa-solid fa-arrow-up" v-on:click="upVote"></i>
-      <span> {{ post.upVotes }} </span>
-      <i class="fa-solid fa-arrow-down" v-on:click="downVote"></i>
-      <span> {{ post.downVotes }} </span>
-    </div>
-    <span v-else>
-      <i class="fa-solid fa-arrow-up"></i>
-      <span> {{ post.upVotes }} </span>
-      <i class="fa-solid fa-arrow-down"></i>
-      <span> {{ post.downVotes }} </span>
-      <button @click="deleteInteraction">
+      </header>
+      <div class="votes">
+      <div v-if="!hasInteracted">
+        <i class="fa-solid fa-arrow-up" v-on:click="upVote"></i>
+        <span> {{ post.upVotes }} </span>
+        <i class="fa-solid fa-arrow-down" v-on:click="downVote"></i>
+        <span> {{ post.downVotes }} </span>
+         </div>
+         <div v-else>
+        <i class="fa-solid fa-arrow-up"></i>
+        <span> {{ post.upVotes }} </span>
+        <i class="fa-solid fa-arrow-down"></i>
+        <span> {{ post.downVotes }} </span> 
+        <span @click="deleteInteraction">
         <i class="fa-solid fa-rotate-left"></i>
-      </button>
-    </span>
-    <h3>by {{ post.username }} on {{ this.date }}</h3>
+      </span>
+      </div>
+
+    </div>
+    </div>
+
+
   </div>
 </template>    
 
@@ -225,27 +228,22 @@ console.log(this.date);
  /* 
  */
 }
-  .image-container {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    margin-top: 20px;
-    margin-left: 50px;
+.image-container {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  margin-top: 20px;
+  margin-left: 50px;
   }
   
-  .image-container img {
-    width: 100%;
-    height: auto;
+.image-container img {
+  width: 100%;
+  height: auto;
   }
-.sidebar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 80px;
-}
+
 .votes {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
 }
 .votes i {
@@ -269,15 +267,14 @@ console.log(this.date);
 
 .fa-solid {
   font-size: 25px;
-  margin-right: 1px;
 }
 .fa-rotate-left {
   font-size: 20px;
+  margin-left:3px;
 }
 .fa-arrow-up,
 .fa-arrow-down {
   color: #23468a;
-  margin-right: 100%;
 }
 .fa-arrow-up:hover,
 .fa-arrow-down:hover, 

@@ -23,16 +23,18 @@
       v-for="reply in repliesByPost"
       v-bind:key="reply.commentId"
     >
-      <h4>User: {{ reply.username }} Posted On: {{ reply.postedAt }}</h4>
-
-      <p>{{ reply.body }}</p>
+      
     
       <div class="status-message error" v-show="errorMsgDelete !== ''">
         {{ errorMsgDelete }}
+      
+
+      <p>{{ reply.body }}</p>
+      <h4>from {{ reply.username }} on {{ reply.postedAt }}</h4>
+      
+      <button v-show="isModerator" v-on:click="deleteReply(reply)">Delete Reply</button>
       </div>
-      <button v-show="isModerator" v-on:click="deleteReply(reply)">
-        Delete Reply
-      </button>
+     
     </div>
   </div>
 </template>

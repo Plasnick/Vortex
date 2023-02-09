@@ -3,7 +3,7 @@
     <button v-show="isModerator" v-on:click="deletePost">Delete Post</button>
     <div class="status-message error" v-show="errorMsg !== ''">{{ errorMsg }}
       </div>
-    <post v-for="post in posts" v-bind:key="post.postId" v-bind:post="post" />
+    <post class="singular-post" v-for="post in posts" v-bind:key="post.postId" v-bind:post="post" />
     <replies-feed />
   </div>
 </template>
@@ -85,7 +85,11 @@ export default {
 </script>
 
 <style>
+.singular-post{
+  margin-top: 10px;
+}
 .post-and-replies {
+  margin-top: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;

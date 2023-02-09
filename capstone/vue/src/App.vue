@@ -8,7 +8,7 @@
           <img src="/vortex.png" alt="logo" class="logo"/>
         </router-link>
 
-      <div class="search-forum-container">
+      <div class="search-container">
         <search-bar />
       </div>
 
@@ -60,12 +60,22 @@ header {
   background-color: #fcfcfc;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   
+  
 }
- .search-forum-container{
-  width: 60%;
-  display: flex;
+ .search-container{
+  border: 1px solid #d8d8d8;
+  border-radius: 25px;
+  padding: 8px 20px;
+  width: 35%;
+  height: 25px;
   align-items: center;
   justify-content: center;
+  background-color: #ececec;
+  display: flex; 
+  justify-content: center;
+  flex-direction: column;
+  outline-style: none;
+    
 }
 
 .logo {
@@ -105,6 +115,9 @@ header {
 
 #login-button:hover {
   background-color: #1483d6;
+}
+i{
+  color: #23468A;
 }
 </style>
 
