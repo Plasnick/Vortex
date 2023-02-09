@@ -44,7 +44,7 @@ header {
   
 }
  
-.search-forum-container{
+.search-bar-container{
   width: 60%;
    display: flex;
   align-items: center;
