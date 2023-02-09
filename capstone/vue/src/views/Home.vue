@@ -4,11 +4,16 @@
 <template>
   <div class="home">
     <div class="posts">
+      <h2>Top 10 Posts Today</h2>
       <post v-for="post in $store.state.posts" v-bind:key="post.postId" v-bind:post="post" />
     </div>
 
     <div class="left-aside">
     <aside>
+      <router-link
+        v-bind:to="{ name: 'createForum' }"
+        v-if="$store.state.token != ''">
+        <button class="create-forum" id="buttons">Create Forum</button></router-link>
       <top-5-forums id="top5" />
       <div id="favorite-aside" v-if="$store.state.token != ''">
         <favorite-forums />
@@ -22,10 +27,7 @@
 
     <div class="right-aside">
     <aside>
-        <router-link
-        v-bind:to="{ name: 'createForum' }"
-        v-if="$store.state.token != ''">
-        <button class="create-forum" id="buttons">Create Forum</button></router-link>
+        <big-button />
         <h3>User Agreement Privacy Policy</h3>
     </aside>
     </div>
@@ -43,12 +45,15 @@ import moderatorsService from "../services/ModeratorsService";
 import favoriteService from "../services/FavoriteService";
 import FavoriteForums from "../components/FavoriteForums.vue";
 
+
+
 export default {
   name: "home",
   components: {
     Top5Forums,
     Post,
     FavoriteForums,
+   
   },
   
   created() {

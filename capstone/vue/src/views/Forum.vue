@@ -18,25 +18,29 @@
     </span>
     <span v-if="isAdmin">
       <p>Remove a moderator?</p>
+      <label for="moderator-select">Select a user: </label>
       <select id="moderator-select" v-model="selectedUserId">
         <option v-for="moderator in $store.state.moderatorsForForum" v-bind:key="moderator.moderatorId" v-bind:value="moderator.moderatorId">
           {{moderator.username}}
         </option>
       </select>
+      <div class="remove-mod-button">
       <button v-on:click="removeModerator" >Remove Moderator</button>
-      <span id = "message" v-show="displayMessage"> {{message}}</span>
+      <p id = "message" v-show="displayMessage"> {{message}}</p>
+      </div>
     </span>
     <h3>Description:</h3>
     <p>{{ forum.description }}</p>
     <h3>Rules:</h3>
     <p>{{ forum.rules }}</p>
-    <router-link v-bind:to="{ name: 'newPost', params: { id: forum.id } }"
-      >CREATE A POST</router-link>
+    
       
   </aside>
   <div class="feed">
     <div class="sorting">
-      <label for="order-posts">Sort by: </label>
+      <router-link v-bind:to="{ name: 'newPost', params: { id: forum.id } }"
+      ><button>Create Post</button></router-link>
+      <label for="order-posts">&nbsp;&nbsp;Sort by: </label>
       <select id="order-posts" v-on:change="handleChange">
         <option value="date" selected>Date</option>
         <option value="popularity">Popularity</option>
@@ -175,5 +179,10 @@ align-items: center;
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+.remove-mod-button{
+  margin-bottom: 8px;
+}
+
 
 </style>
