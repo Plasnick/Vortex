@@ -1,9 +1,6 @@
 <template>
   <div>
-<<<<<<< HEAD
     <div class="container">
-=======
->>>>>>> main
     <form @submit.prevent="search">
       <input type="text" v-model="query" placeholder="Search Vortex For" />
       <div class="select-bar">
