@@ -158,7 +158,7 @@ export default {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas: "left-aside posts posts";
   grid-gap: 20px; 
-  margin-top: 100px;  
+  margin-top: 80px;  
   background-color: #fcfcfc;  
 }
 
