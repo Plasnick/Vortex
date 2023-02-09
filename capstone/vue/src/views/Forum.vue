@@ -30,13 +30,14 @@
     <p>{{ forum.description }}</p>
     <h3>Rules:</h3>
     <p>{{ forum.rules }}</p>
-    <router-link v-bind:to="{ name: 'newPost', params: { id: forum.id } }"
-      >CREATE A POST</router-link>
+    
       
   </aside>
   <div class="feed">
     <div class="sorting">
-      <label for="order-posts">Sort by: </label>
+      <router-link v-bind:to="{ name: 'newPost', params: { id: forum.id } }"
+      ><button>Create Post</button></router-link>
+      <label for="order-posts">&nbsp;&nbsp;Sort by: </label>
       <select id="order-posts" v-on:change="handleChange">
         <option value="date" selected>Date</option>
         <option value="popularity">Popularity</option>

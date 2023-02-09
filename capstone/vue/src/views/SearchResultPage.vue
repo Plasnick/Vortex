@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="results">
     these are the search results
 
     <search-results />
@@ -17,4 +17,7 @@ export default {
 </script>
 
 <style>
+.results{
+  margin-top: 100px;
+}
 </style>
