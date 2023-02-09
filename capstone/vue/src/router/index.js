@@ -106,7 +106,6 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
-
     },
     {
       path: '*',
@@ -139,8 +138,7 @@ const router = new Router({
       meta:{
         requiresAuth: true
       }
-    }
-
+    },
     
 
   ]

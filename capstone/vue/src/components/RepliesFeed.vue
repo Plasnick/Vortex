@@ -24,8 +24,6 @@
       v-bind:key="reply.commentId"
     >
       
-      <!-- need to get the Username from the userId. Maybe change the sql statement 
-      to join the user table and select the name-->
 
       <p>{{ reply.body }}</p>
       <h4>from {{ reply.username }} on {{ reply.postedAt }}</h4>
