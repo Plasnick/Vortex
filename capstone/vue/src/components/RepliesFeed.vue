@@ -23,17 +23,18 @@
       v-for="reply in repliesByPost"
       v-bind:key="reply.commentId"
     >
-      <h4>User: {{ reply.username }} Posted On: {{ reply.postedAt }}</h4>
+      
+      <!-- need to get the Username from the userId. Maybe change the sql statement 
+      to join the user table and select the name-->
 
       <p>{{ reply.body }}</p>
-    
+      <h4>from {{ reply.username }} on {{ reply.postedAt }}</h4>
+      <!-- <delete-replies v-bind:postId="reply.postId" v-bind:commentId="reply.commentId" v-on:replyDeleted="removeReply(reply)"/> -->
       <div class="status-message error" v-show="errorMsgDelete !== ''">
-        {{ errorMsgDelete }}
+        {{ errorMsgDelete }} 
       </div>
-      <button v-show="isModerator" v-on:click="deleteReply(reply)">
-        Delete Reply
-      </button>
-    </div>
+      <button v-show="isModerator" v-on:click="deleteReply(reply)">Delete Reply</button>
+      </div>
   </div>
 </template>
 

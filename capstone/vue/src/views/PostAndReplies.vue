@@ -1,9 +1,9 @@
 <template>
   <div class="post-and-replies">
-    <button v-show="isModerator" v-on:click="deletePost">Delete Post</button>
     <div class="status-message error" v-show="errorMsg !== ''">{{ errorMsg }}
       </div>
-    <post v-for="post in posts" v-bind:key="post.postId" v-bind:post="post" />
+    <button v-show="isModerator" v-on:click="deletePost">Delete Post</button>
+    <post class="singular-post" v-for="post in posts" v-bind:key="post.postId" v-bind:post="post" />
     <replies-feed />
   </div>
 </template>
@@ -85,4 +85,28 @@ export default {
 </script>
 
 <style>
+.singular-post{
+  margin-top: 10px;
+}
+.post-and-replies {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #23468A;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #09A0D8;
+}
 </style>

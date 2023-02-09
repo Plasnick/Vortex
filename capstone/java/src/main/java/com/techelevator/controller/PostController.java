@@ -25,6 +25,12 @@ public class PostController {
     }
     
 
+    // consider ? param for narrowing search results
+    @GetMapping("/posts/search/{keyword}")
+    public List<Post> searchByKeyword(@PathVariable String keyword){
+        return postDao.getPostsByKeyword(keyword);
+    }
+
     @GetMapping("/posts/top10")
     public List<Post> getTop10Posts(){
         return postDao.getTop10Posts();

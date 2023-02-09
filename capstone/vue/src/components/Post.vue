@@ -1,47 +1,49 @@
 <template>
   <div class="post-component">
-    <div >
+
+    
+  
+   <div class="post-content">
     <header class="header">
-      <h3>
-        v/<router-link
-          class="forum-link"
-          v-bind:to="{ name: 'forum', params: { id: post.forumId } }"
-          >{{ forum.forumName }}</router-link
-        >
-      </h3>
-      <router-link
-        class="title-link"
-        v-bind:to="{ name: 'postAndReplies', params: { id: post.postId } }"
-      >
+      <h3>v/<router-link class="forum-link" v-bind:to="{name:'forum', params:{id:post.forumId}}">{{forum.forumName}}</router-link></h3>
+      <h3>by {{ post.username }} on {{ date }}</h3>
+      <router-link class="title-link" v-bind:to="{name:'postAndReplies', params:{id: post.postId}}">
         <h2>{{ post.title }}</h2>
       </router-link>
-    </header>
-    </div>
-    <div class="post-content">
+   
       <p>{{ post.body }}</p>
+      <div class="image-container">
       <img v-if="post.img_url" :src="post.img_url" alt="Post Image" />
-    </div>
-    <div class="status-message error" v-show="errorMsg !== ''">
+      </div>
+      </header>
+      <div class="votes">
+      <div v-if="!hasInteracted">
+        <div class="status-message error" v-show="errorMsg !== ''">
         {{ errorMsg }}
       </div>
-    <div v-if="!hasInteracted">
-      <i class="fa-solid fa-arrow-up" v-on:click="upVote"></i>
-      <span> {{ post.upVotes }} </span>
-      <i class="fa-solid fa-arrow-down" v-on:click="downVote"></i>
-      <span> {{ post.downVotes }} </span>
-    </div>
-    <span v-else>
-      <i class="fa-solid fa-arrow-up"></i>
-      <span> {{ post.upVotes }} </span>
-      <i class="fa-solid fa-arrow-down"></i>
-      <span> {{ post.downVotes }} </span>
-      <button @click="deleteInteraction">
+        <i class="fa-solid fa-arrow-up" v-on:click="upVote"></i>
+        <span> {{ post.upVotes }} </span>
+        <i class="fa-solid fa-arrow-down" v-on:click="downVote"></i>
+        <span> {{ post.downVotes }} </span>
+         </div>
+         <div v-else>
+        <i class="fa-solid fa-arrow-up"></i>
+        <span> {{ post.upVotes }} </span>
+        <i class="fa-solid fa-arrow-down"></i>
+        <span> {{ post.downVotes }} </span> 
+        <span @click="deleteInteraction">
         <i class="fa-solid fa-rotate-left"></i>
-      </button>
-    </span>
-    <h3>by {{ post.username }} on {{ this.date }}</h3>
+      </span>
+      </div>
+
+    </div>
+    </div>
+
+
   </div>
-</template>
+</template>    
+
+ 
 
 <script>
 import postsService from "../services/PostsService";
@@ -217,20 +219,83 @@ console.log(this.date);
 
 <style scoped>
 .post-component {
-  background-color: #f8f8f8;
-  border: 1px solid #e5e5e5;
-  border-radius: 4px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   display: flex;
-  flex-direction: column;
-  width: 50%;
-  margin: 20px auto;
-  padding: 10px;
+  border: 1px solid rgb(209, 209, 209);
+  padding: 20px;
+  margin-bottom: 20px;
+  width: 600px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);  
+  background-color: #fcfcfc;
+
+  /* either that width or no flex, must make a sacrifice or research, other option is width:90% */
+ /* 
+ */
 }
+.image-container {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  margin-top: 20px;
+  margin-left: 50px;
+  }
+  
+.image-container img {
+  width: 100%;
+  height: auto;
+  }
+
+.votes {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.votes i {
+    cursor: pointer;
+  }
 .header {
   display: flex;
   flex-direction: column;
+  padding-left: 20px;
 }
+.post-content {
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+}
+.post-content p {
+  color: #333;
+  font-size: 14px;
+  margin: 0;
+}
+
+.fa-solid {
+  font-size: 25px;
+}
+.fa-rotate-left {
+  font-size: 20px;
+  margin-left:3px;
+}
+.fa-arrow-up,
+.fa-arrow-down {
+  color: #23468a;
+}
+.fa-arrow-up:hover,
+.fa-arrow-down:hover, 
+.fa-rotate-left:hover {
+  color: #1096c8;
+}
+h3 {
+  color: #23468a;
+}
+button {
+  color: #23468a;
+  border: none;
+  cursor: pointer;
+  margin-left: 0.2rem;
+  font-size: 1rem;
+  width: 25px;
+}
+
 .title-link {
   color: #333;
   text-decoration: none;
@@ -245,51 +310,12 @@ console.log(this.date);
   font-size: 14px;
   text-decoration: none;
 }
+.title-link:hover {
+  text-decoration: underline;
+}
+
 .forum-link:hover {
   text-decoration: underline;
-  }
-.title-link:hover{
-  text-decoration: underline;
 }
 
-.post-content {
-  margin-top: 15px;
-}
-.post-content p {
-  color: #333;
-  font-size: 14px;
-  margin: 0;
-}
-
-.post-content img {
-  max-width: 100%;
-}
-
-.fa-solid {
-  cursor: pointer;
-  margin-right: 10px;
-}
-.fa-arrow-up,
-.fa-arrow-down {
-  color: #23468a;
-}
-
-.fa-arrow-up:hover,
-.fa-arrow-down:hover, 
-.fa-rotate-left:hover {
-  color: #1096c8;
-}
-
-h3 {
-  color: #23468a;
-}
-button {
-  
-  color: #23468a;
-  border: none;
-  cursor: pointer;
-  margin-left: 0.2rem;
-  font-size: 1rem;
-  width: 25px;
-}
 </style>
