@@ -74,8 +74,8 @@ input::placeholder {
   outline-style: none;
   background-color: #EDEDED;
   }
-    .select-bar {
-    background-color: #EDEDED;
+  .select-bar {
+  background-color: #EDEDED;
   }
 
 </style>
