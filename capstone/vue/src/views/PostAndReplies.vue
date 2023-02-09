@@ -14,13 +14,14 @@ import postsService from "../services/PostsService";
 import interactionsService from '../services/InteractionsService'
 import RepliesFeed from "../components/RepliesFeed.vue";
 
+
 export default {
-  components: { Post, RepliesFeed },
+  components: { Post, RepliesFeed, },
   name: "post-and-replies",
   data() {
     return {
       posts: [{
-        forumId: null,
+        forumId: "",
         userId: null
       }],
       forum: {},

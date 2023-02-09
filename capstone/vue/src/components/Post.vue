@@ -1,5 +1,6 @@
 <template>
   <div class="post-component">
+    <div >
     <header class="header">
       <h3>
         v/<router-link
@@ -15,6 +16,7 @@
         <h2>{{ post.title }}</h2>
       </router-link>
     </header>
+    </div>
     <div class="post-content">
       <p>{{ post.body }}</p>
       <img v-if="post.img_url" :src="post.img_url" alt="Post Image" />
@@ -184,11 +186,13 @@ export default {
     formatDate(){
       let postedAt = this.post.postedAt;
       let dateChange = new Date(postedAt);
-      this.date = dateChange.toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'}) + " " + dateChange.toLocaleDateString();
+  this.date = dateChange.toLocaleTimeString() + " " + dateChange.toLocaleDateString();
+console.log(this.date);
     }
   },
   created() {
     forumsService.getForum(this.post.forumId).then((response) => {
+      console.log(this.post.forumId)
       this.forum = response.data;
     }).catch(error => {
             if (error.response) {
