@@ -63,16 +63,16 @@ const router = new Router({
       }
     },
     {
-      path: "/forum/:id",
-      name: "forum",
+      path: '/forum/:id',
+      name: 'forum',
       component: Forum,
       meta: {
         requiresAuth: false
       }
     },
     {
-      path: "/forumSearch",
-      name: "forumSearch",
+      path: '/forumSearch',
+      name: 'forumSearch',
       component: ForumSearchResults,
       meta: {
         requiresAuth: false
@@ -88,8 +88,8 @@ const router = new Router({
     },
 
     {
-      path: "/forum/new-post/:id",
-      name: "newPost",
+      path: '/forum/new-post/:id',
+      name: 'newPost',
       component: NewPost,
       meta: {
         requiresAuth: true
@@ -97,8 +97,8 @@ const router = new Router({
 
     },
     {
-      path: "/post/:id",
-      name: "postAndReplies",
+      path: '/post/:id',
+      name: 'postAndReplies',
       component: PostAndReplies,
       meta: {
         requiresAuth: false
@@ -106,8 +106,8 @@ const router = new Router({
 
     },
     {
-      path: "*",
-      name: "notFound",
+      path: '*',
+      name: 'notFound',
       component: NotFound,
       meta: {
         requiresAuth: false

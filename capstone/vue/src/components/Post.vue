@@ -37,7 +37,7 @@
         <i class="fa-solid fa-rotate-left"></i>
       </button>
     </span>
-    <h3>by {{ post.username }} on {{ date }}</h3>
+    <h3>by {{ post.username }} on {{ this.date }}</h3>
   </div>
 </template>
 
@@ -141,6 +141,7 @@ export default {
             this.errorMsg =
               "Error submitting vote. Request could not be created.";
           }
+          console.log(this.errorMsg);
             });
         
       }
@@ -180,16 +181,32 @@ export default {
             
       
     },
+    formatDate(){
+      let postedAt = this.post.postedAt;
+      let dateChange = new Date(postedAt);
+      this.date = dateChange.toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'}) + " " + dateChange.toLocaleDateString();
+    }
   },
   created() {
     forumsService.getForum(this.post.forumId).then((response) => {
       this.forum = response.data;
-    });
-    this.date =
-      this.post.postedAt.substring(0, 10) +
-      " " +
-      this.post.postedAt.substring(11, 16);
-    console.log(this.date);
+    }).catch(error => {
+            if (error.response) {
+              this.errorMsg =
+                "Error loading post. Response received was '" +
+                error.response.statusText +
+                "'.";
+            } else if (error.request) {
+              this.errorMsg =
+                "Error loading post. Server could not be reached.";
+            } else {
+              this.errorMsg =
+                "Error loading post. Request could not be created.";
+            }
+          });
+         this.formatDate();   
+    
+    
   },
 };
 </script>

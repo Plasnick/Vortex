@@ -55,13 +55,15 @@ public class JdbcPostDao implements PostDao{
 
     @Override
     public Post getPostById(int id) {
-        Post post = null;
+        Post post = new Post();
         String sql = "select post.post_id, post.user_id, post.forum_id, post.title, post.body, post.img_url, post.posted_at, post.up_votes, post.down_votes, users.username from post " +
                 "join users on users.user_id = post.user_id " +
                 "where post.post_id = ?";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, id);
         if(result.next()){
+
             post = mapRowToPost(result);
+
         }
         return post;
     }

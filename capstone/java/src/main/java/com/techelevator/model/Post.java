@@ -1,8 +1,10 @@
 package com.techelevator.model;
 
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 public class Post {
+
     private int postId;
     private int userId;
     private String username;
