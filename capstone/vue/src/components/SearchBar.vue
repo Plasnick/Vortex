@@ -1,14 +1,15 @@
 <template>
   <div>
+    test text
     <form @submit.prevent="search">
       <input type="text" v-model="query" placeholder="Search Vortex For" />
-      <select v-model="selectedSearchOption">
+      <select v-model="selectedSearchOption" class="dropdown-input">
         <option
-          v-for="options in searchOptions"
-          :key="options.value"
-          :value="searchOption.value"
+          v-for="(options, key) in searchOptions"
+          :key="key"
+          :value="options"
         >
-          {{ searchOption.text }}
+          {{ options.text }}
         </option>
       </select>
       <button type="submit">Search</button>
@@ -35,7 +36,7 @@ export default {
     search() {
       this.$router.push({
         name: 'search',
-        params: { query: this.query, searchOption: this.selectedSearchOption}
+        params: { query: this.query, option: this.selectedSearchOption.value}
       })
     }
 

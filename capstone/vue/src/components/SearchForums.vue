@@ -1,4 +1,5 @@
 <template>
+
   <div class="search-forum">
       <input type="text" placeholder="Search Vortex" v-model="searchWord">
       <div v-if="searchWord" class="suggestions">

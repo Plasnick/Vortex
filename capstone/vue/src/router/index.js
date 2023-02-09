@@ -108,7 +108,7 @@ const router = new Router({
     },
     {
       path: '/search/:option/:query',
-      name: 'searchBar',
+      name: 'search',
       component: SearchResultPage,
       meta: {
         requiresAuth: false
