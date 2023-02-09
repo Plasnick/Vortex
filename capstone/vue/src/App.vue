@@ -44,8 +44,9 @@ export default{
 <style scoped >
 header {
   width: 100%;
+  height: 80px;
   border: none;
-  border-bottom: 1px solid #D4D4D4;
+  border-bottom: 1px solid #d8d8d8;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -53,21 +54,22 @@ header {
   position: fixed;
   top: 0;
   z-index: 1;
-  background-color: white;
+  background-color: #fcfcfc;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   
 }
  .search-forum-container{
   width: 60%;
-   display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .logo {
-  max-width: 100px;
-  height: auto;
-  margin-right: 20px;
+  height: 100%;
+  margin-left: 15px;
 }
+
 .links-container {
   display: flex;
   justify-content: flex-end;
@@ -80,13 +82,13 @@ header {
   text-decoration: none;
   color: #23468A;
 }
-.header-button{
-  margin-right: 0.5rem;
+.header-btns{
+  margin-right: 40px;
 }
 
 .btn{
   border-radius: 13px;
-  width: 105px;
+  width: 115px;
   border: none;
   padding: 7px;
   font-weight: bold;
@@ -95,7 +97,7 @@ header {
 
 #login-button{
   background-color: #23468A;
-  color: #eee;
+  color: #f3f3f3;
 }
 
 #login-button:hover {

@@ -10,7 +10,7 @@
         <i class="fa-solid fa-arrow-down" v-on:click="downVote"></i>
         <span> {{ post.downVotes }} </span>
       </div>
-      <span v-else>
+      <div v-else>
         <i class="fa-solid fa-arrow-up"></i>
         <span> {{ post.upVotes }} </span>
         <i class="fa-solid fa-arrow-down"></i>
@@ -18,23 +18,25 @@
         <button @click="deleteInteraction">
         <i class="fa-solid fa-rotate-left"></i>
       </button>
-      </span>
+      </div>
 
     </div>
     </div>
-
+  
+   <div class="post-content">
     <header class="header">
       <h3>v/<router-link class="forum-link" v-bind:to="{name:'forum', params:{id:post.forumId}}">{{forum.forumName}}</router-link></h3>
       <h3>by {{ post.username }} on {{ date }}</h3>
       <router-link class="title-link" v-bind:to="{name:'postAndReplies', params:{id: post.postId}}">
         <h2>{{ post.title }}</h2>
       </router-link>
-    <div class="post-content">
+   
       <p>{{ post.body }}</p>
+      <div class="image-container">
       <img v-if="post.img_url" :src="post.img_url" alt="Post Image" />
-    </div>
+      </div>
     </header>
-
+    </div>
   </div>
 </template>    
 
@@ -152,33 +154,52 @@ export default {
 <style scoped>
 .post-component {
   display: flex;
-  border: 1px solid #e5e5e5;
-  background-color: #f8f8f8;
-  border-radius: 4px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  width: 100%;
-  margin: 20px auto;
-  padding: 10px;  
-  flex-direction: row;
-  margin-top: 130px;
+  border: 1px solid rgb(209, 209, 209);
+  padding: 20px;
+  margin-bottom: 20px;
+  width: 600px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);  
+  background-color: #fcfcfc;
+
+  /* either that width or no flex, must make a sacrifice or research, other option is width:90% */
+ /* 
+ */
 }
-.post-content img {
-  max-width: 100%;
-}
+  .image-container {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin-top: 20px;
+    margin-left: 50px;
+  }
+  
+  .image-container img {
+    width: 100%;
+    height: auto;
+  }
 .sidebar {
-  width: 5%;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
 }
 .votes {
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+.votes i {
+    cursor: pointer;
+  }
 .header {
   display: flex;
   flex-direction: column;
-
+  padding-left: 20px;
 }
 .post-content {
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
 }
 .post-content p {
   color: #333;
@@ -188,12 +209,10 @@ export default {
 
 .fa-solid {
   font-size: 25px;
-  cursor: pointer;
   margin-right: 1px;
 }
 .fa-rotate-left {
   font-size: 20px;
-  cursor: pointer;
 }
 .fa-arrow-up,
 .fa-arrow-down {
@@ -230,7 +249,6 @@ button {
   color: #23468a;
   font-size: 14px;
   text-decoration: none;
-
 }
 .title-link:hover {
   text-decoration: underline;
