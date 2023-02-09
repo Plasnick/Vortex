@@ -10,6 +10,9 @@ import ForumSearchResults from '../views/ForumSearchResults.vue'
 import ForumCreationPage from '../views/ForumCreationPage'
 import NewPost from '../views/NewPost.vue'
 import PostAndReplies from '../views/PostAndReplies.vue'
+import SearchResultPage from '../views/SearchResultPage.vue'
+
+import SearchBarTest from '../views/searchbartest.vue'
 
 
 
@@ -103,7 +106,22 @@ const router = new Router({
       }
 
     },
-
+    {
+      path: '/search/:option/:query',
+      name: 'searchBar',
+      component: SearchResultPage,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/searchbar',
+      name: 'searchBarTest',
+      component: SearchBarTest,
+      meta:{
+        requiresAuth: false
+      }
+    }
 
   ]
 })
