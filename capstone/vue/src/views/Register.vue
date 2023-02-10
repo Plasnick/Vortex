@@ -111,6 +111,12 @@ export default {
     font-weight: bold;
     color: #333;
   }
+
+   .form-register:hover{
+  transform: scale(1.05);
+  border: 1px solid #23468A;
+
+  }
   .form-register label {
     font-weight: bold;
     margin-bottom: 10px;
@@ -123,11 +129,12 @@ export default {
 }
  .form-register input[type="text"],
   .form-register input[type="password"] {
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
     font-size: 16px;
-    border-radius: 4px;
+    border-radius: 18px;
     border: 1px solid #DDD;
   }
  .form-register .btn-primary {
@@ -135,7 +142,7 @@ export default {
     color: white;
     font-weight: bold;
     padding: 10px 20px;
-    border-radius: 4px;
+    border-radius: 18px;
     border: none;
     margin-top: 20px;
   }

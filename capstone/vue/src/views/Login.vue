@@ -12,7 +12,7 @@
         role="alert"
         v-if="this.$route.query.registration"
       >Thank you for registering, please sign in.</div>
-      <label for="username" class="sr-only">Username</label>
+      <label for="username" class="sr-only">Username</label> 
       <input
         type="text"
         id="username"
@@ -84,34 +84,54 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: transparent;
   }
     .form-signin {
-    width: 360px;
-    padding: 30px;
+    background-color: white;
+    width: 400px;
+    padding: 40px;
+    margin:0 auto;
+    border-radius: 4px;
     border: 1px solid #ccc;
-    box-shadow: 0 0 10px rgb(204, 204, 204);
     text-align: left;
+    border: 1px solid rgb(209, 209, 209);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+  }
+.form-signin .h3 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
   }
 
-  .form-signin .h3 {
-    margin-bottom: 20px;
-    font-size: 25px;
+  .form-signin:hover{
+  transform: scale(1.05);
+  border: 1px solid #23468A;
+
   }
   .form-signin .alert {
     margin-bottom: 20px;
   }
 .form-signin input[type="text"],
   .form-signin input[type="password"] {
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    padding: 10px;
     margin-bottom: 20px;
+    font-size: 16px;
+    border-radius: 18px;
+    border: 1px solid #DDD;
   }
+
 .form-signin button[type="submit"] {
-  width: 100%;
+  width: 30%;
   background-color: #23468A;
   color: #EDEDED;
-  padding: 14px 20px;
+  padding: 10px 20px;
   margin: 8px 0;
   border: none;
-  border-radius: 4px;
+  border-radius: 18px;
   cursor: pointer;
 }
 .form-signin button[type="submit"]:hover {

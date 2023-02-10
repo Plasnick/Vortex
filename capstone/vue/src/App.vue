@@ -59,11 +59,12 @@ header {
   background-color: #fcfcfc;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
- .search-container{
+
+.search-container{
   border: 1px solid #d8d8d8;
   border-radius: 25px;
   padding: 8px 20px;
-  width: 35%;
+  width: 31%;
   height: 25px;
   align-items: center;
   justify-content: center;
@@ -72,7 +73,6 @@ header {
   justify-content: center;
   flex-direction: column;
   outline-style: none;
-    
 }
 
 .logo {
@@ -80,18 +80,6 @@ header {
   margin-left: 15px;
 }
 
-.links-container {
-  display: flex;
-  justify-content: flex-end;
-  font-size: 0;
-}
-
-.links-container a {
-  font-size: 16px;
-  margin: 0 10px;
-  text-decoration: none;
-  color: #23468A;
-}
 .header-btns{
   margin-right: 40px;
 }
@@ -108,6 +96,7 @@ header {
 #login-button{
   background-color: #23468A;
   color: #f3f3f3;
+  margin-top: 0px;
 }
 
 #login-button:hover {
@@ -116,8 +105,25 @@ header {
 i{
   color: #23468A;
 }
-</style>
 
+@media screen and (max-width: 720px) {
+  .search-container {
+    width: 50%;
+  }
+  .header-btns {
+    margin-right: 20px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .search-container {
+    display: none;
+  }
+  .header-btns {
+    display: none;
+  }
+}
+</style>
 <style>
 body{
   font-family: 'Cabin';

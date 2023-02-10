@@ -26,13 +26,20 @@
     </aside>
     </div>
 
-    <div class="right-aside">
+     <div class="right-aside">
     <aside>
-        <big-button />
-        <right-side-bar/>
-        
+      <big-button />
+      <right-side-bar />
+      <div class="terms">
+        <hr>
+        <p>User Agreement</p>
+        <p>Privacy Policy</p>
+        <p>Content Policy</p>
+        <p>Moderator Code Of Conduct</p>
+        <p>Vortex Inc © 2023. All rights reserved</p>
+      </div>
     </aside>
-    </div>
+  </div>
 
   </div>
 </template>
@@ -90,113 +97,165 @@ export default {
 };
 </script>
 
-<style >
-.home{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-areas: "left-aside posts right-aside";
-  grid-gap: 20px;
-  margin-top: 80px;  
-  background-color: #fcfcfc;
-}
+<style>
+  .home {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "left-aside posts right-aside";
+    grid-gap: 20px;
+    margin-top: 80px;
+    background-color: #fcfcfc;
+  }
 
-.posts{
-  grid-area: posts;
-}
+  .posts {
+    grid-area: posts;
+  }
 
-.left-aside{
-  grid-area: left-aside;
-  position: fixed;
-  margin-top: 80px;
-  top: 0;
-  left: 10px;
-  bottom: 0;
-  height: 100vh;
-  border-right: 1px solid #cfcfcf;
-  padding: 2px;
-  background-color: #fcfcfc;
-  width: 18%;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
-  display: flex;
-  flex-direction: column;
-  
-}
+  .left-aside {
+    grid-area: left-aside;
+    position: fixed;
+    margin-top: 80px;
+    top: 0;
+    left: 10px;
+    bottom: 0;
+    height: 100vh;
+    border-right: 1px solid #cfcfcf;
+    padding: 2px;
+    background-color: #fcfcfc;
+    width: 18%;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+  }
 
-#top5{
-  margin-top: 10px;
-  margin-bottom: 20px;
-}
+  @media (max-width: 767px) {
+    .left-aside {
+      width: 100%;
+      height: auto;
+      position: relative;
+      margin-top: 0;
+      left: 0;
+      border-right: none;
+    }
+  }
 
-.anon-user{
-  text-align: center;
-  margin-bottom: 20px;
-}
+  #top5 {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
 
-.anon-user h3{
-  font-size: 17px;
-  color: #333;
-  margin-bottom: 10px;
-}
+  .anon-user {
+    text-align: center;
+    margin-bottom: 20px;
+  }
 
-.right-aside{
-  grid-area: right-aside;
-  position: fixed;
-  margin-top: 80px;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  height: 100vh;
-  border-left: 1px solid #cfcfcf;
-  padding-top: 10px;
-  padding-left: 3px;
-  background-color: #fcfcfc;
-  width: 18%;
-  box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.05);
-}
+  .anon-user h3 {
+    font-size: 17px;
+    color: #333;
+    margin-bottom: 10px;
+  }
 
-.join-vortex{
-  border-radius: 13px;
-  width: 105px;
-  border: none;
-  padding: 7px;
-  font-weight: bold;
-  cursor: pointer; 
-  background-color: #23468A;
-  color: #f3f3f3;
-}
+  .right-aside {
+    grid-area: right-aside;
+    position: fixed;
+    margin-top: 80px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    border-left: 1px solid #cfcfcf;
+    padding-top: 10px;
+    padding-left: 3px;
+    background-color: #fcfcfc;
+    width: 18%;
+    box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.05);
+  }
 
-#buttons:hover {
-  background-color: #1483d6;
-}
-#buttons{
+  .terms {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+    color: #666;
+    margin-top: 20px;
+  }
+  .terms p {
+    margin: 5px 0;
+  }
+
+ hr{
+   width: 290px;
+   margin-left: auto;
+   margin-right: auto;
+ }
+
+  @media (max-width: 767px) {
+    .right-aside {
+      width: 100%;
+      height: auto;
+      position: relative;
+      margin-top: 0;
+      right: 0;
+      border-left: none;
+    }
+  }
+
+  .join-vortex {
+    border-radius: 13px;
+    width: 105px;
+    border: none;
+    padding: 7px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #23468A;
+    color: #f3f3f3;
+  }
+
+  #buttons:hover {
+    background-color: #1483d6;
+  }
+  #buttons {
   border-radius: 13px;
   width: 150px;
   border: none;
   padding: 7px;
   font-weight: bold;
-  cursor: pointer; 
+  cursor: pointer;
   background-color: #23468A;
   color: #f3f3f3;
 }
 
-.create-forum{
-  margin-right: 30px;
-  margin-bottom: 20px;
+@media only screen and (max-width: 600px) {
+  .home {
+    grid-template-columns: 1fr;
+    grid-template-areas: "posts";
+    margin-top: 60px;
+  }
+
+  .left-aside {
+    position: relative;
+    margin-top: 0;
+    height: auto;
+    border-right: none;
+    width: 100%;
+    box-shadow: none;
+  }
+
+  .right-aside {
+    position: relative;
+    margin-top: 0;
+    height: auto;
+    border-left: none;
+    width: 100%;
+    box-shadow: none;
+  }
+
+  .create-forum {
+    margin-bottom: 10px;
+  }
 }
 
-.left-aside aside {
-  padding-bottom: 20px;
-}
-h2{
-  color: #333;
-}
-hr {
-  border-top: 1px solid #cfcfcf;
-  margin: 10px 0;
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  }
+  
 </style>
 
 

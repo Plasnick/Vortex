@@ -7,7 +7,7 @@
    <div class="post-content">
     <header class="header">
       <h3>v/<router-link class="forum-link" v-bind:to="{name:'forum', params:{id:post.forumId}}">{{forum.forumName}}</router-link></h3>
-      
+      <p id="user">by {{ post.username }} on {{ date }}</p>
       <router-link class="title-link" v-bind:to="{name:'postAndReplies', params:{id: post.postId}}">
         <h2>{{ post.title }}</h2>
       </router-link>
@@ -17,7 +17,6 @@
       <img v-if="post.img_url" :src="post.img_url" alt="Post Image" />
       
       </div>
-      <p id="user">by {{ post.username }} at {{ date }}</p>
       </header>
       <div class="votes">
       <div v-if="!hasInteracted">
@@ -140,20 +139,17 @@ export default {
       this.$store.commit("DELETE_INTERACTION", this.interaction);
       interactionsService.deleteInteraction(this.interaction);
     },
-    formatDate(){
-      let postedAt = this.post.postedAt;
-      let dateChange = new Date(postedAt);
-  this.date = dateChange.toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'}) + " " + dateChange.toLocaleDateString();
-console.log(this.date);
-    }
   },
   created() {
     forumsService.getForum(this.post.forumId).then((response) => {
       this.forum = response.data;
     });
-    this.formatDate();   
+    this.date =
+      this.post.postedAt.substring(0, 10) +
+      " " +
+      this.post.postedAt.substring(11, 16);
+    console.log(this.date);
   },
-  
 };
 </script>
 
@@ -161,7 +157,7 @@ console.log(this.date);
 .post-component {
   display: flex;
   border: 1px solid rgb(209, 209, 209);
-  padding: 20px;
+  padding: 10px;
   margin-bottom: 20px;
   width: 600px; 
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);  
@@ -182,12 +178,14 @@ console.log(this.date);
 .image-container img {
   width: 100%;
   height: auto;
+  margin-left: 10%;
   }
 
 .votes {
   display: flex;
   flex-direction: row;
   align-items: center;
+  border-top: 1px solid rgb(209, 209, 209);
 }
 .votes i {
     cursor: pointer;
@@ -220,6 +218,8 @@ console.log(this.date);
 .fa-arrow-down {
   color: #23468a;
   font-size: 17px;
+  margin-top: 10px;
+  margin-left: 18px;
 }
 .fa-arrow-up:hover,
 .fa-arrow-down:hover, 

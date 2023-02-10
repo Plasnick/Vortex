@@ -170,6 +170,12 @@ export default {
   background-color: #fcfcfc;  
 }
 
+@media only screen and (max-width: 700px) {
+  .forum-details {
+    grid-template-columns: 1fr;
+    grid-template-areas: "left-aside" "posts";
+  }
+}
 
 .feed{
 grid-area: posts;
@@ -182,10 +188,22 @@ align-items: center;
   margin-right: 25vh;
 }
 
+@media only screen and (max-width: 700px) {
+  #feed-posts {
+    margin-right: 0;
+  }
+}
+
 .sorting{
   margin-right: 25vh;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+@media only screen and (max-width: 700px) {
+  .sorting {
+    margin-right: 0;
+  }
 }
 
 .remove-mod-button{
@@ -210,4 +228,3 @@ h3{
   margin-top: 10px;
 }
 </style>
-

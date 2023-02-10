@@ -208,5 +208,12 @@ button:hover {
   background-color: #1483d6;
 }
 
+@media only screen and (max-width: 600px) {
+  #replies-component {
+    width: 90%;
+  }
+  .create-reply textarea {
+    width: 100%;
+  }
+}
 </style>
-

@@ -79,10 +79,11 @@ input{
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-right: 0px;
 }
 i{
   margin-top: 50px;
-  font-size: 10pt;
+  font-size: 11pt;
   margin-right: 4px;
   color: #23468A;
 }
@@ -93,6 +94,7 @@ input[type="text"]{
     margin-bottom: 20px;
     /* flex-grow: 1; */
     margin-top: 70px;
+    font-size: 17px;;
 }
 input::placeholder {
   color: #23468A;
@@ -111,23 +113,24 @@ input::placeholder {
   padding: 0px;
   border: none;
   outline: none;
-  margin-top: 48px;
+  margin-top: 50px;
   color: #23468A;
-  
+  font-size: 17px;
   
 }
 
 .submit-search{
-  border-radius: 13px;
-  width: 70px;
+  border-radius: 16px;
+  width: 95px;
   border: none;
-  padding: 7px;
+  padding: 3px;
   font-weight: bold;
   cursor: pointer;
   background-color: #23468A;
   color: #f3f3f3;
-  margin-top: 50px;
+  margin-top: 52px;
   margin-left: 0vw;
+  font-size: 17px;
 }
 .submit-search:hover {
   background-color: #1483d6;
