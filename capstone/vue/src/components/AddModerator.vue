@@ -1,13 +1,16 @@
+
 <template>
   <div class="add-moderator">
-    <label for="user-select" class="add-moderator__label">Select a user:</label>
+    <label for="user-select" class="add-moderator__label">Select a user: </label>
     <select id="user-select" class="add-moderator__select" v-model="selectedUserId">
       <option v-for="user in users" v-bind:key="user.id" v-bind:value="user.id">
         {{user.username}}
       </option>
     </select>
-    <button class="add-moderator__button" v-on:click="addModerator">Add Moderator</button>
+    <div class="add-mod-button">
+    <button class="add-moderator-button" v-on:click="addModerator">Add Moderator</button>
     <p id="message" class="add-moderator__message" v-show="displayMessage">{{message}}</p>
+    </div>
   </div>
 </template>
 <script>
@@ -64,7 +67,7 @@ export default {
 };
 </script>
 <style>
-.add-moderator {
+/* .add-moderator {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -103,5 +106,19 @@ export default {
   font-size: 1.2em;
   margin-top: 20px;
   color: #24a0ed;
+} */
+.add-moderator-button:hover{
+  background-color: #1483d6;
+}
+.add-moderator-button{
+ border-radius: 13px;
+  width: 150px;
+  border: none;
+  padding: 7px;
+  font-weight: bold;
+  cursor: pointer; 
+  background-color: #23468A;
+  color: #f3f3f3;
 }
 </style>
+

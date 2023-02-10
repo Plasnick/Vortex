@@ -1,6 +1,9 @@
 <template>
-  <div class="favorite-forums">
+  <div class="favorite-forums" >
     <h3>Favorite Forums</h3>
+    <p v-show="favoriteForums.length==0">
+      None yet! Add a favorite in the forum main page.
+    </p>
     <nav>
         <router-link v-for="forum in favoriteForums" v-bind:key="forum.id" v-bind:to="{ name: 'forum', params: { id: forum.id } }">{{
           forum.forumName
@@ -47,8 +50,8 @@ nav a {
 
 nav a:hover {
   background-color: #1489b417;
-  width: 100%;
-  padding:2px
+  width: 90%;
+  
 
 }
 

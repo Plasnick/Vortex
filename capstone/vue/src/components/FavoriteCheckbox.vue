@@ -90,4 +90,9 @@ input[type="checkbox"] {
   font-size: 12pt;
 }
 
+
+.fa-solid.fa-heart {
+  color: #09A0D8;
+}
+
 </style>

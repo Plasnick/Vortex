@@ -27,5 +27,10 @@ export default {
 </script>
 
 <style>
+.account{
+    padding-top: 80px;
+    width: 30vh;
+    
+}
 
 </style>

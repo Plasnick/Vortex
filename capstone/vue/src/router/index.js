@@ -11,8 +11,6 @@ import ForumCreationPage from '../views/ForumCreationPage'
 import NewPost from '../views/NewPost.vue'
 import PostAndReplies from '../views/PostAndReplies.vue'
 import SearchResultPage from '../views/SearchResultPage.vue'
-
-import SearchBarTest from '../views/searchbartest.vue'
 import Account from '../views/Account.vue'
 
 
@@ -115,14 +113,7 @@ const router = new Router({
         requiresAuth: false
       }
     },
-    {
-      path: '/searchbar',
-      name: 'searchBarTest',
-      component: SearchBarTest,
-      meta:{
-        requiresAuth: false
-      }
-    },
+    
     {
       path: "/account",
       name: "account",

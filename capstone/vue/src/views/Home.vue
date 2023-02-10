@@ -1,11 +1,19 @@
+
+
+
 <template>
   <div class="home">
     <div class="posts">
+      <h2>Top 10 Posts Today</h2>
       <post v-for="post in $store.state.posts" v-bind:key="post.postId" v-bind:post="post" />
     </div>
 
     <div class="left-aside">
     <aside>
+      <router-link
+        v-bind:to="{ name: 'createForum' }"
+        v-if="$store.state.token != ''">
+        <button class="create-forum" id="buttons">Create Forum</button></router-link>
       <top-5-forums id="top5" />
       <div id="favorite-aside" v-if="$store.state.token != ''">
         <favorite-forums />
@@ -14,17 +22,12 @@
         <h3>Create an account to follow your favorite communities and start taking part in conversations. </h3>
         <router-link :to="{ name: 'register' }"><button class="join-vortex" id="buttons">Join Vortex</button></router-link>
       </div>
-      <!-- <h3>Create an account to follow your favorite communities and start taking part in conversations. </h3>
-        <router-link :to="{ name: 'register' }"><button class="join-vortex" id="buttons">Join Vortex</button></router-link> -->
     </aside>
     </div>
 
     <div class="right-aside">
     <aside>
-        <router-link
-        v-bind:to="{ name: 'createForum' }"
-        v-if="$store.state.token != ''">
-        <button class="create-forum" id="buttons">Create Forum</button></router-link>
+        <big-button />
         <h3>User Agreement Privacy Policy</h3>
     </aside>
     </div>
@@ -42,12 +45,15 @@ import moderatorsService from "../services/ModeratorsService";
 import favoriteService from "../services/FavoriteService";
 import FavoriteForums from "../components/FavoriteForums.vue";
 
+
+
 export default {
   name: "home",
   components: {
     Top5Forums,
     Post,
     FavoriteForums,
+   
   },
   
   created() {
@@ -86,7 +92,7 @@ display: grid;
 grid-template-columns: 1fr 1fr 1fr;
 grid-template-areas: "left-aside posts right-aside";
 grid-gap: 20px;
-margin-top: 100px;  
+margin-top: 80px;  
 background-color: #fcfcfc;
 }
 
@@ -132,6 +138,7 @@ background-color: #fcfcfc;
 width: 18%;
 box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.05);
 }
+
 .join-vortex{
   border-radius: 13px;
   width: 105px;
@@ -165,3 +172,11 @@ box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.05);
   
 }
 </style>
+
+
+
+
+
+
+
+

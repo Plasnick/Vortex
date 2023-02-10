@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <template>
   <div class="forum-details">
     <aside class = "left-aside">
@@ -18,13 +27,16 @@
     </span>
     <span v-if="isAdmin">
       <p>Remove a moderator?</p>
+      <label for="moderator-select">Select a user: </label>
       <select id="moderator-select" v-model="selectedUserId">
         <option v-for="moderator in $store.state.moderatorsForForum" v-bind:key="moderator.moderatorId" v-bind:value="moderator.moderatorId">
           {{moderator.username}}
         </option>
       </select>
+      <div class="remove-mod-button">
       <button v-on:click="removeModerator" >Remove Moderator</button>
-      <span id = "message" v-show="displayMessage"> {{message}}</span>
+      <p id = "message" v-show="displayMessage"> {{message}}</p>
+      </div>
     </span>
     <h3>Description:</h3>
     <p>{{ forum.description }}</p>
@@ -36,7 +48,7 @@
   <div class="feed">
     <div class="sorting">
       <router-link v-bind:to="{ name: 'newPost', params: { id: forum.id } }"
-      ><button>Create Post</button></router-link>
+      ><button class="create-post-btn">Create Post</button></router-link>
       <label for="order-posts">&nbsp;&nbsp;Sort by: </label>
       <select id="order-posts" v-on:change="handleChange">
         <option value="date" selected>Date</option>
@@ -46,7 +58,6 @@
     <forum-main-feed class="posts" id="feed-posts" />
   </div>
       
-    
   </div>
 </template>
 
@@ -155,7 +166,7 @@ export default {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas: "left-aside posts posts";
   grid-gap: 20px; 
-  margin-top: 100px;  
+  margin-top: 80px;  
   background-color: #fcfcfc;  
 }
 
@@ -177,4 +188,26 @@ align-items: center;
   padding-bottom: 10px;
 }
 
+.remove-mod-button{
+  margin-bottom: 8px;
+}
+
+
+.create-post-btn:hover {
+  background-color: #1483d6;
+}
+.create-post-btn{
+ border-radius: 13px;
+  width: 130px;
+  border: none;
+  padding: 7px;
+  font-weight: bold;
+  cursor: pointer; 
+  background-color: #23468A;
+  color: #f3f3f3;
+}
+h3{
+  margin-top: 10px;
+}
 </style>
+
