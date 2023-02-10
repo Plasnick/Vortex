@@ -2,14 +2,18 @@
   <div>
     <div v-if="routeOption == 'searchForForums'" class="suggestions">
       <div v-for="forum in filteredList" v-bind:key="forum.id">
-        <router-link v-bind:to="{ name: 'forum', params: { id: forum.id } }">
+        <router-link
+          v-bind:to="{ name: 'forum', params: { id: forum.id } }"
+          :style="{ color: link.isActive ? activeColor : inactiveColor }"
+          @click="link.isActive = true"
+        >
           <div class="forum-listing">
-            <h2 id="header" >
+            <h2 id="header">
               {{ forum.forumName }}
             </h2>
-           
-            <p id=description>
-            {{ forum.description }}
+
+            <p id="description">
+              {{ forum.description }}
             </p>
           </div>
         </router-link>
@@ -29,6 +33,12 @@ export default {
       allForums: [],
       routeOption: this.$route.params.option,
       searchWord: this.$route.params.query,
+      link: {
+          isActive: false
+      },
+      activeColor: '#09A0D8',
+      inactiveColor: '#23468A',
+
     };
   },
 
@@ -55,10 +65,9 @@ export default {
 .forum-listing {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-areas: 
-  "header"
-  "description"
-  ;
+  grid-template-areas:
+    "header"
+    "description";
   border: 1px solid rgb(209, 209, 209);
   padding: 20px;
   margin-bottom: 20px;
@@ -69,14 +78,14 @@ export default {
   justify-content: center;
 }
 #header {
-    display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 #description {
-    display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
