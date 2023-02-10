@@ -5,6 +5,7 @@
     <div class="container">
     <form @submit.prevent="search">
       <div class="input-and-select">
+        <i class="fa-solid fa-magnifying-glass"></i>
         <input type="text" v-model="query" placeholder="Get sucked into..." />
         <button href="search" type="submit" class="submit-search">Search</button>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -80,6 +81,12 @@ input{
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+i{
+  margin-top: 50px;
+  font-size: 10pt;
+  margin-right: 4px;
+  color: #23468A;
 }
 input[type="text"]{
     border: none;
