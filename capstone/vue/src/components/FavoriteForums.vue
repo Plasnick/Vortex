@@ -55,6 +55,12 @@ nav a:hover {
 
 }
 
+#forum-link:hover{
+  color: #09A0D8;
+
+
+}
+
 h3 {
   margin: 0;
   font-size: 20px;
