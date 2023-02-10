@@ -1,6 +1,4 @@
 
-
-
 <template>
   <div class="home">
     <div class="posts">
@@ -90,55 +88,66 @@ export default {
 
 <style >
 .home{
-display: grid;
-grid-template-columns: 1fr 1fr 1fr;
-grid-template-areas: "left-aside posts right-aside";
-grid-gap: 20px;
-margin-top: 80px;  
-background-color: #fcfcfc;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "left-aside posts right-aside";
+  grid-gap: 20px;
+  margin-top: 80px;  
+  background-color: #fcfcfc;
 }
 
 .posts{
-grid-area: posts;
+  grid-area: posts;
 }
 
-
 .left-aside{
-grid-area: left-aside;
-position: fixed;
-margin-top: 80px;
-top: 0;
-left: 10px;
-bottom: 0;
-height: 100vh;
-border-right: 1px solid #cfcfcf;
-padding: 2px;
-background-color: #fcfcfc;
-width: 18%;
-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
-display: flex;
-flex-direction: column;
-
+  grid-area: left-aside;
+  position: fixed;
+  margin-top: 80px;
+  top: 0;
+  left: 10px;
+  bottom: 0;
+  height: 100vh;
+  border-right: 1px solid #cfcfcf;
+  padding: 2px;
+  background-color: #fcfcfc;
+  width: 18%;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #top5{
   margin-top: 10px;
+  margin-bottom: 20px;
 }
-    
+
+.anon-user{
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.anon-user h3{
+  font-size: 17px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
 .right-aside{
-grid-area: right-aside;
-position: fixed;
-margin-top: 80px;
-top: 0;
-right: 0;
-bottom: 0;
-height: 100vh;
-border-left: 1px solid #cfcfcf;
-padding-top: 10px;
-padding-left: 3px;
-background-color: #fcfcfc;
-width: 18%;
-box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.05);
+  grid-area: right-aside;
+  position: fixed;
+  margin-top: 80px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  border-left: 1px solid #cfcfcf;
+  padding-top: 10px;
+  padding-left: 3px;
+  background-color: #fcfcfc;
+  width: 18%;
+  box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .join-vortex{
@@ -156,7 +165,7 @@ box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.05);
   background-color: #1483d6;
 }
 #buttons{
- border-radius: 13px;
+  border-radius: 13px;
   width: 150px;
   border: none;
   padding: 7px;
@@ -165,18 +174,20 @@ box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.05);
   background-color: #23468A;
   color: #f3f3f3;
 }
-.anon-user{
-  
-}
 
 .create-forum{
   margin-right: 30px;
-  
+  margin-bottom: 20px;
+}
+
+.left-aside aside {
+  border-bottom: 1px solid #cfcfcf;
+  padding-bottom: 20px;
+}
+h2{
+  color: #333;
 }
 </style>
-
-
-
 
 
 

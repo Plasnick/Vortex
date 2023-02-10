@@ -1,3 +1,4 @@
+
 <template> 
   <div id="app">
     <div id="nav">
@@ -57,8 +58,6 @@ header {
   z-index: 1;
   background-color: #fcfcfc;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  
-  
 }
  .search-container{
   border: 1px solid #d8d8d8;
@@ -124,6 +123,4 @@ body{
   font-family: 'Cabin';
 }
 </style>
-
-
 

@@ -5,7 +5,7 @@
       None yet! Add a favorite in the forum main page.
     </p>
     <nav>
-        <router-link v-for="forum in favoriteForums" v-bind:key="forum.id" v-bind:to="{ name: 'forum', params: { id: forum.id } }">{{
+        <router-link id="forum-link" v-for="forum in favoriteForums" v-bind:key="forum.id" v-bind:to="{ name: 'forum', params: { id: forum.id } }">{{
           forum.forumName
         }}</router-link>
     </nav>

@@ -1,5 +1,7 @@
 <template>
+<div class="delete-button">
   <button v-on:click="deleteReply(postId, commentId)">Delete</button>
+</div>
 </template>
 
 <script>
@@ -29,13 +31,24 @@ export default {
 </script>
 
 <style scoped>
-button {
-    background-color: #575757;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    border: none;
-    font-size: 14px;
-    cursor: pointer;
+.delete-button {
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 13px;
+  width: 70px;
+  border: none;
+  padding: 7px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #23468A;
+  color: #f3f3f3;
+  margin-top: 50px;
+  margin-left: 0vw;
 }
+.delete-button:hover {
+  background-color: #1483d6;
+}
+
 </style>
+
+
