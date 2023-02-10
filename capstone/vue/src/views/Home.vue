@@ -119,7 +119,7 @@ export default {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  
 }
 
 #top5{
