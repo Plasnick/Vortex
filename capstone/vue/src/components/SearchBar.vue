@@ -1,5 +1,3 @@
-
-
 <template>
   <div>
     <div class="container">
@@ -111,11 +109,22 @@ input::placeholder {
   
   
 }
+
 .submit-search{
+  border-radius: 13px;
+  width: 70px;
+  border: none;
+  padding: 7px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #23468A;
+  color: #f3f3f3;
   margin-top: 50px;
   margin-left: 0vw;
 }
-
+.submit-search:hover {
+  background-color: #1483d6;
+}
 a{
 background-color: #EDEDED;
 margin-left: 300px;
@@ -125,25 +134,3 @@ margin-bottom: 10px;
 width: 5px;
 }
 </style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
