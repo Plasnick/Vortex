@@ -9,17 +9,17 @@
       <ul>
           <li>
               <i class="fa-brands fa-linkedin"></i>
-              <a href="https://www.linkedin.com/in/michael-krut/">  Michael Krut</a>
+              <a href="https://www.linkedin.com/in/michael-krut/" target="_blank">  Michael Krut</a>
               </li>
               <li><i class="fa-brands fa-linkedin"></i>
-            <a href="https://www.linkedin.com/in/sharent/">  Sharen Torres</a>
+            <a href="https://www.linkedin.com/in/sharent/" target="_blank">  Sharen Torres</a>
           </li>
           <li><i class="fa-brands fa-linkedin"></i>
               <a href="https://www.linkedin.com/in/nick-mcconnell-tech/
-">  Nick McConnell</a>
+" target="_blank">  Nick McConnell</a>
           </li>
           <li><i class="fa-brands fa-linkedin"></i>
-              <a href="https://www.linkedin.com/in/j-m-weber/">  J. Michael Weber</a>
+              <a href="https://www.linkedin.com/in/j-m-weber/" target="_blank">  J. Michael Weber</a>
           </li>
           </ul>
   </div>

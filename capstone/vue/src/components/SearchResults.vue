@@ -1,12 +1,13 @@
 <template>
   <div>
-    <div v-if="routeOption == 'searchForForums'" class="suggestions">
+    <!-- <div v-if="routeOption == 'searchForForums'" class="suggestions">
       <div v-for="forum in filteredList" v-bind:key="forum.id">
         <router-link v-bind:to="{ name: 'forum', params: { id: forum.id } }">
           {{ forum.forumName }}
         </router-link>
       </div>
-    </div>
+    </div> -->
+    <forum-results />
     <div v-if="routeOption == 'searchForPosts'">
       <post
         v-for="post in this.$store.state.posts"
@@ -21,38 +22,38 @@
 </template>
 
 <script>
-import ForumsService from "../services/ForumsService";
+// import ForumsService from "../services/ForumsService";
 import PostsService from "../services/PostsService";
 import Post from "../components/Post.vue";
 import interactionsService from "../services/InteractionsService";
+import ForumResults from '../components/SearchResultForumList.vue'
 
 export default {
   name: "search-results",
   components: {
     Post,
+    ForumResults,
+    
   },
   data() {
     return {
       searchWord: this.$route.params.query,
       postsWithKeyword: [],
-      allForums: [],
+      // allForums: [],
       errorMessage: false,
       routeOption: this.$route.params.option
     };
   },
   computed: {
-    // routeOption() {
-    //   return this.$route.params.option;
+    // filteredList() {
+    //   return this.allForums.filter((forum) => {
+    //     if (
+    //       forum.forumName.toLowerCase().includes(this.searchWord.toLowerCase())
+    //     ) {
+    //       return forum;
+    //     }
+    //   });
     // },
-    filteredList() {
-      return this.allForums.filter((forum) => {
-        if (
-          forum.forumName.toLowerCase().includes(this.searchWord.toLowerCase())
-        ) {
-          return forum;
-        }
-      });
-    },
   },
   created() {
     PostsService.searchTitleandBodyByKeyword(this.searchWord).then(
@@ -68,9 +69,9 @@ export default {
         this.$store.commit("SET_INTERACTIONS", response.data);
       });
 
-    ForumsService.getAllForums().then((response) => {
-      this.allForums = response.data;
-    });
+    // ForumsService.getAllForums().then((response) => {
+    //   this.allForums = response.data;
+    // });
   },
 };
 </script>
