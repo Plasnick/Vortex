@@ -1,10 +1,9 @@
-
-
 <template>
   <div>
     <div class="container">
     <form @submit.prevent="search">
       <div class="input-and-select">
+        <i class="fa-solid fa-magnifying-glass"></i>
         <input type="text" v-model="query" placeholder="Get sucked into..." />
         <button href="search" type="submit" class="submit-search">Search</button>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -81,6 +80,12 @@ input{
   flex-direction: row;
   align-items: center;
 }
+i{
+  margin-top: 50px;
+  font-size: 10pt;
+  margin-right: 4px;
+  color: #23468A;
+}
 input[type="text"]{
     border: none;
     outline: none;
@@ -111,11 +116,22 @@ input::placeholder {
   
   
 }
+
 .submit-search{
+  border-radius: 13px;
+  width: 70px;
+  border: none;
+  padding: 7px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #23468A;
+  color: #f3f3f3;
   margin-top: 50px;
   margin-left: 0vw;
 }
-
+.submit-search:hover {
+  background-color: #1483d6;
+}
 a{
 background-color: #EDEDED;
 margin-left: 300px;
@@ -125,25 +141,3 @@ margin-bottom: 10px;
 width: 5px;
 }
 </style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
