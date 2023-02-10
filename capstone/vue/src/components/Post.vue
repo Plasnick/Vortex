@@ -197,7 +197,7 @@ export default {
 .post-content {
   display: flex;
   flex-direction: column;
-  padding-top: 20px;
+  padding-top: 0px;
 }
 .post-content p {
   color: #333;

@@ -1,7 +1,7 @@
 
 <template>
   <div id="replies-component">
-    <h3>Write Reply Here</h3>
+    <h3 id="write-reply" >Write Reply Here</h3>
     <form class="create-reply">
       <div class="body">
         <textarea
@@ -123,6 +123,9 @@ export default {
 </script>
 
 <style scoped>
+#write-reply{
+  padding-bottom: 4px;
+}
 .new-reply-form {
   display: flex;
   flex-direction: column;
@@ -131,6 +134,7 @@ export default {
     background-color: #f7f7f7;
     padding: 1rem;
     border-radius: 2px;
+    width: 600px;
   }
   .create-reply {
     background-color: #fff;
@@ -143,7 +147,7 @@ export default {
     margin-bottom: 0.5rem;
   }
   .create-reply textarea {
-    width: 100%;
+    width: 525px;
     min-height: 4rem;
     padding: 0.5rem;
     border-radius: 2px;

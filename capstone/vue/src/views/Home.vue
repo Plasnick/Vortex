@@ -28,7 +28,8 @@
     <div class="right-aside">
     <aside>
         <big-button />
-        <h3>User Agreement Privacy Policy</h3>
+        <right-side-bar/>
+        
     </aside>
     </div>
 
@@ -44,6 +45,7 @@ import interactionsService from "../services/InteractionsService";
 import moderatorsService from "../services/ModeratorsService";
 import favoriteService from "../services/FavoriteService";
 import FavoriteForums from "../components/FavoriteForums.vue";
+import RightSideBar from '../components/RightSideBar.vue';
 
 
 
@@ -53,6 +55,7 @@ export default {
     Top5Forums,
     Post,
     FavoriteForums,
+    RightSideBar,
    
   },
   
