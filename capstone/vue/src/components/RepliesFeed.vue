@@ -1,3 +1,4 @@
+
 <template>
   <div id="replies-component">
     <h3 id="write-reply" >Write Reply Here</h3>
@@ -27,7 +28,9 @@
       <p>{{ reply.body }}</p>
       <h4>from {{ reply.username }} on {{ reply.postedAt }}</h4>
       <!-- <delete-replies v-bind:postId="reply.postId" v-bind:commentId="reply.commentId" v-on:replyDeleted="removeReply(reply)"/> -->
+      <div class="delete-button">
       <button v-show="isModerator" v-on:click="deleteReply(reply)">Delete Reply</button>
+      </div>
       </div>
   </div>
 </template>
@@ -156,15 +159,23 @@ export default {
     justify-content: flex-end;
     margin-top: 0.5rem;
   }
-  .create-reply .actions button {
+  .actions button {
     background-color: #23468A;
     color: #fff;
-    padding: 0.5rem 1rem;
-    border-radius: 2px;
     border: none;
     font-size: 1rem;
     cursor: pointer;
-  }
+    border-radius: 19px;
+    width: 100px;
+    padding: 7px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #f3f3f3;
+ }
+.actions button:hover {
+  background-color: #1483d6;
+}
+  
   .replies-feed {
     background-color: #fff;
     padding: 1rem;
@@ -181,4 +192,21 @@ export default {
     line-height: 1.5;
   }
 
+button{
+  border-radius: 13px;
+  width: 110px;
+  border: none;
+  padding: 7px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #23468A;
+  color: #f3f3f3;
+  margin-top: 50px;
+  margin-left: 0vw;
+}
+button:hover {
+  background-color: #1483d6;
+}
+
 </style>
+
