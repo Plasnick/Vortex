@@ -16,15 +16,19 @@
       <div id="favorite-aside" v-if="$store.state.token != ''">
         <favorite-forums />
       </div>
-      <div v-else class="anon-user">
-        <h3>Create an account to follow your favorite communities and start taking part in conversations. </h3>
-        <router-link :to="{ name: 'register' }"><button class="join-vortex" id="buttons">Join Vortex</button></router-link>
-      </div>
+     <div v-else class="anon-user">
+  <hr>
+  <h3>Create an account to follow your favorite communities and start taking part in conversations. </h3>
+  <router-link :to="{ name: 'register' }">
+    <button class="join-vortex" id="buttons">Join Vortex</button>
+  </router-link>
+</div>
     </aside>
     </div>
 
     <div class="right-aside">
     <aside>
+        <big-button />
         <right-side-bar/>
         
     </aside>
@@ -181,12 +185,18 @@ export default {
 }
 
 .left-aside aside {
-  border-bottom: 1px solid #cfcfcf;
   padding-bottom: 20px;
 }
 h2{
   color: #333;
 }
+hr {
+  border-top: 1px solid #cfcfcf;
+  margin: 10px 0;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  }
 </style>
 
 
