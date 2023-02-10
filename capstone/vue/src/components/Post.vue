@@ -6,8 +6,11 @@
   
    <div class="post-content">
     <header class="header">
-      <h3>v/<router-link class="forum-link" v-bind:to="{name:'forum', params:{id:post.forumId}}">{{forum.forumName}}</router-link></h3>
+  
       
+      <h5>v/<router-link class="forum-link" v-bind:to="{name:'forum', params:{id:post.forumId}}">{{forum.forumName}}</router-link></h5>
+      <p id="user">by {{ post.username }} on {{ date }}</p>
+
       <router-link class="title-link" v-bind:to="{name:'postAndReplies', params:{id: post.postId}}">
         <h2>{{ post.title }}</h2>
       </router-link>
@@ -17,7 +20,7 @@
       <img v-if="post.img_url" :src="post.img_url" alt="Post Image" />
       
       </div>
-      <p id="user">by {{ post.username }} on {{ date }}</p>
+      
       </header>
       <div class="votes">
       <div v-if="!hasInteracted">
@@ -160,7 +163,7 @@ export default {
   border: 1px solid rgb(209, 209, 209);
   padding: 20px;
   margin-bottom: 20px;
-  width: 600px; 
+  width: 530px; 
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);  
   background-color: #fcfcfc;
 
@@ -172,8 +175,7 @@ export default {
   width: 100%;
   max-width: 300px;
   height: auto;
-  margin-top: 20px;
-  margin-left: 50px;
+  margin-left: 100px;
   }
   
 .image-container img {
@@ -193,11 +195,11 @@ export default {
   display: flex;
   flex-direction: column;
   padding-left: 20px;
+  padding-bottom: 40px;
 }
 .post-content {
   display: flex;
   flex-direction: column;
-  padding-top: 20px;
 }
 .post-content p {
   color: #333;
@@ -244,9 +246,9 @@ button {
   font-size: 20px;
   margin: 0;
 }
-.forum-link {
+.forum-link, h5{
   color: #23468a;
-  font-size: 14px;
+  font-size: 17px;
   text-decoration: none;
 }
 .title-link:hover {
@@ -264,6 +266,11 @@ button {
 }
 
 </style>
+
+
+
+
+
 
 
 
