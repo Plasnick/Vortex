@@ -34,7 +34,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     h3 {
   margin: 10px;
   font-size: 20px;
@@ -50,6 +50,9 @@ a{
 
 }
 li{
+    color: #23468A;
+}
+li:visited{
     color: #23468A;
 }
 a:hover{

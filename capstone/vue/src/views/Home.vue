@@ -27,7 +27,6 @@
 
     <div class="right-aside">
     <aside>
-        <big-button />
         <right-side-bar/>
         
     </aside>

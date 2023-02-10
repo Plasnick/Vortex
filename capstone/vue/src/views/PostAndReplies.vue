@@ -18,7 +18,7 @@ export default {
   data() {
     return {
       posts: [{
-        forumId: null,
+        forumId: "",
         userId: null
       }],
       forum: {}

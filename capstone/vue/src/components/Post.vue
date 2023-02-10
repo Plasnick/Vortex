@@ -140,17 +140,20 @@ export default {
       this.$store.commit("DELETE_INTERACTION", this.interaction);
       interactionsService.deleteInteraction(this.interaction);
     },
+    formatDate(){
+      let postedAt = this.post.postedAt;
+      let dateChange = new Date(postedAt);
+  this.date = dateChange.toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'}) + " " + dateChange.toLocaleDateString();
+console.log(this.date);
+    }
   },
   created() {
     forumsService.getForum(this.post.forumId).then((response) => {
       this.forum = response.data;
     });
-    this.date =
-      this.post.postedAt.substring(0, 10) +
-      " " +
-      this.post.postedAt.substring(11, 16);
-    console.log(this.date);
+    this.formatDate();   
   },
+  
 };
 </script>
 
