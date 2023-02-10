@@ -6,7 +6,7 @@
         </p>
       
       <nav>
-        <router-link id="moderating" v-bind:to="{name: 'forum', params: {id: forum.id}}" v-for="forum in $store.state.forumsModerated" v-bind:key="forum.forumId">
+        <router-link id="moderating" v-bind:to="{name: 'forum', params: {id: forum.forumId}}" v-for="forum in $store.state.forumsModerated" v-bind:key="forum.forumId">
             {{forum.forumName}}
         </router-link>
         </nav>
