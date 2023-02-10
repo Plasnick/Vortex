@@ -1,6 +1,6 @@
 <template>
   <div class="results">
-   <h2 class="header">
+   <h2 class="searchResultsHeader">
      In the Vortex:
    </h2>  
 
@@ -25,7 +25,7 @@ export default {
   align-items: center;
 }
 
-.header {
+.searchResultsHeader {
 text-align: center;
 }
 
