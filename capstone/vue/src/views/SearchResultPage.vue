@@ -1,8 +1,10 @@
 <template>
   <div class="results">
-    these are the search results
+   <h2 class="searchResultsHeader">
+     In the Vortex:
+   </h2>  
 
-    <search-results />
+    <search-results id="theResults"/>
   </div>
 </template>
 
@@ -17,6 +19,16 @@ export default {
 </script>
 
 <style>
+#theResults {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchResultsHeader {
+text-align: center;
+}
+
 .results{
   margin-top: 100px;
 }
