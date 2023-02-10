@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="forum-creation">
     <ForumCreationForm />
 
 </div>    
@@ -18,5 +18,8 @@ export default {
 </script>
 
 <style>
+.forum-creation{
+    margin-top: 100px;
+}
 
 </style>
