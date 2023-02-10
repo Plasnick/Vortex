@@ -50,4 +50,8 @@ h3 {
   color: #23468A;
 }  
 
+#forum-link:hover{
+  color:#09A0D8;
+}
+
 </style> 
