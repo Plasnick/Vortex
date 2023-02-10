@@ -16,5 +16,8 @@ export default {
 </script>
 
 <style>
+.new-post{
+    margin-top: 100px;
+}
 
 </style>

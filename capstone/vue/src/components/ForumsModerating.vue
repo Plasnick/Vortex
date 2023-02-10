@@ -1,6 +1,6 @@
 <template>
   <div class="forums-moderating">
-      <h3>Forums you moderate:</h3>
+      <h3>Forums you moderate</h3>
       <p v-if="$store.state.forumsModerated.length==0">None yet! 
           <router-link v-bind:to="{name: 'createForum'}">Create Forum</router-link>
         </p>

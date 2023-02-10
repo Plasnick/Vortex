@@ -5,8 +5,9 @@
     <div class="container">
     <form @submit.prevent="search">
       <div class="input-and-select">
-        <input type="text" v-model="query" placeholder="Search Vortex For" />
-        <div class="select-bar">
+        <input type="text" v-model="query" placeholder="Get sucked into..." />
+        <button href="search" type="submit" class="submit-search">Search</button>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <select v-model="selectedSearchOption" class="dropdown-input">
             <option
               v-for="(options, key) in searchOptions"
@@ -15,9 +16,9 @@
               {{ options.text }}
             </option>
           </select>
-        </div>
+        
       </div>
-      <a href="search" type="submit">Search</a>
+      
     </form>
     </div>
   </div>
@@ -67,6 +68,12 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: center;
+  padding-bottom: 50px;
+}
+
+input{
+  padding-right: 8vw;
+  margin-left: 0vw;
 }
 
 .input-and-select{
@@ -79,7 +86,7 @@ input[type="text"]{
     outline: none;
     background-color: #ececec;
     margin-bottom: 20px;
-    flex-grow: 1;
+    /* flex-grow: 1; */
     margin-top: 70px;
 }
 input::placeholder {
@@ -89,6 +96,10 @@ input::placeholder {
   outline-style: none;
   background-color: #EDEDED;
   }
+  .select-bar {
+  background-color: #EDEDED;
+  
+  }
 
 .dropdown-input{
   background-color: #EDEDED;
@@ -97,8 +108,12 @@ input::placeholder {
   outline: none;
   margin-top: 48px;
   color: #23468A;
-  margin-right: 140px;
   
+  
+}
+.submit-search{
+  margin-top: 50px;
+  margin-left: 0vw;
 }
 
 a{

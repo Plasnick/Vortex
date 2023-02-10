@@ -29,6 +29,7 @@ export default {
 <style>
 .account{
     padding-top: 80px;
+    width: 30vh;
     
 }
 

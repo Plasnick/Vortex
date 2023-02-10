@@ -22,7 +22,7 @@
 </div>    
 
 <div>
-    <label for="rules"> Desscribe Your Rules Here</label>
+    <label for="rules"> Describe Your Rules Here</label>
     <textarea
         id="rules"
         class="form-control"
