@@ -17,7 +17,7 @@
       <img v-if="post.img_url" :src="post.img_url" alt="Post Image" />
       
       </div>
-      <p id="user">by {{ post.username }} on {{ date }}</p>
+      <p id="user">by {{ post.username }} at {{ date }}</p>
       </header>
       <div class="votes">
       <div v-if="!hasInteracted">

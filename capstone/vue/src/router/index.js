@@ -12,6 +12,7 @@ import NewPost from '../views/NewPost.vue'
 import PostAndReplies from '../views/PostAndReplies.vue'
 import SearchResultPage from '../views/SearchResultPage.vue'
 import Account from '../views/Account.vue'
+import NotFound from '../views/NotFound.vue'
 
 
 
@@ -121,7 +122,15 @@ const router = new Router({
       meta:{
         requiresAuth: true
       }
-    }
+    },
+    {
+      path: '*',
+      name: 'notFound',
+      component: NotFound,
+      meta: {
+        requiresAuth: false
+      }
+    },
 
 
   ]
