@@ -6,7 +6,7 @@
           <input type="text" placeholder="Post Title" v-model="newPost.title" required />
           <textarea placeholder="Write your post here!" v-model="newPost.body" required></textarea>
           
-          <button v-on:click="uploadImage">Upload Image</button>
+          <button v-on:click="uploadImage">Upload Image</button>&nbsp;&nbsp;
           <img v-if="newPost.img_url" :src="newPost.img_url" alt="Post Image" />
           
           <button v-on:click="submitPost">Submit</button>

@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <template>
   <div class="forum-details">
     <aside class = "left-aside">
@@ -39,7 +48,7 @@
   <div class="feed">
     <div class="sorting">
       <router-link v-bind:to="{ name: 'newPost', params: { id: forum.id } }"
-      ><button>Create Post</button></router-link>
+      ><button class="create-post-btn">Create Post</button></router-link>
       <label for="order-posts">&nbsp;&nbsp;Sort by: </label>
       <select id="order-posts" v-on:change="handleChange">
         <option value="date" selected>Date</option>
@@ -49,7 +58,6 @@
     <forum-main-feed class="posts" id="feed-posts" />
   </div>
       
-    
   </div>
 </template>
 
@@ -158,7 +166,7 @@ export default {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas: "left-aside posts posts";
   grid-gap: 20px; 
-  margin-top: 100px;  
+  margin-top: 80px;  
   background-color: #fcfcfc;  
 }
 
@@ -185,4 +193,21 @@ align-items: center;
 }
 
 
+.create-post-btn:hover {
+  background-color: #1483d6;
+}
+.create-post-btn{
+ border-radius: 13px;
+  width: 130px;
+  border: none;
+  padding: 7px;
+  font-weight: bold;
+  cursor: pointer; 
+  background-color: #23468A;
+  color: #f3f3f3;
+}
+h3{
+  margin-top: 10px;
+}
 </style>
+

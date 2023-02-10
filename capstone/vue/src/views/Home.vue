@@ -95,7 +95,7 @@ display: grid;
 grid-template-columns: 1fr 1fr 1fr;
 grid-template-areas: "left-aside posts right-aside";
 grid-gap: 20px;
-margin-top: 100px;  
+margin-top: 80px;  
 background-color: #fcfcfc;
 }
 
